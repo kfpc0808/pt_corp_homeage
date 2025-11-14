@@ -761,6 +761,11 @@
                 grid-template-columns: 1fr !important;
             }
 
+            /* 4열 버튼 그리드를 2열로 변경 */
+            div[style*="grid-template-columns: repeat(4, 1fr)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
             /* 버튼 크기 조정 */
             .benefit-button {
                 padding: 15px !important;
@@ -1452,27 +1457,23 @@
                 
                 <!-- 2x2 그리드 버튼 영역 -->
                 <div style="margin: 20px 0;">
-                    <!-- 첫 번째 행 -->
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 15px;">
-                        <button class="benefit-button" onclick="showBenefitDetail(0, event)" style="padding: 20px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
-                            <div style="font-size: 1.15em; font-weight: 700; color: #8b6914; margin-bottom: 8px;">✅ 정부지원사업 경쟁력 강화</div>
-                            <div style="font-size: 0.85em; color: #6b5d4f; line-height: 1.4;">R&D 과제평가, ESG경영, 디지털전환 DX</div>
+                    <!-- 한 행에 4개 버튼 배치 -->
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+                        <button class="benefit-button" onclick="showBenefitDetail(0, event)" style="padding: 18px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
+                            <div style="font-size: 1.05em; font-weight: 700; color: #8b6914; margin-bottom: 8px;">✅ 정부지원사업 경쟁력 강화</div>
+                            <div style="font-size: 0.8em; color: #6b5d4f; line-height: 1.4;">R&D 과제평가, ESG경영, 디지털전환 DX</div>
                         </button>
-                        <button class="benefit-button" onclick="showBenefitDetail(1, event)" style="padding: 20px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
-                            <div style="font-size: 1.15em; font-weight: 700; color: #8b6914; margin-bottom: 8px;">✅ 금융기관 우대 및 신용평가 개선</div>
-                            <div style="font-size: 0.85em; color: #6b5d4f; line-height: 1.4;">신용평가 개선, ESG 금융우대, 리스크 감소</div>
+                        <button class="benefit-button" onclick="showBenefitDetail(1, event)" style="padding: 18px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
+                            <div style="font-size: 1.05em; font-weight: 700; color: #8b6914; margin-bottom: 8px;">✅ 금융기관 우대+신용평가 개선</div>
+                            <div style="font-size: 0.8em; color: #6b5d4f; line-height: 1.4;">신용평가 개선, ESG 금융우대, 리스크 감소</div>
                         </button>
-                    </div>
-                    
-                    <!-- 두 번째 행 -->
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
-                        <button class="benefit-button" onclick="showBenefitDetail(2, event)" style="padding: 20px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
-                            <div style="font-size: 1.15em; font-weight: 700; color: #8b6914; margin-bottom: 8px;">✅ 법적 리스크 감소 효과</div>
-                            <div style="font-size: 0.85em; color: #6b5d4f; line-height: 1.4;">시점인증 효력, 근로기준법 준수, 법정교육 관리</div>
+                        <button class="benefit-button" onclick="showBenefitDetail(2, event)" style="padding: 18px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
+                            <div style="font-size: 1.05em; font-weight: 700; color: #8b6914; margin-bottom: 8px;">✅ 법적 리스크 감소 효과</div>
+                            <div style="font-size: 0.8em; color: #6b5d4f; line-height: 1.4;">시점인증효력/근로기준법준수/법정교육관리</div>
                         </button>
-                        <button class="benefit-button" onclick="showBenefitDetail(3, event)" style="padding: 20px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
-                            <div style="font-size: 1.15em; font-weight: 700; color: #8b6914; margin-bottom: 8px;">✅ 기업 이미지제고 및 경쟁력 향상</div>
-                            <div style="font-size: 0.85em; color: #6b5d4f; line-height: 1.4;">체계성 확보, 인재채용, 고객응대 효율화</div>
+                        <button class="benefit-button" onclick="showBenefitDetail(3, event)" style="padding: 18px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
+                            <div style="font-size: 1.05em; font-weight: 700; color: #8b6914; margin-bottom: 8px;">✅ 기업 이미지제고+경쟁력향상</div>
+                            <div style="font-size: 0.8em; color: #6b5d4f; line-height: 1.4;">체계성 확보, 인재채용, 고객응대 효율화</div>
                         </button>
                     </div>
                 </div>
