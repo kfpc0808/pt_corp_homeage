@@ -687,6 +687,14 @@
             .cta-button {
                 padding: 15px 30px;
                 font-size: 1em;
+                width: 100%;
+                max-width: 280px;
+            }
+
+            /* CTA 버튼 컨테이너 세로 배치 */
+            .step > div[style*="display: flex"] {
+                flex-direction: column !important;
+                gap: 15px !important;
             }
 
             /* 회사명 위치 조정 */
@@ -1601,7 +1609,10 @@
                 </div>
 
                 <div class="step" style="text-align: center;">
-                    <button class="cta-button">지금 바로 시작하기</button>
+                    <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap;">
+                        <button class="cta-button cta-button-inquiry" onclick="window.open('https://forms.gle/6H7oeWU31FAz2zUKA', '_blank')" style="background: linear-gradient(135deg, #6b5d4f 0%, #8b7355 100%); border: 3px solid #6b5d4f;">홈페이지 문의하기</button>
+                        <button class="cta-button cta-button-apply">홈페이지 신청하기</button>
+                    </div>
                     <div style="margin-top: 20px; font-size: 0.95em; color: #6b5d4f;">
                         선착순 100개사(웹호스팅비 이용전기간 면제) · 2025년 12월까지
                     </div>
@@ -1842,10 +1853,13 @@
         }
 
         // CTA 버튼 클릭 이벤트
-        document.querySelector('.cta-button').addEventListener('click', (e) => {
-            e.preventDefault();
-            window.open('https://docs.google.com/forms/d/e/1FAIpQLSe0Y5Covznb3QUnPSsy71U-STI-0A3bimm7c_6ZlrMMpENMBA/viewform', '_blank');
-        });
+        const applyButton = document.querySelector('.cta-button-apply');
+        if (applyButton) {
+            applyButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.open('https://docs.google.com/forms/d/e/1FAIpQLSe0Y5Covznb3QUnPSsy71U-STI-0A3bimm7c_6ZlrMMpENMBA/viewform', '_blank');
+            });
+        }
 
         // 모바일 터치 스와이프 지원
         let touchStartX = 0;
