@@ -2,7 +2,11 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#d4af37">
     <title>기업 홈페이지 통합 시스템 제안</title>
     <style>
         * {
@@ -431,6 +435,20 @@
             background: linear-gradient(135deg, #e8c547 0%, #c9a837 100%);
         }
 
+        /* 실질혜택 아코디언 스타일 */
+        .benefit-accordion-header:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.15) 100%);
+        }
+
+        .benefit-accordion-content {
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+        }
+
+        .benefit-arrow {
+            transition: transform 0.3s ease-in-out;
+        }
+
         /* 홈페이지 링크 버튼 */
         .homepage-button {
             position: absolute;
@@ -520,9 +538,309 @@
             h1 { font-size: 2em; }
             h2 { font-size: 1.5em; }
         }
+
+        /* 모바일 탭 네비게이션 스타일 */
+        .mobile-tab-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+            border-bottom: 3px solid #d4af37;
+            z-index: 100;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .mobile-tab-container {
+            display: flex;
+            gap: 8px;
+            padding: 0 15px;
+            min-width: max-content;
+        }
+
+        .mobile-tab-item {
+            flex-shrink: 0;
+            padding: 10px 16px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border-radius: 20px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            font-size: 0.85em;
+            font-weight: 500;
+            color: #2d2d2d;
+        }
+
+        .mobile-tab-item.active {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(212, 175, 55, 0.15) 100%);
+            border-color: #d4af37;
+            font-weight: 700;
+            color: #8b6914;
+        }
+
+        .mobile-tab-number {
+            font-size: 0.75em;
+            opacity: 0.8;
+            margin-right: 4px;
+        }
+
+        /* 모바일 세로 모드 (768px 이하) */
+        @media (max-width: 768px) and (orientation: portrait) {
+            body {
+                overflow-y: auto;
+                overflow-x: hidden;
+                height: auto;
+            }
+
+            .container {
+                flex-direction: column;
+                height: auto;
+                min-height: 100vh;
+                aspect-ratio: auto;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .mobile-tab-nav {
+                display: block;
+            }
+
+            .content-area {
+                width: 100%;
+                margin-top: 60px;
+                overflow-y: visible;
+                height: auto;
+                min-height: calc(100vh - 60px);
+            }
+
+            .content-panel {
+                padding: 20px 15px;
+                position: relative;
+                transform: none;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                line-height: 1.3;
+            }
+
+            h2 {
+                font-size: 1.4em;
+                margin-bottom: 15px;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            .content-box {
+                padding: 20px;
+                margin: 10px 0;
+            }
+
+            /* 2열 그리드를 1열로 변경 */
+            .two-column {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* 제공서비스 그리드 1열로 */
+            div[style*="grid-template-columns: repeat(2, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* 버튼 크기 조정 */
+            .benefit-button {
+                padding: 15px !important;
+            }
+
+            .benefit-button div:first-child {
+                font-size: 1em !important;
+            }
+
+            .benefit-button div:last-child {
+                font-size: 0.8em !important;
+            }
+
+            /* 상세 내용 패딩 조정 */
+            .benefit-detail {
+                padding: 15px !important;
+            }
+
+            /* 테이블 반응형 */
+            table {
+                font-size: 0.85em;
+            }
+
+            table th, table td {
+                padding: 10px 8px;
+            }
+
+            /* CTA 버튼 크기 조정 */
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1em;
+            }
+
+            /* 회사명 위치 조정 */
+            .company-name {
+                font-size: 0.7em;
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+
+        /* 모바일 가로 모드 */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .container {
+                flex-direction: row;
+            }
+
+            .sidebar {
+                width: 30%;
+                font-size: 0.85em;
+            }
+
+            .content-area {
+                width: 70%;
+            }
+
+            .content-panel {
+                padding: 20px 25px;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+        }
+
+        /* 매우 작은 화면 (iPhone SE 등) */
+        @media (max-width: 375px) {
+            .content-panel {
+                padding: 15px 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .mobile-tab-item {
+                padding: 8px 12px;
+                font-size: 0.75em;
+            }
+        }
+
+        /* iOS Safari 최적화 */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                -webkit-text-size-adjust: 100%;
+            }
+
+            .mobile-tab-nav {
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* iOS에서 탭 클릭 시 하이라이트 제거 */
+            .mobile-tab-item {
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+
+        /* 혜택 버튼 호버 효과 */
+        .benefit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        /* 모바일에서는 호버 효과 제거 */
+        @media (hover: none) and (pointer: coarse) {
+            .benefit-button:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        /* fadeIn 애니메이션 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 스크롤바 숨기기 (모바일 탭) */
+        .mobile-tab-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .mobile-tab-nav {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body>
+    <!-- 모바일 탭 네비게이션 -->
+    <div class="mobile-tab-nav">
+        <div class="mobile-tab-container">
+            <div class="mobile-tab-item active" onclick="showContent(0)">
+                <span class="mobile-tab-number">01</span>통합 시스템 제안
+            </div>
+            <div class="mobile-tab-item" onclick="showContent(1)">
+                <span class="mobile-tab-number">01-1</span>CEO가 원하는 홈페이지는?
+            </div>
+            <div class="mobile-tab-item" onclick="showContent(2)">
+                <span class="mobile-tab-number">02</span>기획 배경
+            </div>
+            <div class="mobile-tab-item" onclick="showContent(3)">
+                <span class="mobile-tab-number">03</span>핵심 기능 ① 신뢰 강화
+            </div>
+            <div class="mobile-tab-item" onclick="showContent(4)">
+                <span class="mobile-tab-number">04</span>핵심 기능 ② 경영 자동화
+            </div>
+            <div class="mobile-tab-item" onclick="showContent(5)">
+                <span class="mobile-tab-number">05</span>핵심 기능 ③ AI 혁신
+            </div>
+            <div class="mobile-tab-item" onclick="showContent(6)">
+                <span class="mobile-tab-number">06</span>제공서비스(Total)
+            </div>
+            <div class="mobile-tab-item" onclick="showContent(7)">
+                <span class="mobile-tab-number">06-1</span>도입시 얻는 실질혜택
+            </div>
+            <div class="mobile-tab-item" onclick="showContent(8)">
+                <span class="mobile-tab-number">07</span>도입 효과
+            </div>
+            <div class="mobile-tab-item" onclick="showContent(9)">
+                <span class="mobile-tab-number">08</span>이용료
+            </div>
+            <div class="mobile-tab-item" onclick="showContent(10)">
+                <span class="mobile-tab-number">09</span>런칭 프로모션
+            </div>
+            <div class="mobile-tab-item" onclick="showContent(11)">
+                <span class="mobile-tab-number">10</span>결론
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <!-- 왼쪽 사이드바 메뉴 -->
         <div class="sidebar">
@@ -538,46 +856,56 @@
                 </div>
                 
                 <div class="menu-item" onclick="showContent(1)">
+                    <span class="menu-number">01-1</span>
+                    <div class="menu-title">CEO가 원하는 홈페이지는?</div>
+                </div>
+                
+                <div class="menu-item" onclick="showContent(2)">
                     <span class="menu-number">02</span>
                     <div class="menu-title">기획 배경</div>
                 </div>
                 
-                <div class="menu-item" onclick="showContent(2)">
+                <div class="menu-item" onclick="showContent(3)">
                     <span class="menu-number">03</span>
                     <div class="menu-title">핵심 기능 ① 신뢰 강화</div>
                 </div>
                 
-                <div class="menu-item" onclick="showContent(3)">
+                <div class="menu-item" onclick="showContent(4)">
                     <span class="menu-number">04</span>
                     <div class="menu-title">핵심 기능 ② 경영 자동화</div>
                 </div>
                 
-                <div class="menu-item" onclick="showContent(4)">
+                <div class="menu-item" onclick="showContent(5)">
                     <span class="menu-number">05</span>
                     <div class="menu-title">핵심 기능 ③ AI 혁신</div>
                 </div>
                 
-                <div class="menu-item" onclick="showContent(5)">
+                <div class="menu-item" onclick="showContent(6)">
                     <span class="menu-number">06</span>
                     <div class="menu-title">제공서비스(Total)</div>
                 </div>
                 
-                <div class="menu-item" onclick="showContent(6)">
+                <div class="menu-item" onclick="showContent(7)">
+                    <span class="menu-number">06-1</span>
+                    <div class="menu-title">도입시 얻는 실질혜택</div>
+                </div>
+                
+                <div class="menu-item" onclick="showContent(8)">
                     <span class="menu-number">07</span>
                     <div class="menu-title">도입 효과</div>
                 </div>
                 
-                <div class="menu-item" onclick="showContent(7)">
+                <div class="menu-item" onclick="showContent(9)">
                     <span class="menu-number">08</span>
                     <div class="menu-title">이용료</div>
                 </div>
                 
-                <div class="menu-item" onclick="showContent(8)">
+                <div class="menu-item" onclick="showContent(10)">
                     <span class="menu-number">09</span>
                     <div class="menu-title">런칭 프로모션</div>
                 </div>
                 
-                <div class="menu-item" onclick="showContent(9)">
+                <div class="menu-item" onclick="showContent(11)">
                     <span class="menu-number">10</span>
                     <div class="menu-title">결론</div>
                 </div>
@@ -591,6 +919,73 @@
                 <h1>중소기업<br>통합경영 시스템</h1>
                 <div class="subtitle"> '비용절감', '효율 및 혁신경영' 을 만들어 내는 차세대 플랫폼</div>
                 <div class="decorative-line"></div>
+            </div>
+
+            <!-- 콘텐츠 1-1: CEO가 원하는 홈페이지는? -->
+            <div class="content-panel" data-steps="7">
+                <h2>CEO가 원하는 홈페이지는?</h2>
+                
+                <!-- 1단계: 타이틀 박스 - 2줄 -->
+                <div class="content-box step" style="margin: 20px 0; padding: 30px; text-align: center; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%);">
+                    <div style="font-size: 1.3em; font-weight: 600; line-height: 1.8; color: #2d2d2d;">
+                        경쟁력 있는 홈페이지는 단순한 회사소개를 넘어<br>
+                        <span class="highlight" style="font-size: 1.05em;">기업의 실질적 경쟁력을 만듭니다</span>
+                    </div>
+                </div>
+
+                <!-- 2단계: 첫 번째 항목 -->
+                <div class="step" style="margin: 25px 0;">
+                    <div class="feature-item" style="padding: 18px 25px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37;">
+                        <div style="font-size: 1.1em; font-weight: 600; color: #2d2d2d;">
+                            ✅ 정부지원자금 선정률 향상
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 3단계: 두 번째 항목 -->
+                <div class="step" style="margin: 25px 0;">
+                    <div class="feature-item" style="padding: 18px 25px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37;">
+                        <div style="font-size: 1.1em; font-weight: 600; color: #2d2d2d;">
+                            ✅ 기업인증, R&D·지원사업 평가 시 가점요소
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 4단계: 세 번째 항목 -->
+                <div class="step" style="margin: 25px 0;">
+                    <div class="feature-item" style="padding: 18px 25px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37;">
+                        <div style="font-size: 1.1em; font-weight: 600; color: #2d2d2d;">
+                            ✅ 공공입찰·대기업 협력사 등록 경쟁력 확보
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 5단계: 네 번째 항목 -->
+                <div class="step" style="margin: 25px 0;">
+                    <div class="feature-item" style="padding: 18px 25px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37;">
+                        <div style="font-size: 1.1em; font-weight: 600; color: #2d2d2d;">
+                            ✅ 은행 대출 우대 및 신용평가 개선
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 6단계: 다섯 번째 항목 -->
+                <div class="step" style="margin: 25px 0;">
+                    <div class="feature-item" style="padding: 18px 25px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37;">
+                        <div style="font-size: 1.1em; font-weight: 600; color: #2d2d2d;">
+                            ✅ 중견기업 수준의 체계적 기업 이미지 구축
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7단계: 후킹 메시지 - 3줄 -->
+                <div class="step" style="margin: 20px 0; padding: 30px 40px; background: linear-gradient(135deg, rgba(139, 105, 20, 0.08) 0%, rgba(139, 105, 20, 0.03) 100%); border-radius: 12px; text-align: center;">
+                    <div style="font-size: 1.1em; color: #6b5d4f; line-height: 2;">
+                        💭 "이런 홈페이지라면 당연히 필요하지만..."<br>
+                        제작 기간 <span style="font-weight: 600;">3~6개월</span>, 초기 비용 <span style="font-weight: 600;">수천만원</span>, 매년 유지보수 <span style="font-weight: 600;">수백만원</span><br>
+                        <span style="font-weight: 600; color: #8b6914;">과연 우리 회사에 가능할까?</span>
+                    </div>
+                </div>
             </div>
 
             <!-- 콘텐츠 2: 기획 배경 -->
@@ -615,10 +1010,24 @@
                     </ul>
                 </div>
 
-                <div class="content-box step" style="margin-top: 15px; padding: 20px 30px;">
-                    <h3 style="margin-bottom: 10px;">핵심 필요성</h3>
-                    <div class="subtitle" style="margin-bottom: 0;">
-                        기업 운영 전반을 디지털로 통합하는 <span class="highlight">"효율경영 통합 홈페이지 플랫폼"</span>
+                <div class="content-box step" style="margin-top: 15px; padding: 25px 35px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%); border: 2px solid rgba(212, 175, 55, 0.4);">
+                    <h3 style="margin-bottom: 15px; color: #8b6914; font-size: 1.3em;">우리의 답</h3>
+                    <div style="line-height: 2; font-size: 1.05em;">
+                        <div style="margin-bottom: 10px;">
+                            ✨ <span class="highlight" style="font-size: 1.1em;">신청 후 7일 이내 제공</span><br>
+                            <span style="font-size: 0.9em; color: #6b5d4f; margin-left: 25px;">경쟁력 있는 전문 홈페이지를 빠르게 구축</span>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            💰 <span class="highlight" style="font-size: 1.1em;">초기 제작비 0원, 월 10만원</span><br>
+                            <span style="font-size: 0.9em; color: #6b5d4f; margin-left: 25px;">모든 기능 포함, 비용 부담 최소화</span>
+                        </div>
+                        <div>
+                            🎯 <span class="highlight" style="font-size: 1.1em;">정부·입찰·금융 혜택 즉시 확보</span><br>
+                            <span style="font-size: 0.9em; color: #6b5d4f; margin-left: 25px;">대기업 수준의 시스템을 중소기업에게</span>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 20px; font-size: 1.15em; font-weight: 700; color: #8b6914;">
+                        "비용과 시간의 장벽을 완전히 없앴습니다"
                     </div>
                 </div>
             </div>
@@ -747,7 +1156,7 @@
                     </tr>
                 </table>
 
-                <a href="https://www.corp.re.kr" target="_blank" class="homepage-button step">기업홈페이지</a>
+                <a href="https://www.corp.re.kr/cn/testcorp" target="_blank" class="homepage-button step">기업홈페이지</a>
             </div>
 
             <!-- 콘텐츠 6: 제공서비스(Total) -->
@@ -763,7 +1172,7 @@
 
                 <div style="margin: 12px 0;">
                     <!-- 1행: 기업홈페이지 + 시점인증서비스 -->
-                    <div class="step" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 12px;">
+                    <div class="step" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px;">
                         <div class="feature-item" style="padding: 15px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37;">
                             <div style="font-size: 1.05em; font-weight: 700; color: #8b6914; margin-bottom: 6px;">🏢 기업홈페이지</div>
                             <div style="font-size: 0.85em; color: #4d4d4d;">전문적인 기업 이미지 구축</div>
@@ -775,7 +1184,7 @@
                     </div>
 
                     <!-- 2행: AI Platform + 업무일지 시스템 -->
-                    <div class="step" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 12px;">
+                    <div class="step" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px;">
                         <div class="feature-item" style="padding: 15px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37;">
                             <div style="font-size: 1.05em; font-weight: 700; color: #8b6914; margin-bottom: 6px;">🤖 AI Platform</div>
                             <div style="font-size: 0.85em; color: #4d4d4d;">종량제 이용, 비용 절감</div>
@@ -787,7 +1196,7 @@
                     </div>
 
                     <!-- 3행: 종합건강검진서비스 + 출퇴근프로그램 -->
-                    <div class="step" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 12px;">
+                    <div class="step" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px;">
                         <div class="feature-item" style="padding: 15px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37;">
                             <div style="font-size: 1.05em; font-weight: 700; color: #8b6914; margin-bottom: 6px;">🏥 종합건강검진서비스</div>
                             <div style="font-size: 0.85em; color: #4d4d4d;">KMI 제휴, 대기업 수준</div>
@@ -799,7 +1208,7 @@
                     </div>
 
                     <!-- 4행: 급여프로그램 + 법정의무교육 -->
-                    <div class="step" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 12px;">
+                    <div class="step" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px;">
                         <div class="feature-item" style="padding: 15px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37;">
                             <div style="font-size: 1.05em; font-weight: 700; color: #8b6914; margin-bottom: 6px;">💰 급여프로그램</div>
                             <div style="font-size: 0.85em; color: #4d4d4d;">자동 계산 및 발송</div>
@@ -822,6 +1231,199 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- 콘텐츠 6-1: 도입시 얻는 실질혜택 (2x2 버튼 방식) -->
+            <div class="content-panel" data-steps="5">
+                <h2>💡 도입시 얻는 실질혜택</h2>
+                
+                <!-- 2x2 그리드 버튼 영역 -->
+                <div style="margin: 20px 0;">
+                    <!-- 첫 번째 행 -->
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 15px;">
+                        <button class="benefit-button" onclick="showBenefitDetail(0, event)" style="padding: 20px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
+                            <div style="font-size: 1.15em; font-weight: 700; color: #8b6914; margin-bottom: 8px;">✅ 정부지원사업 경쟁력 강화</div>
+                            <div style="font-size: 0.85em; color: #6b5d4f; line-height: 1.4;">R&D 과제평가, ESG경영, 디지털전환 DX</div>
+                        </button>
+                        <button class="benefit-button" onclick="showBenefitDetail(1, event)" style="padding: 20px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
+                            <div style="font-size: 1.15em; font-weight: 700; color: #8b6914; margin-bottom: 8px;">✅ 금융기관 우대 및 신용평가 개선</div>
+                            <div style="font-size: 0.85em; color: #6b5d4f; line-height: 1.4;">신용평가 개선, ESG 금융우대, 리스크 감소</div>
+                        </button>
+                    </div>
+                    
+                    <!-- 두 번째 행 -->
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                        <button class="benefit-button" onclick="showBenefitDetail(2, event)" style="padding: 20px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
+                            <div style="font-size: 1.15em; font-weight: 700; color: #8b6914; margin-bottom: 8px;">✅ 법적 리스크 감소 효과</div>
+                            <div style="font-size: 0.85em; color: #6b5d4f; line-height: 1.4;">시점인증 효력, 근로기준법 준수, 법정교육 관리</div>
+                        </button>
+                        <button class="benefit-button" onclick="showBenefitDetail(3, event)" style="padding: 20px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
+                            <div style="font-size: 1.15em; font-weight: 700; color: #8b6914; margin-bottom: 8px;">✅ 기업 이미지제고 및 경쟁력 향상</div>
+                            <div style="font-size: 0.85em; color: #6b5d4f; line-height: 1.4;">체계성 확보, 인재채용, 고객응대 효율화</div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 상세 내용 표시 영역 -->
+                <div id="benefit-detail-container" style="margin-top: 25px; min-height: 300px;">
+                    <!-- 내용 1: 정부지원사업 경쟁력 강화 -->
+                    <div class="benefit-detail" id="benefit-detail-0" style="display: none; padding: 25px; background: white; border: 2px solid rgba(212, 175, 55, 0.3); border-radius: 12px; animation: fadeIn 0.4s;">
+                        <h3 style="color: #8b6914; margin-bottom: 20px; font-size: 1.3em; border-bottom: 2px solid #d4af37; padding-bottom: 10px;">✅ 정부지원사업 경쟁력 강화</h3>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #8b6914; margin-bottom: 12px; font-size: 1.05em;">◆ R&D 과제 평가 요소 충족</h4>
+                            <ul style="line-height: 1.8; font-size: 0.95em; color: #4d4d4d; margin-left: 20px;">
+                                <li>연구노트 전산 관리 시스템 구축</li>
+                                <li>시점인증으로 연구 기록 신뢰성 확보</li>
+                                <li>KOITA 실사 필수요건 충족 (연구노트 작성지침 규정 충족)</li>
+                            </ul>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #8b6914; margin-bottom: 12px; font-size: 1.05em;">◆ ESG경영 실천기업 인증</h4>
+                            <ul style="line-height: 1.8; font-size: 0.95em; color: #4d4d4d; margin-left: 20px;">
+                                <li>공공기관 입찰 시 ESG 평가항목 대응</li>
+                                <li>환경·사회·지배구조 정책 페이지 공개</li>
+                                <li>협력사 선정 시 가점요소 확보</li>
+                            </ul>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #8b6914; margin-bottom: 12px; font-size: 1.05em;">◆ 디지털 전환(DX) 기반 구축</h4>
+                            <ul style="line-height: 1.8; font-size: 0.95em; color: #4d4d4d; margin-left: 20px;">
+                                <li>중소벤처기업부 스마트공장 지원사업 연계</li>
+                                <li>산업통상자원부 디지털 전환 바우처 신청 가능</li>
+                                <li>근태·문서·업무 전산화로 DX 수준 증명</li>
+                            </ul>
+                        </div>
+                        <!-- 항목별 유의사항 -->
+                        <div style="margin-top: 25px; padding: 15px 20px; background: rgba(255, 152, 0, 0.1); border-left: 4px solid #ff9800; border-radius: 6px;">
+                            <div style="font-size: 0.95em; color: #6b5d4f; line-height: 1.8;">
+                                <strong style="color: #8b6914;">⚠️ 유의사항</strong><br>
+                                시스템 보유만으로 자동 선정되는 것은 아니며, 실제 운영 실적과 사업 계획서의 우수성이 동반되어야 합니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 내용 2: 금융기관 우대 및 신용평가 개선 -->
+                    <div class="benefit-detail" id="benefit-detail-1" style="display: none; padding: 25px; background: white; border: 2px solid rgba(212, 175, 55, 0.3); border-radius: 12px; animation: fadeIn 0.4s;">
+                        <h3 style="color: #8b6914; margin-bottom: 20px; font-size: 1.3em; border-bottom: 2px solid #d4af37; padding-bottom: 10px;">✅ 금융기관 우대 및 신용평가 개선</h3>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #8b6914; margin-bottom: 12px; font-size: 1.05em;">◆ 신용평가 비재무요소 개선</h4>
+                            <ul style="line-height: 1.8; font-size: 0.95em; color: #4d4d4d; margin-left: 20px; margin-bottom: 10px;">
+                                <li>내부통제 체계: 시점인증, 근태/급여 자동화</li>
+                                <li>경영 투명성: 공식 페이지를 통한 정보공개</li>
+                                <li>ESG경영: 환경·사회·지배구조 정책실천</li>
+                            </ul>
+                            <div style="font-size: 0.9em; color: #6b5d4f; padding-left: 20px;">
+                                → 신용평가 기관(NICE, KED 등)의 정성 평가 개선
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #8b6914; margin-bottom: 12px; font-size: 1.05em;">◆ ESG 금융우대 대상</h4>
+                            <ul style="line-height: 1.8; font-size: 0.95em; color: #4d4d4d; margin-left: 20px;">
+                                <li>KB국민·신한·우리은행 등 ESG 대출 프로그램</li>
+                                <li>금리 우대, 한도 확대, 보증료 인하 가능</li>
+                                <li>정책금융기관(산은, 기은, 신보) ESG 평가반영</li>
+                            </ul>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #8b6914; margin-bottom: 12px; font-size: 1.05em;">◆ 기업리스크 감소 평가</h4>
+                            <ul style="line-height: 1.8; font-size: 0.95em; color: #4d4d4d; margin-left: 20px; margin-bottom: 10px;">
+                                <li>법적분쟁 리스크: 시점인증으로 증거 확보</li>
+                                <li>노무리스크: 근태/급여 정확한 기록 관리</li>
+                                <li>기술유출 리스크: 연구자료 보안 체계 구축</li>
+                            </ul>
+                            <div style="font-size: 0.9em; color: #6b5d4f; padding-left: 20px;">
+                                → 은행 대출 심사 시 긍정적 요인으로 작용
+                            </div>
+                        </div>
+                        <!-- 항목별 유의사항 -->
+                        <div style="margin-top: 25px; padding: 15px 20px; background: rgba(255, 152, 0, 0.1); border-left: 4px solid #ff9800; border-radius: 6px;">
+                            <div style="font-size: 0.95em; color: #6b5d4f; line-height: 1.8;">
+                                <strong style="color: #8b6914;">⚠️ 유의사항</strong><br>
+                                신용등급과 대출조건에 비재무요소 충족시 심사에 긍정적 역할을 합니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 내용 3: 법적 리스크 감소 효과 -->
+                    <div class="benefit-detail" id="benefit-detail-2" style="display: none; padding: 25px; background: white; border: 2px solid rgba(212, 175, 55, 0.3); border-radius: 12px; animation: fadeIn 0.4s;">
+                        <h3 style="color: #8b6914; margin-bottom: 20px; font-size: 1.3em; border-bottom: 2px solid #d4af37; padding-bottom: 10px;">✅ 법적 리스크 감소 효과</h3>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #8b6914; margin-bottom: 12px; font-size: 1.05em;">◆ 시점인증의 법적효력</h4>
+                            <ul style="line-height: 1.8; font-size: 0.95em; color: #4d4d4d; margin-left: 20px;">
+                                <li>연구자료 작성 시점증명 → 특허 분쟁 시 유리</li>
+                                <li>계약서·문서 시점 증명 → 계약해석 분쟁대응</li>
+                                <li>기술자료 보호 → 퇴직자 기술 유출방지</li>
+                            </ul>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #8b6914; margin-bottom: 12px; font-size: 1.05em;">◆ 근로기준법 준수 증빙</h4>
+                            <ul style="line-height: 1.8; font-size: 0.95em; color: #4d4d4d; margin-left: 20px;">
+                                <li>출퇴근 기록 자동 저장 → 근로시간 분쟁대비</li>
+                                <li>급여명세서 발송 의무 자동 이행 → 과태료 리스크 제거</li>
+                                <li>업무일지 기록 → 인사평가 및 성과관리 근거</li>
+                            </ul>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #8b6914; margin-bottom: 12px; font-size: 1.05em;">◆ 법정의무교육 이수 기록관리</h4>
+                            <ul style="line-height: 1.8; font-size: 0.95em; color: #4d4d4d; margin-left: 20px;">
+                                <li>산업안전보건교육, 성희롱예방교육 등 이수 현황 저장</li>
+                                <li>고용노동부 점검 시 즉시 증빙 가능</li>
+                                <li>미이수로 인한 과태료 리스크 사전차단</li>
+                            </ul>
+                        </div>
+                        <!-- 항목별 유의사항 -->
+                        <div style="margin-top: 25px; padding: 15px 20px; background: rgba(33, 150, 243, 0.1); border-left: 4px solid #2196F3; border-radius: 6px;">
+                            <div style="font-size: 0.95em; color: #6b5d4f; line-height: 1.8;">
+                                <strong style="color: #1976D2;">💡 실제 효과</strong><br>
+                                법적 분쟁 발생 시 증거자료로 활용 가능하며, 사전 예방 효과로 소송 및 과태료 리스크를 줄일 수 있습니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 내용 4: 기업 이미지 및 경쟁력 향상 -->
+                    <div class="benefit-detail" id="benefit-detail-3" style="display: none; padding: 25px; background: white; border: 2px solid rgba(212, 175, 55, 0.3); border-radius: 12px; animation: fadeIn 0.4s;">
+                        <h3 style="color: #8b6914; margin-bottom: 20px; font-size: 1.3em; border-bottom: 2px solid #d4af37; padding-bottom: 10px;">✅ 기업 이미지 및 경쟁력 향상</h3>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #8b6914; margin-bottom: 12px; font-size: 1.05em;">◆ 중견기업 수준의 체계성 확보</h4>
+                            <ul style="line-height: 1.8; font-size: 0.95em; color: #4d4d4d; margin-left: 20px;">
+                                <li>R&D 관리, ESG 경영, 복지 제도 등 시스템화</li>
+                                <li>협력사·고객사에게 "체계적인 기업" 이미지 제공</li>
+                                <li>입찰·거래 심사 시 긍정적 평가 요인</li>
+                            </ul>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #8b6914; margin-bottom: 12px; font-size: 1.05em;">◆ 인재 채용 경쟁력 확보</h4>
+                            <ul style="line-height: 1.8; font-size: 0.95em; color: #4d4d4d; margin-left: 20px;">
+                                <li>대기업 수준 종합건강검진 (전 직원 + 가족)</li>
+                                <li>체계적인 근태·급여·복지 관리</li>
+                                <li>"복지가 좋은 회사"라는 브랜딩 포인트</li>
+                            </ul>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <h4 style="color: #8b6914; margin-bottom: 12px; font-size: 1.05em;">◆ 고객 응대 효율 극대화</h4>
+                            <ul style="line-height: 1.8; font-size: 0.95em; color: #4d4d4d; margin-left: 20px;">
+                                <li>AI 기반 24시간 자동 응대 (RAG)</li>
+                                <li>제품·서비스 설명 자동화</li>
+                                <li>영업 인력 부담 감소 및 전환율 향상</li>
+                            </ul>
+                        </div>
+                        <!-- 항목별 유의사항 -->
+                        <div style="margin-top: 25px; padding: 15px 20px; background: rgba(33, 150, 243, 0.1); border-left: 4px solid #2196F3; border-radius: 6px;">
+                            <div style="font-size: 0.95em; color: #6b5d4f; line-height: 1.8;">
+                                <strong style="color: #1976D2;">💡 핵심 가치</strong><br>
+                                중소기업이 중견기업 수준의 경영 인프라를 빠르게 구축하여 시장 경쟁력을 확보할 수 있습니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 기본 안내 메시지 -->
+                    <div id="benefit-default-message" style="text-align: center; padding: 50px 20px; color: #8b6914;">
+                        <div style="font-size: 2em; margin-bottom: 15px;">💡</div>
+                        <div style="font-size: 1.2em; font-weight: 600; margin-bottom: 10px;">위의 버튼을 클릭하세요</div>
+                        <div style="font-size: 0.95em; color: #6b5d4f;">각 항목의 상세 내용을 확인할 수 있습니다</div>
+                    </div>
+                </div>
+
             </div>
 
             <!-- 콘텐츠 7: 도입 효과 -->
@@ -905,7 +1507,7 @@
                             <td><span style="text-decoration: line-through; color: #999;">정가 100만원</span> <span class="highlight" style="font-size: 1.05em; margin-left: 10px;">→ 프로모션 무료</span></td>
                         </tr>
                         <tr>
-                            <td style="font-weight: 600; color: #2d2d2d;">서버등록비</td>
+                            <td style="font-weight: 600; color: #2d2d2d;">등록비</td>
                             <td><span class="highlight" style="font-size: 1.05em;">10만원</span> <span style="color: #6b5d4f; font-size: 0.88em;">(1회 납부, 최초 서버등록 실비)</span></td>
                         </tr>
                         <tr>
@@ -1023,12 +1625,31 @@
             menuItems[currentContent].classList.remove('active');
             menuItems[index].classList.add('active');
 
+            // 모바일 탭 활성화 상태 변경
+            const mobileTabs = document.querySelectorAll('.mobile-tab-item');
+            if (mobileTabs.length > 0) {
+                mobileTabs[currentContent].classList.remove('active');
+                mobileTabs[index].classList.add('active');
+                
+                // 활성화된 탭이 보이도록 스크롤
+                mobileTabs[index].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            }
+
             // 콘텐츠 표시 상태 변경
             contentPanels[currentContent].classList.remove('active');
             contentPanels[index].classList.add('active');
 
             // 콘텐츠 패널 스크롤 최상단으로
             contentPanels[index].scrollTop = 0;
+            
+            // 모바일에서 페이지 상단으로 스크롤
+            if (window.innerWidth <= 768) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
 
             currentContent = index;
             currentStep = 0; // 스텝 초기화
@@ -1036,6 +1657,24 @@
             // 모든 step 숨기기
             const steps = contentPanels[index].querySelectorAll('.step');
             steps.forEach(step => step.classList.remove('active'));
+            
+            // 도입시 얻는 실질혜택 페이지 (index === 7) 초기화
+            if (index === 7) {
+                // 모든 상세 내용 숨기기
+                const allDetails = document.querySelectorAll('.benefit-detail');
+                allDetails.forEach(detail => detail.style.display = 'none');
+                
+                // 기본 메시지 표시
+                const defaultMessage = document.getElementById('benefit-default-message');
+                if (defaultMessage) defaultMessage.style.display = 'block';
+                
+                // 모든 버튼 스타일 초기화
+                const allButtons = document.querySelectorAll('.benefit-button');
+                allButtons.forEach(btn => {
+                    btn.style.background = 'linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%)';
+                    btn.style.borderColor = 'rgba(212, 175, 55, 0.4)';
+                });
+            }
         }
 
         function showNextStep() {
@@ -1051,8 +1690,16 @@
 
             // 다음 스텝 표시
             if (currentStep < totalSteps) {
-                if (steps[currentStep]) {
-                    steps[currentStep].classList.add('active');
+                // 도입시 얻는 실질혜택 페이지 (currentContent === 7)의 경우
+                // step 1, 2, 3, 4일 때 자동으로 버튼 클릭
+                if (currentContent === 7 && currentStep >= 1 && currentStep <= 4) {
+                    const buttonIndex = currentStep - 1; // step 1 = button 0, step 2 = button 1, ...
+                    showBenefitDetail(buttonIndex);
+                } else {
+                    // 일반 스텝 표시
+                    if (steps[currentStep]) {
+                        steps[currentStep].classList.add('active');
+                    }
                 }
                 currentStep++;
             } else {
@@ -1082,8 +1729,32 @@
             // 이전 스텝 숨기기
             if (currentStep > 0) {
                 currentStep--;
-                if (steps[currentStep]) {
-                    steps[currentStep].classList.remove('active');
+                
+                // 도입시 얻는 실질혜택 페이지 (currentContent === 7)의 경우
+                if (currentContent === 7 && currentStep >= 1 && currentStep <= 4) {
+                    // 이전 버튼 선택하거나 초기 상태로 복귀
+                    if (currentStep === 1) {
+                        // step 1로 돌아가면 모든 상세내용 숨기고 기본 메시지 표시
+                        const allDetails = document.querySelectorAll('.benefit-detail');
+                        allDetails.forEach(detail => detail.style.display = 'none');
+                        const defaultMessage = document.getElementById('benefit-default-message');
+                        if (defaultMessage) defaultMessage.style.display = 'block';
+                        // 모든 버튼 스타일 초기화
+                        const allButtons = document.querySelectorAll('.benefit-button');
+                        allButtons.forEach(btn => {
+                            btn.style.background = 'linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%)';
+                            btn.style.borderColor = 'rgba(212, 175, 55, 0.4)';
+                        });
+                    } else {
+                        // 이전 버튼 자동 클릭
+                        const buttonIndex = currentStep - 1;
+                        showBenefitDetail(buttonIndex);
+                    }
+                } else {
+                    // 일반 스텝 숨기기
+                    if (steps[currentStep]) {
+                        steps[currentStep].classList.remove('active');
+                    }
                 }
             }
         }
@@ -1103,6 +1774,10 @@
         document.querySelector('.content-area').addEventListener('click', (e) => {
             // 버튼이나 링크를 클릭한 경우는 제외
             if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('a') || e.target.closest('button')) {
+                return;
+            }
+            // 버튼 영역이나 상세 내용 영역 클릭 시 제외
+            if (e.target.closest('.benefit-button') || e.target.closest('.benefit-detail') || e.target.closest('#benefit-detail-container')) {
                 return;
             }
             showNextStep();
@@ -1129,11 +1804,85 @@
             }
         }, { passive: false });
 
+        // 실질혜택 버튼 클릭 함수
+        function showBenefitDetail(index, event) {
+            // 이벤트 전파 중지 (부모 요소로 클릭 이벤트가 전파되는 것을 방지)
+            if (event) {
+                event.stopPropagation();
+            }
+            
+            // 모든 상세 내용 숨기기
+            const allDetails = document.querySelectorAll('.benefit-detail');
+            allDetails.forEach(detail => {
+                detail.style.display = 'none';
+            });
+            
+            // 기본 메시지 숨기기
+            const defaultMessage = document.getElementById('benefit-default-message');
+            if (defaultMessage) {
+                defaultMessage.style.display = 'none';
+            }
+            
+            // 선택된 상세 내용 표시
+            const selectedDetail = document.getElementById('benefit-detail-' + index);
+            if (selectedDetail) {
+                selectedDetail.style.display = 'block';
+            }
+            
+            // 모든 버튼의 active 상태 제거
+            const allButtons = document.querySelectorAll('.benefit-button');
+            allButtons.forEach(btn => {
+                btn.style.background = 'linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%)';
+                btn.style.borderColor = 'rgba(212, 175, 55, 0.4)';
+            });
+            
+            // 클릭된 버튼 강조
+            allButtons[index].style.background = 'linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(212, 175, 55, 0.15) 100%)';
+            allButtons[index].style.borderColor = '#d4af37';
+        }
+
         // CTA 버튼 클릭 이벤트
         document.querySelector('.cta-button').addEventListener('click', (e) => {
             e.preventDefault();
             window.open('https://docs.google.com/forms/d/e/1FAIpQLSe0Y5Covznb3QUnPSsy71U-STI-0A3bimm7c_6ZlrMMpENMBA/viewform', '_blank');
         });
+
+        // 모바일 터치 스와이프 지원
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
+            
+            // 가로 스와이프가 세로 스와이프보다 크고, 최소 50px 이상 움직였을 때만 처리
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+                // 모바일 환경에서만 작동
+                if (window.innerWidth <= 768) {
+                    if (deltaX > 0) {
+                        // 오른쪽 스와이프 - 이전 페이지
+                        if (currentContent > 0) {
+                            showContent(currentContent - 1);
+                        }
+                    } else {
+                        // 왼쪽 스와이프 - 다음 페이지
+                        if (currentContent < contentPanels.length - 1) {
+                            showContent(currentContent + 1);
+                        }
+                    }
+                }
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>
