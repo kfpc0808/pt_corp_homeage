@@ -697,6 +697,12 @@
                 height: auto;
             }
 
+            /* 모바일에서는 모든 스텝을 처음부터 보이게 */
+            .step {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+
             .container {
                 flex-direction: column;
                 height: auto;
@@ -831,6 +837,12 @@
 
         /* 모바일 가로 모드 */
         @media (max-width: 768px) and (orientation: landscape) {
+            /* 모바일 가로에서도 모든 스텝을 처음부터 보이게 */
+            .step {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+
             .container {
                 flex-direction: row;
             }
@@ -1000,7 +1012,7 @@
     <div class="mobile-tab-nav">
         <div class="mobile-tab-container">
             <div class="mobile-tab-item active" onclick="showContent(0)">
-                <span class="mobile-tab-number">1</span>시스템 Slogan
+                <span class="mobile-tab-number">1</span>All-in-One 경영플랫폼
             </div>
             <div class="mobile-tab-item" onclick="showContent(1)">
                 <span class="mobile-tab-number">02</span>CEO가 원하는 홈페이지는?
@@ -1027,10 +1039,10 @@
                 <span class="mobile-tab-number">09</span>한번 더 효과정리
             </div>
             <div class="mobile-tab-item" onclick="showContent(9)">
-                <span class="mobile-tab-number">10</span>얼마인데?
+                <span class="mobile-tab-number">10</span>얼마에요?
             </div>
             <div class="mobile-tab-item" onclick="showContent(10)">
-                <span class="mobile-tab-number">11</span>프로모션은 없나?
+                <span class="mobile-tab-number">11</span>프로모션은 없나요?
             </div>
             <div class="mobile-tab-item" onclick="showContent(11)">
                 <span class="mobile-tab-number">12</span>그래서! 결론은?
@@ -1860,6 +1872,11 @@
             const steps = contentPanels[index].querySelectorAll('.step');
             steps.forEach(step => step.classList.remove('active'));
             
+            // 모바일에서는 모든 스텝을 처음부터 활성화
+            if (window.innerWidth <= 768) {
+                steps.forEach(step => step.classList.add('active'));
+            }
+            
             // 도입시 얻는 실질혜택 페이지 (index === 7) 초기화
             if (index === 7) {
                 // 모든 상세 내용 숨기기
@@ -1961,8 +1978,11 @@
             }
         }
 
-        // 키보드 네비게이션
+        // 키보드 네비게이션 (PC만)
         document.addEventListener('keydown', (e) => {
+            // 모바일에서는 비활성화
+            if (window.innerWidth <= 768) return;
+            
             if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 showNextStep();
@@ -1972,8 +1992,11 @@
             }
         });
 
-        // 마우스 클릭 네비게이션 (콘텐츠 영역 클릭 시)
+        // 마우스 클릭 네비게이션 (콘텐츠 영역 클릭 시, PC만)
         document.querySelector('.content-area').addEventListener('click', (e) => {
+            // 모바일에서는 비활성화
+            if (window.innerWidth <= 768) return;
+            
             // 버튼이나 링크를 클릭한 경우는 제외
             if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('a') || e.target.closest('button')) {
                 return;
@@ -2097,6 +2120,12 @@
                 }
             }
         }, { passive: true });
+
+        // 초기화: 모바일에서는 첫 페이지의 모든 스텝을 활성화
+        if (window.innerWidth <= 768) {
+            const firstPanelSteps = contentPanels[0].querySelectorAll('.step');
+            firstPanelSteps.forEach(step => step.classList.add('active'));
+        }
     </script>
 </body>
 </html>
