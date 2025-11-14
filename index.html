@@ -2098,6 +2098,17 @@
                 return;
             }
             
+            // 버튼 영역에서는 스와이프 비활성화
+            if (e.target.closest('.benefit-button') || e.target.closest('button')) {
+                return;
+            }
+            
+            // 가로 스크롤 영역에서는 스와이프 비활성화
+            const scrollContainer = e.target.closest('div[style*="overflow-x"]');
+            if (scrollContainer) {
+                return;
+            }
+            
             const deltaX = touchEndX - touchStartX;
             const deltaY = touchEndY - touchStartY;
             
