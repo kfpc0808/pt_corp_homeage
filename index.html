@@ -51,7 +51,7 @@
         }
 
         .logo-title {
-            font-size: 1.15em;
+            font-size: 1.38em;
             font-weight: 700;
             color: #8b6914;
             letter-spacing: 0.3px;
@@ -61,7 +61,7 @@
         }
 
         .logo-subtitle {
-            font-size: 0.65em;
+            font-size: 0.78em;
             color: #6b5d4f;
             letter-spacing: 0.5px;
             font-weight: 400;
@@ -130,7 +130,7 @@
         }
 
         .menu-number {
-            font-size: 0.7em;
+            font-size: 0.84em;
             color: #8b7355;
             font-weight: 600;
             letter-spacing: 0.5px;
@@ -144,7 +144,7 @@
         }
 
         .menu-title {
-            font-size: 0.95em;
+            font-size: 1.14em;
             font-weight: 500;
             color: #3d3d3d;
             letter-spacing: -0.3px;
@@ -742,6 +742,17 @@
                 margin-bottom: 15px;
             }
 
+            /* 모바일에서 Easy 버튼 크기 조정 */
+            .easy-button {
+                font-size: 0.75em !important;
+                padding: 6px 14px !important;
+            }
+
+            /* 모바일에서 8번 페이지 버튼 2개 조정 */
+            .content-panel > div > div[style*="display: flex"] {
+                gap: 5px !important;
+            }
+
             h3 {
                 font-size: 1.1em;
             }
@@ -763,16 +774,35 @@
 
             /* 모바일에서 버튼 크기 조정 */
             .benefit-button {
-                padding: 14px 12px !important;
-                min-width: 180px !important;
+                padding: 9px 7px !important;
+                min-width: 200px !important;
             }
 
             .benefit-button div:first-child {
-                font-size: 0.9em !important;
+                font-size: 1.44em !important;
             }
 
             .benefit-button div:last-child {
-                font-size: 0.72em !important;
+                font-size: 1.15em !important;
+            }
+
+            /* 모바일에서는 4개 버튼을 가로 스크롤로 변경 */
+            .benefit-buttons-container {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+            }
+
+            .benefit-buttons-grid {
+                display: flex !important;
+                flex-wrap: nowrap !important;
+                gap: 6px !important;
+                grid-template-columns: none !important;
+            }
+
+            .benefit-buttons-grid .benefit-button {
+                flex: 0 0 auto !important;
+                width: calc(78% - 3px) !important;
+                min-width: 200px !important;
             }
 
             /* 상세 내용 패딩 조정 */
@@ -853,6 +883,23 @@
                 font-size: 0.85em;
             }
 
+            /* 모바일 가로 모드에서는 사이드바 글자 크기를 원래대로 */
+            .logo-title {
+                font-size: 1.15em;
+            }
+
+            .logo-subtitle {
+                font-size: 0.65em;
+            }
+
+            .menu-number {
+                font-size: 0.7em;
+            }
+
+            .menu-title {
+                font-size: 0.95em;
+            }
+
             /* 가로 모드에서 로고 섹션 숨기기 */
             .logo-section {
                 display: none;
@@ -905,6 +952,78 @@
                 bottom: 15px;
                 right: 15px;
             }
+
+            /* Easy 팝업 모바일 최적화 */
+            .easy-popup-overlay {
+                align-items: flex-start !important;
+                padding-top: 60px !important;
+            }
+
+            .easy-popup-container {
+                max-height: 85vh !important;
+            }
+
+            .easy-popup-header h3 {
+                font-size: 1.1em !important;
+            }
+        }
+
+        /* 모바일 가로 화면 (landscape) 최적화 */
+        @media (max-height: 600px) and (orientation: landscape) {
+            /* Big 4 박스 1행 스크롤 유지 */
+            .benefit-buttons-container {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+            }
+
+            .benefit-buttons-grid {
+                display: flex !important;
+                flex-wrap: nowrap !important;
+                gap: 8px !important;
+                grid-template-columns: none !important;
+            }
+
+            .benefit-buttons-grid .benefit-button {
+                flex: 0 0 auto !important;
+                width: calc(65% - 4px) !important;
+                min-width: 280px !important;
+            }
+
+            /* Easy 팝업 가로 화면 최적화 */
+            .easy-popup-overlay {
+                align-items: flex-start !important;
+                padding-top: 40px !important;
+            }
+
+            .easy-popup-container {
+                max-height: 88vh !important;
+            }
+
+            .easy-popup-content {
+                font-size: 0.95em !important;
+            }
+        }
+
+        /* 태블릿 가로 화면 최적화 */
+        @media (max-width: 1024px) and (orientation: landscape) {
+            /* Big 4 박스 1행 스크롤 */
+            .benefit-buttons-container {
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch !important;
+            }
+
+            .benefit-buttons-grid {
+                display: flex !important;
+                flex-wrap: nowrap !important;
+                gap: 8px !important;
+                grid-template-columns: none !important;
+            }
+
+            .benefit-buttons-grid .benefit-button {
+                flex: 0 0 auto !important;
+                width: calc(48% - 4px) !important;
+                min-width: 320px !important;
+            }
         }
 
         /* 매우 작은 화면 (iPhone SE 등) */
@@ -952,6 +1071,20 @@
                 font-size: 0.65em;
                 bottom: 8px;
                 right: 8px;
+            }
+
+            /* Easy 팝업 모바일 최적화 */
+            .easy-popup-overlay {
+                align-items: flex-start !important;
+                padding-top: 50px !important;
+            }
+
+            .easy-popup-container {
+                max-height: 80vh !important;
+            }
+
+            .easy-popup-header h3 {
+                font-size: 1em !important;
             }
         }
 
@@ -1006,6 +1139,271 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* Easy 버튼 스타일 */
+        .easy-button {
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .easy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, #e0b840 0%, #c9a325 100%);
+        }
+
+        .easy-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Easy 버튼 - 혜택 버전 (골드) */
+        .easy-button-benefit {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+        }
+
+        .easy-button-benefit:hover {
+            background: linear-gradient(135deg, #e0b840 0%, #c9a325 100%);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Easy 버튼 - ROI 버전 (그린) */
+        .easy-button-roi {
+            background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+        }
+
+        .easy-button-roi:hover {
+            background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+        }
+
+        .easy-button-roi:active {
+            box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Easy 팝업 스타일 */
+        .easy-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .easy-popup-container {
+            background: white;
+            border-radius: 16px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .easy-popup-header {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: white;
+            padding: 20px 25px;
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .easy-popup-header h3 {
+            margin: 0;
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .easy-popup-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .easy-popup-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .easy-popup-content {
+            padding: 30px;
+            font-size: 11pt;
+            line-height: 1.7;
+            color: #2d2d2d;
+        }
+
+        .easy-intro {
+            font-size: 1.1em;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .easy-popup-content h4 {
+            font-size: 1.15em;
+            color: #8b6914;
+            margin: 20px 0 15px 0;
+            font-weight: 700;
+        }
+
+        .easy-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.3) 50%, transparent 100%);
+            margin: 25px 0;
+        }
+
+        .easy-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0.02) 100%);
+            border-radius: 8px;
+            border-left: 3px solid #d4af37;
+        }
+
+        .easy-number {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .easy-text {
+            flex: 1;
+        }
+
+        .easy-text strong {
+            color: #8b6914;
+            font-size: 1.05em;
+        }
+
+        .easy-highlight {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.15) 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #8b6914;
+        }
+
+        .easy-problem {
+            background: linear-gradient(135deg, rgba(139, 105, 20, 0.08) 0%, rgba(139, 105, 20, 0.03) 100%);
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid rgba(139, 105, 20, 0.2);
+        }
+
+        .easy-problem h4 {
+            margin-top: 0;
+        }
+
+        .easy-problem ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .easy-problem li {
+            margin: 8px 0;
+        }
+
+        .easy-question {
+            text-align: center;
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #8b6914;
+            margin: 15px 0 0 0;
+        }
+
+        .easy-conclusion {
+            text-align: center;
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        /* Easy 팝업 모바일 반응형 */
+        @media (max-width: 768px) {
+            .easy-button {
+                top: -5px !important;
+                right: 0 !important;
+            }
+
+            .easy-popup-container {
+                max-width: 100%;
+                max-height: 95vh;
+                margin: 10px;
+            }
+
+            .easy-popup-header h3 {
+                font-size: 1.1em;
+            }
+
+            .easy-popup-content {
+                padding: 20px;
+                font-size: 10pt;
+            }
+
+            .easy-item {
+                padding: 12px;
+            }
+
+            .easy-number {
+                width: 28px;
+                height: 28px;
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1034,7 +1432,7 @@
                 <span class="mobile-tab-number">07</span>Total Services
             </div>
             <div class="mobile-tab-item" onclick="showContent(7)">
-                <span class="mobile-tab-number">08</span>도입시 얻는 실질혜택 Big 4
+                <span class="mobile-tab-number">08</span>도입 후 실질혜택 Big 4
             </div>
             <div class="mobile-tab-item" onclick="showContent(8)">
                 <span class="mobile-tab-number">09</span>한번 더 효과정리
@@ -1097,7 +1495,7 @@
                 
                 <div class="menu-item" onclick="showContent(7)">
                     <span class="menu-number">8</span>
-                    <div class="menu-title">도입시 얻는 실질혜택 Big 4</div>
+                    <div class="menu-title">도입 후 실질혜택 Big 4</div>
                 </div>
                 
                 <div class="menu-item" onclick="showContent(8)">
@@ -1135,7 +1533,12 @@
 
             <!-- 콘텐츠 1-1: CEO가 원하는 홈페이지는? -->
             <div class="content-panel" data-steps="7">
-                <h2>CEO가 원하는 홈페이지는?</h2>
+                <div style="position: relative;">
+                    <h2>CEO가 원하는 홈페이지는?</h2>
+                    <button onclick="openEasyPopup()" class="easy-button" style="position: absolute; top: 0; right: 0;">
+                        💡 Easy
+                    </button>
+                </div>
                 
                 <!-- 1단계: 타이틀 박스 - 2줄 -->
                 <div class="content-box step" style="margin: 20px 0; padding: 30px; text-align: center; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%);">
@@ -1202,7 +1605,12 @@
 
             <!-- 콘텐츠 2: 기획 배경 -->
             <div class="content-panel" data-steps="3">
-                <h2>왜 만들었나?</h2>
+                <div style="position: relative;">
+                    <h2>왜 만들었나?</h2>
+                    <button onclick="openEasyPopup3()" class="easy-button" style="position: absolute; top: 0; right: 0;">
+                        💡 Easy
+                    </button>
+                </div>
                 
                 <div class="problem-section step">
                     <h3>현재 중소기업의 현실</h3>
@@ -1246,30 +1654,42 @@
 
             <!-- 콘텐츠 3: 핵심 기능 1 -->
             <div class="content-panel" data-steps="3">
-                <h2>핵심 기능 1. 독점기능 P/G</h2>
+                <div style="position: relative;">
+                    <h2>핵심 기능 1. 독점기능 P/G</h2>
+                    <button onclick="openEasyPopup4()" class="easy-button" style="position: absolute; top: 0; right: 0;">
+                        💡 Easy
+                    </button>
+                </div>
                 
-                <div class="feature-grid">
-                    <div class="feature-item step">
-                        <div class="feature-title">100% 커스터마이징</div>
-                        <div class="feature-desc">
+                <!-- 1행: 100% 커스터마이징 -->
+                <div class="step" style="margin: 25px 0;">
+                    <div class="feature-item" style="padding: 25px 30px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37; border-radius: 8px;">
+                        <div style="font-size: 1.35em; font-weight: 700; color: #8b6914; margin-bottom: 15px;">✨ 100% 커스터마이징</div>
+                        <div style="font-size: 1.05em; color: #4d4d4d; line-height: 1.8;">
                             • 외주 없이 손쉬운 직접수정<br>
                             • 실시간 변경 가능<br>
                             • 완전한 자율변경(코딩지식 불필요)
                         </div>
                     </div>
-                    
-                    <div class="feature-item step">
-                        <div class="feature-title">시점인증 시스템</div>
-                        <div class="feature-desc">
+                </div>
+                
+                <!-- 2행: 시점인증 시스템 -->
+                <div class="step" style="margin: 25px 0;">
+                    <div class="feature-item" style="padding: 25px 30px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37; border-radius: 8px;">
+                        <div style="font-size: 1.35em; font-weight: 700; color: #8b6914; margin-bottom: 15px;">📜 시점인증 시스템</div>
+                        <div style="font-size: 1.05em; color: #4d4d4d; line-height: 1.8;">
                             • 중요문서 시점인증 자동화<br>
                             • 법적 효력(증거자료 확보)<br>
                             • 분쟁 시 강력한 법률적 안전장치
                         </div>
                     </div>
-                    
-                    <div class="feature-item step">
-                        <div class="feature-title">'ESG경영' 페이지</div>
-                        <div class="feature-desc">
+                </div>
+                
+                <!-- 3행: ESG경영 페이지 -->
+                <div class="step" style="margin: 25px 0;">
+                    <div class="feature-item" style="padding: 25px 30px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37; border-radius: 8px;">
+                        <div style="font-size: 1.35em; font-weight: 700; color: #8b6914; margin-bottom: 15px;">🌿 'ESG경영' 페이지</div>
+                        <div style="font-size: 1.05em; color: #4d4d4d; line-height: 1.8;">
                             • 정부지원사업 가점 및 우대<br>
                             • 금융권 대출금리 우대(대출심사-신뢰도 상승)<br>
                             • 입찰시 필수(공공기관, 대기업)<br>
@@ -1283,35 +1703,47 @@
 
             <!-- 콘텐츠 4: 핵심 기능 2 -->
             <div class="content-panel" data-steps="3">
-                <h2>핵심 기능 2. 경영시스템 P/G</h2>
+                <div style="position: relative;">
+                    <h2>핵심 기능 2. 경영시스템 P/G</h2>
+                    <button onclick="openEasyPopup5()" class="easy-button" style="position: absolute; top: 0; right: 0;">
+                        💡 Easy
+                    </button>
+                </div>
                 
-                <div class="feature-grid">
-                    <div class="feature-item step">
-                        <div class="feature-title">출퇴근·급여P/G 연동(2026년초)</div>
-                        <div class="feature-desc">
+                <!-- 1행: 출퇴근·급여P/G 연동 -->
+                <div class="step" style="margin: 25px 0;">
+                    <div class="feature-item" style="padding: 25px 30px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37; border-radius: 8px;">
+                        <div style="font-size: 1.35em; font-weight: 700; color: #8b6914; margin-bottom: 15px;">💼 출퇴근·급여P/G 연동(2026년초)</div>
+                        <div style="font-size: 1.05em; color: #4d4d4d; line-height: 1.8;">
                             • 출퇴근P/G: 20인 이하 무료 제공<br>
                             • 급여대장P/G: 전회원사 무료 제공<br>
                             • 급여명세서 자동 발송<br>
                             • <span class="highlight">과태료 리스크 방지</span>
                         </div>
                     </div>
-                    
-                    <div class="feature-item step">
-                        <div class="feature-title">업무일지 시스템</div>
-                        <div class="feature-desc">
+                </div>
+                
+                <!-- 2행: 업무일지 시스템 -->
+                <div class="step" style="margin: 25px 0;">
+                    <div class="feature-item" style="padding: 25px 30px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37; border-radius: 8px;">
+                        <div style="font-size: 1.35em; font-weight: 700; color: #8b6914; margin-bottom: 15px;">📋 업무일지 시스템</div>
+                        <div style="font-size: 1.05em; color: #4d4d4d; line-height: 1.8;">
                             • 전사 업무 흐름 파악<br>
                             • 투명한 관리 체계<br>
                             • 성과 평가 자료 확보
                         </div>
                     </div>
-                    
-                    <div class="feature-item step">
-                        <div class="feature-title">종합건강검진 복지 연계</div>
-                        <div class="feature-desc">
+                </div>
+                
+                <!-- 3행: 종합건강검진 복지 연계 -->
+                <div class="step" style="margin: 25px 0;">
+                    <div class="feature-item" style="padding: 25px 30px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37; border-radius: 8px;">
+                        <div style="font-size: 1.35em; font-weight: 700; color: #8b6914; margin-bottom: 15px;">🏥 종합건강검진 복지 연계</div>
+                        <div style="font-size: 1.05em; color: #4d4d4d; line-height: 1.8;">
                             • 대기업 수가 적용<br>
                             • 전임직원 및 가족 포함<br>
                             • 건강복지 → 직원만족도 상승<br>
-                            • 검진처: 한국의학연구소(KMI_전국)<br>
+                            • 검진처: 한국의학연구소(KMI_전국)
                         </div>
                     </div>
                 </div>
@@ -1319,7 +1751,12 @@
 
             <!-- 콘텐츠 5: AI 혁신 -->
             <div class="content-panel" data-steps="3">
-                <h2>핵심 기능 3. AI 플랫폼</h2>
+                <div style="position: relative;">
+                    <h2>핵심 기능 3. AI 플랫폼</h2>
+                    <button onclick="openEasyPopup6()" class="easy-button" style="position: absolute; top: 0; right: 0;">
+                        💡 Easy
+                    </button>
+                </div>
                 
                 <div class="content-box step">
                     <h3>세계 4대 AI 통합 허브</h3>
@@ -1447,35 +1884,45 @@
                 </div>
             </div>
 
-            <!-- 콘텐츠 6-1: 도입시 얻는 실질혜택 (2x2 버튼 방식) -->
+            <!-- 콘텐츠 6-1: 도입 후 실질혜택 (2x2 버튼 방식) -->
             <div class="content-panel" data-steps="5">
-                <h2>💡 도입시 얻는 실질혜택 Big 4</h2>
+                <div style="position: relative; margin-bottom: 15px;">
+                    <h2>💡 도입 후 실질혜택 Big 4</h2>
+                    <div style="position: absolute; top: 0; right: 0; display: flex; gap: 8px;">
+                        <button onclick="openEasyPopup8_1()" class="easy-button easy-button-benefit">
+                            💡 혜택
+                        </button>
+                        <button onclick="openEasyPopup8_2()" class="easy-button easy-button-roi">
+                            💰 ROI
+                        </button>
+                    </div>
+                </div>
                 
                 <!-- 2x2 그리드 버튼 영역 -->
-                <div style="margin: 20px 0; overflow-x: auto; -webkit-overflow-scrolling: touch;">
-                    <!-- 한 행에 4개 버튼 배치 (가로 스크롤 가능) -->
-                    <div style="display: flex; gap: 12px; min-width: 100%;">
-                        <button class="benefit-button" onclick="showBenefitDetail(0, event)" style="flex: 0 0 calc(25% - 9px); min-width: 200px; padding: 16px 14px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
-                            <div style="font-size: 0.95em; font-weight: 700; color: #8b6914; margin-bottom: 6px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">✅ 정부지원사업 경쟁력 강화</div>
-                            <div style="font-size: 0.75em; color: #6b5d4f; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">R&D 과제평가, ESG경영, 디지털전환 DX</div>
+                <div class="benefit-buttons-container" style="margin: 10px 0;">
+                    <!-- PC/태블릿: 2x2 그리드, 모바일: 가로 스크롤 -->
+                    <div class="benefit-buttons-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px;">
+                        <button class="benefit-button" onclick="showBenefitDetail(0, event)" style="padding: 10px 8px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
+                            <div style="font-size: 1.52em; font-weight: 700; color: #8b6914; margin-bottom: 3px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">✅ 정부지원사업 경쟁력 강화</div>
+                            <div style="font-size: 1.2em; color: #6b5d4f; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">R&D 과제평가, ESG경영, 디지털전환 DX</div>
                         </button>
-                        <button class="benefit-button" onclick="showBenefitDetail(1, event)" style="flex: 0 0 calc(25% - 9px); min-width: 200px; padding: 16px 14px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
-                            <div style="font-size: 0.95em; font-weight: 700; color: #8b6914; margin-bottom: 6px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">✅ 금융기관 우대+신용평가 개선</div>
-                            <div style="font-size: 0.75em; color: #6b5d4f; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">신용평가 개선, ESG 금융우대, 리스크 감소</div>
+                        <button class="benefit-button" onclick="showBenefitDetail(1, event)" style="padding: 10px 8px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
+                            <div style="font-size: 1.52em; font-weight: 700; color: #8b6914; margin-bottom: 3px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">✅ 금융기관 우대+신용평가 개선</div>
+                            <div style="font-size: 1.2em; color: #6b5d4f; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">신용평가 개선, ESG 금융우대, 리스크 감소</div>
                         </button>
-                        <button class="benefit-button" onclick="showBenefitDetail(2, event)" style="flex: 0 0 calc(25% - 9px); min-width: 200px; padding: 16px 14px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
-                            <div style="font-size: 0.95em; font-weight: 700; color: #8b6914; margin-bottom: 6px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">✅ 법적 리스크 감소 효과</div>
-                            <div style="font-size: 0.75em; color: #6b5d4f; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">시점인증효력, 근로기준법준수, 법정교육관리</div>
+                        <button class="benefit-button" onclick="showBenefitDetail(2, event)" style="padding: 10px 8px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
+                            <div style="font-size: 1.52em; font-weight: 700; color: #8b6914; margin-bottom: 3px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">✅ 법적 리스크 감소 효과</div>
+                            <div style="font-size: 1.2em; color: #6b5d4f; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">시점인증효력, 근로기준법준수, 법정교육관리</div>
                         </button>
-                        <button class="benefit-button" onclick="showBenefitDetail(3, event)" style="flex: 0 0 calc(25% - 9px); min-width: 200px; padding: 16px 14px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
-                            <div style="font-size: 0.95em; font-weight: 700; color: #8b6914; margin-bottom: 6px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">✅ 기업 이미지제고+경쟁력향상</div>
-                            <div style="font-size: 0.75em; color: #6b5d4f; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">체계성 확보, 인재채용, 고객응대 효율화</div>
+                        <button class="benefit-button" onclick="showBenefitDetail(3, event)" style="padding: 10px 8px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: left;">
+                            <div style="font-size: 1.52em; font-weight: 700; color: #8b6914; margin-bottom: 3px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">✅ 기업 이미지제고+경쟁력향상</div>
+                            <div style="font-size: 1.2em; color: #6b5d4f; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">체계성 확보, 인재채용, 고객응대 효율화</div>
                         </button>
                     </div>
                 </div>
 
                 <!-- 상세 내용 표시 영역 -->
-                <div id="benefit-detail-container" style="margin-top: 25px; min-height: 300px;">
+                <div id="benefit-detail-container" style="margin-top: 12px; min-height: 300px;">
                     <!-- 내용 1: 정부지원사업 경쟁력 강화 -->
                     <div class="benefit-detail" id="benefit-detail-0" style="display: none; padding: 25px; background: white; border: 2px solid rgba(212, 175, 55, 0.3); border-radius: 12px; animation: fadeIn 0.4s;">
                         <h3 style="color: #8b6914; margin-bottom: 20px; font-size: 1.3em; border-bottom: 2px solid #d4af37; padding-bottom: 10px;">✅ 정부지원사업 경쟁력 강화</h3>
@@ -1827,7 +2274,925 @@
     <!-- 회사명 우측 하단 고정 -->
     <div class="company-name">KFPC Co., Ltd.</div>
 
+    <!-- Easy 팝업 모달 -->
+    <div id="easyPopup" class="easy-popup-overlay" style="display: none;">
+        <div class="easy-popup-container">
+            <div class="easy-popup-header">
+                <h3>💡 CEO가 원하는 홈페이지 - 쉬운 설명</h3>
+                <button onclick="closeEasyPopup()" class="easy-popup-close">&times;</button>
+            </div>
+            <div class="easy-popup-content">
+                <p class="easy-intro">2025년 현재 <strong>홈페이지는 회사소개가 아닙니다. 실질적인 경쟁력입니다.</strong></p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>구체적으로 5가지입니다.</h4>
+                
+                <div class="easy-item">
+                    <div class="easy-number">1</div>
+                    <div class="easy-text">
+                        <strong>정부지원금 선정률</strong><br>
+                        R&D 과제, 정책자금 심사할 때 홈페이지 먼저 봅니다. ESG 경영, 연구역량 확인하고 <span class="easy-highlight">가점 줍니다.</span>
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">2</div>
+                    <div class="easy-text">
+                        <strong>공공입찰·협력사 등록</strong><br>
+                        대기업이 처음 듣는 회사명이면 홈페이지 검색합니다. 10년 전 스타일이거나 없으면 <span class="easy-highlight">"영세하네" 탈락입니다.</span>
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">3</div>
+                    <div class="easy-text">
+                        <strong>은행 대출 금리</strong><br>
+                        ESG 경영 공시된 홈페이지 있으면 <span class="easy-highlight">금리 우대, 한도 확대</span>해줍니다. 5억 대출 기준 연간 250만원 차이납니다.
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">4</div>
+                    <div class="easy-text">
+                        <strong>인재 채용</strong><br>
+                        요즘 인재들, 입사 전 홈페이지 먼저 봅니다. 복지·시스템 잘 나와있으면 <span class="easy-highlight">자동 브랜딩</span>됩니다.
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">5</div>
+                    <div class="easy-text">
+                        <strong>회사 이미지</strong><br>
+                        매출 10억이어도 홈페이지가 중견기업급이면 <span class="easy-highlight">"여기 탄탄하네"</span> 보입니다. 반대면 반대입니다.
+                    </div>
+                </div>
+                
+                <div class="easy-divider"></div>
+                
+                <div class="easy-problem">
+                    <h4>그런데 문제가 있습니다.</h4>
+                    <p>기존 방식은:</p>
+                    <ul>
+                        <li>제작기간 <strong>3~6개월</strong></li>
+                        <li>제작비 <strong>수천만원</strong></li>
+                        <li>유지보수 <strong>매년 수백만원</strong></li>
+                    </ul>
+                    <p class="easy-question">"과연 우리 회사에 가능할까?"</p>
+                </div>
+                
+                <div class="easy-divider"></div>
+                
+                <p class="easy-conclusion">바로 이 문제를 해결한 게 오늘 소개드릴 시스템입니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Easy 팝업 모달 - 3번 페이지 (왜? 만들었나?) -->
+    <div id="easyPopup3" class="easy-popup-overlay" style="display: none;">
+        <div class="easy-popup-container">
+            <div class="easy-popup-header">
+                <h3>💡 왜? 만들었나? - 쉬운 설명</h3>
+                <button onclick="closeEasyPopup3()" class="easy-popup-close">&times;</button>
+            </div>
+            <div class="easy-popup-content">
+                <p class="easy-intro"><strong>2025년 현재, 중소기업은 딜레마에 빠져있습니다.</strong></p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>현실은 이렇습니다.</h4>
+                
+                <div class="easy-item">
+                    <div class="easy-number">1</div>
+                    <div class="easy-text">
+                        <strong>비용 장벽</strong><br>
+                        제대로 된 홈페이지 만들려면 제작비만 <span class="easy-highlight">수천만원</span>입니다. 매년 유지보수 수백만원 추가됩니다.
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">2</div>
+                    <div class="easy-text">
+                        <strong>시간 장벽</strong><br>
+                        제작 기간 <span class="easy-highlight">3~6개월</span>. 급한데 기다릴 시간이 없습니다.
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">3</div>
+                    <div class="easy-text">
+                        <strong>기술 장벽</strong><br>
+                        수정하려면 업체에 맡겨야 합니다. 비용 또 나갑니다. 그래서 <span class="easy-highlight">낡은 홈페이지 그대로 방치</span>됩니다.
+                    </div>
+                </div>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>그런데 시대는 변했습니다.</h4>
+                
+                <div style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%); padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="margin: 0 0 10px 0;"><strong>정부 지원사업</strong><br>
+                    홈페이지 체계성이 평가의 핵심 기준입니다. ESG 공시, 연구역량 확인합니다.</p>
+                    
+                    <p style="margin: 0 0 10px 0;"><strong>대기업·금융권</strong><br>
+                    협력사 선정할 때, 대출 심사할 때 홈페이지로 신뢰도 검증합니다.</p>
+                    
+                    <p style="margin: 0; font-weight: 700; color: #8b6914; text-align: center; margin-top: 15px;">
+                    홈페이지 = 기업의 얼굴 = 기업 신뢰의 증명
+                    </p>
+                </div>
+                
+                <p style="text-align: center; font-size: 1.05em; color: #2d2d2d; margin: 15px 0;">
+                    없으면 손해, 있어도 낡으면 손해입니다.
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>그래서 우리가 만들었습니다.</h4>
+                
+                <div class="easy-item">
+                    <div class="easy-number">1</div>
+                    <div class="easy-text">
+                        <strong>신청 후 7일 이내 제공</strong><br>
+                        기다릴 필요 없습니다. 일주일이면 됩니다.
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">2</div>
+                    <div class="easy-text">
+                        <strong>초기 제작비 0원</strong><br>
+                        수천만원 들 필요 없습니다. <span class="easy-highlight">월 구독</span>으로 모든 기능 이용합니다.
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">3</div>
+                    <div class="easy-text">
+                        <strong>직접 수정 가능</strong><br>
+                        코딩 몰라도 됩니다. 외주 맡길 필요 없습니다. 실시간 변경 가능합니다.
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">4</div>
+                    <div class="easy-text">
+                        <strong>중견기업급 시스템</strong><br>
+                        ESG 페이지, 시점인증, AI 플랫폼, 경영시스템 다 포함입니다.
+                    </div>
+                </div>
+                
+                <div class="easy-divider"></div>
+                
+                <p class="easy-conclusion">"비용과 시간의 장벽을 완전히 없앴습니다."</p>
+                <p style="text-align: center; margin-top: 10px; color: #2d2d2d;">
+                    중견기업 수준의 시스템을 중소기업 가격으로 제공합니다.<br>
+                    이제 홈페이지 때문에 손해 보지 마세요.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Easy 팝업 모달 - 4번 페이지 (핵심 기능 1. 독점기능 P/G) -->
+    <div id="easyPopup4" class="easy-popup-overlay" style="display: none;">
+        <div class="easy-popup-container">
+            <div class="easy-popup-header">
+                <h3>💡 핵심 기능 1. 독점기능 P/G - 쉬운 설명</h3>
+                <button onclick="closeEasyPopup4()" class="easy-popup-close">&times;</button>
+            </div>
+            <div class="easy-popup-content">
+                <p class="easy-intro"><strong>다른 홈페이지와 완전히 다른 3가지가 있습니다.</strong></p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>1. 100% 커스터마이징 - 외주 없이 직접 수정</h4>
+                
+                <div style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #8b6914;">기존 홈페이지의 문제</p>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>글자 하나 바꾸려면 제작업체에 연락합니다.</li>
+                        <li>수정 요청하고 기다립니다. 비용 또 나갑니다.</li>
+                        <li>급할 때 못 바꿉니다.</li>
+                    </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">우리 시스템</p>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>코딩 몰라도 됩니다. 워드 쓰듯이 직접 수정합니다.</li>
+                        <li>실시간으로 바로 변경됩니다.</li>
+                        <li>외주 비용 0원입니다.</li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; font-weight: 600; color: #8b6914; margin: 15px 0;">
+                    ✅ 결과: 연간 수백만원 유지보수 비용 절감됩니다.
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>2. 시점인증 시스템 - 법적 효력 있는 증거 자동 확보</h4>
+                
+                <p style="margin-bottom: 12px;"><strong style="color: #8b6914;">왜 필요합니까?</strong></p>
+                <ul style="margin: 0 0 15px 0; padding-left: 20px;">
+                    <li>거래처와 분쟁 생기면 "언제 계약했는지, 언제 통보했는지" 증명해야 합니다.</li>
+                    <li>이메일만으로는 부족합니다. "조작했다" 주장하면 끝입니다.</li>
+                </ul>
+                
+                <p style="margin-bottom: 12px;"><strong style="color: #8b6914;">시점인증이란?</strong></p>
+                <ul style="margin: 0 0 15px 0; padding-left: 20px;">
+                    <li>중요 문서를 시스템에 올리는 순간, 공신력 있는 기관이 "이 시점에 이 문서가 존재했다" 법적으로 인증해줍니다.</li>
+                    <li>분쟁 시 법원에서 증거로 인정됩니다.</li>
+                </ul>
+                
+                <p style="margin-bottom: 12px;"><strong style="color: #8b6914;">어디에 씁니까?</strong></p>
+                <ul style="margin: 0 0 15px 0; padding-left: 20px;">
+                    <li>계약서, 견적서, 발주서, 클레임 대응 문서</li>
+                    <li>"우리가 이 날짜에 분명히 통보했다" 증명됩니다.</li>
+                </ul>
+                
+                <p style="text-align: center; font-weight: 600; color: #8b6914; margin: 15px 0;">
+                    ✅ 결과: 법률 분쟁에서 압도적으로 유리합니다. 억울하게 당하지 않습니다.
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>3. ESG경영 페이지 - 이게 돈입니다</h4>
+                
+                <p style="margin-bottom: 12px;"><strong style="color: #8b6914;">ESG가 뭡니까?</strong></p>
+                <p style="margin: 0 0 15px 0;">환경(E), 사회(S), 지배구조(G) 경영입니다. 요즘 대기업, 금융권, 정부가 가장 중요하게 봅니다.</p>
+                
+                <div class="easy-item">
+                    <div style="flex-shrink: 0; font-size: 1.5em;">❌</div>
+                    <div class="easy-text">
+                        <strong>없으면 어떻게 됩니까?</strong><br>
+                        정부 R&D 과제 신청? 탈락 확률 높습니다.<br>
+                        대기업 협력사 등록? "ESG 공시 안 되어있네" 탈락입니다.<br>
+                        은행 대출? 금리 우대 못 받습니다.<br>
+                        공공입찰? 요즘 필수입니다.
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div style="flex-shrink: 0; font-size: 1.5em;">✅</div>
+                    <div class="easy-text">
+                        <strong>있으면 어떻게 됩니까?</strong><br>
+                        정부지원사업: 가점 받습니다.<br>
+                        은행 대출: 금리가 우대됩니다.<br>
+                        대기업 협력사: "여기 제대로 하는 회사네" 신뢰도 상승합니다.<br>
+                        기업 신용평가: 등급 올라갑니다.
+                    </div>
+                </div>
+                
+                <p style="margin: 15px 0 8px 0;"><strong style="color: #8b6914;">중소기업이 ESG를 어떻게 셋팅하죠?</strong></p>
+                <ul style="margin: 0 0 15px 0; padding-left: 20px;">
+                    <li>걱정 마세요. 우리 시스템에는 ESG경영 페이지가 기본으로 제공됩니다.</li>
+                    <li>페이지 내에 회사의 실천사항만 업로드 하세요.</li>
+                </ul>
+                
+                <p style="text-align: center; font-weight: 600; color: #8b6914; margin: 15px 0;">
+                    ✅ 결과: ESG 하나로 정부자금, 금융혜택, 입찰 경쟁력 모두 긍정적 효과를 얻게됩니다.
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <p class="easy-conclusion">이 3가지는 다른 홈페이지에는 절대 없습니다.</p>
+                <p style="text-align: center; margin-top: 10px; color: #2d2d2d;">
+                    직접 수정 = 외주비용 절감<br>
+                    시점인증 = 법적 보호<br>
+                    ESG = 실질적 금전 혜택
+                </p>
+                <p style="text-align: center; font-weight: 700; color: #8b6914; margin-top: 15px; font-size: 1.1em;">
+                    "홈페이지가 일만 하는 게 아니라 돈을 벌어줍니다."
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Easy 팝업 모달 - 5번 페이지 (핵심 기능 2. 경영시스템 P/G) -->
+    <div id="easyPopup5" class="easy-popup-overlay" style="display: none;">
+        <div class="easy-popup-container">
+            <div class="easy-popup-header">
+                <h3>💡 핵심 기능 2. 경영시스템 P/G - 쉬운 설명</h3>
+                <button onclick="closeEasyPopup5()" class="easy-popup-close">&times;</button>
+            </div>
+            <div class="easy-popup-content">
+                <p class="easy-intro"><strong>홈페이지에 경영시스템까지 다 들어있습니다.</strong></p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>1. 출퇴근·급여 프로그램 - 과태료 피하세요</h4>
+                
+                <div style="background: linear-gradient(135deg, rgba(244, 67, 54, 0.08) 0%, rgba(244, 67, 54, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #c62828;">현실 문제</p>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>급여명세서 안 주면 과태료 500만원입니다.</li>
+                        <li>출퇴근 기록 안 하면 근로기준법 위반입니다.</li>
+                        <li>별도 프로그램 구매? 연간 수백만원 나갑니다.</li>
+                    </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">우리 시스템</p>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li><strong>출퇴근 프로그램</strong>: 20인 이하 회사는 완전 무료입니다.</li>
+                        <li><strong>급여 프로그램</strong>: 전 회원사 무료입니다.</li>
+                        <li><strong>급여명세서</strong>: 자동으로 직원들에게 발송됩니다.</li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; font-weight: 600; color: #8b6914; margin: 15px 0;">
+                    ✅ 결과: 과태료 리스크 0, 프로그램 구매비 0, 수작업 시간 0
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>2. 업무일지 시스템 - 회사가 보입니다</h4>
+                
+                <p style="margin-bottom: 12px;"><strong style="color: #8b6914;">이런 경험 있으십니까?</strong></p>
+                <ul style="margin: 0 0 15px 0; padding-left: 20px;">
+                    <li>"이 직원이 오늘 뭐 했지?"</li>
+                    <li>"이 프로젝트 진행 상황이 어떻게 되지?"</li>
+                    <li>"성과 평가 자료가 없네?"</li>
+                </ul>
+                
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">업무일지 시스템</p>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>전 직원이 매일 업무일지 작성합니다.</li>
+                        <li>관리자는 실시간으로 전사 업무 흐름 파악합니다.</li>
+                        <li>투명한 관리 체계 구축됩니다.</li>
+                        <li>성과 평가할 때 명확한 자료 확보됩니다.</li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; font-weight: 600; color: #8b6914; margin: 15px 0;">
+                    ✅ 결과: 직원들 일하는 게 보입니다. 관리가 됩니다.
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>3. 종합건강검진 복지 - 직원 만족도 올립니다</h4>
+                
+                <div style="background: linear-gradient(135deg, rgba(244, 67, 54, 0.08) 0%, rgba(244, 67, 54, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #c62828;">복지 없는 회사의 문제</p>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>좋은 인재가 안 옵니다.</li>
+                        <li>직원들 충성도 낮습니다.</li>
+                        <li>"우리 회사 복지 없어" 불만 나옵니다.</li>
+                    </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">우리가 제공하는 것</p>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li><strong>대기업 수가로 종합건강검진</strong> 받습니다.</li>
+                        <li><strong>직원 가족까지</strong> 포함됩니다.</li>
+                        <li><strong>전국 한국의학연구소(KMI)</strong> 어디서나 가능합니다.</li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; font-weight: 600; color: #8b6914; margin: 15px 0;">
+                    ✅ 결과: 직원 만족도 상승, 인재 채용 경쟁력 확보, 복지 있는 회사 이미지
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <p class="easy-conclusion">일반적인 홈페이지는 "보여주기"만 합니다.<br>저희 홈페이지는 "경영 시스템"까지 다 들어있습니다.</p>
+                <p style="text-align: center; margin-top: 15px; color: #2d2d2d;">
+                    시점인증 = 법적 리스크 제거<br>
+                    출퇴근·급여 = 인사관리 시스템 구축<br>
+                    업무일지 = 관리체계 확립<br>
+                    건강검진 = 복지 경쟁력
+                </p>
+                <p style="text-align: center; font-weight: 700; color: #8b6914; margin-top: 15px; font-size: 1.1em;">
+                    "홈페이지 하나로 회사 관리까지 해결됩니다."
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Easy 팝업 모달 - 6번 페이지 (핵심 기능 3. AI 플랫폼) -->
+    <div id="easyPopup6" class="easy-popup-overlay" style="display: none;">
+        <div class="easy-popup-container">
+            <div class="easy-popup-header">
+                <h3>💡 핵심 기능 3. AI 플랫폼 - 쉬운 설명</h3>
+                <button onclick="closeEasyPopup6()" class="easy-popup-close">&times;</button>
+            </div>
+            <div class="easy-popup-content">
+                <p class="easy-intro"><strong>AI 시대입니다. 안 쓰면 뒤처집니다.</strong></p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>문제: AI 쓰고 싶은데 너무 비쌉니다</h4>
+                
+                <p style="margin-bottom: 12px;"><strong style="color: #8b6914;">ChatGPT 유료로 쓰십니까?</strong></p>
+                <ul style="margin: 0 0 15px 0; padding-left: 20px;">
+                    <li>월 약3만원입니다.</li>
+                    <li>직원 5명이면 월 약15만원입니다.</li>
+                    <li>Claude도 쓰고 싶은데? 또 3만원입니다.</li>
+                    <li>Gemini도 쓰고 싶은데? 또 3만원입니다.</li>
+                </ul>
+                
+                <p style="text-align: center; font-weight: 600; color: #c62828; margin: 15px 0; padding: 15px; background: linear-gradient(135deg, rgba(244, 67, 54, 0.08) 0%, rgba(244, 67, 54, 0.03) 100%); border-radius: 8px;">
+                    ❌ 결과: 모든 AI는 많이 쓰든 적게 쓰든 매월 일정액을 납부해야 합니다.
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>우리의 해결책: 세계 4대 AI 통합 허브</h4>
+                
+                <div class="easy-item">
+                    <div class="easy-number">1</div>
+                    <div class="easy-text">
+                        <strong>종량제 시스템</strong><br>
+                        월정액 아닙니다. 쓴 만큼만 냅니다. 안 쓰면 0원입니다.
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">2</div>
+                    <div class="easy-text">
+                        <strong>4대 AI 자유선택</strong><br>
+                        GPT, Claude, Gemini, Perplexity 상황에 맞게 골라 씁니다. 추가 비용 없습니다.
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">3</div>
+                    <div class="easy-text">
+                        <strong>비용 절감 효과</strong><br>
+                        일반 구독 방식 대비 <span class="easy-highlight">최소 50% ~ 최대 90% 절감</span>됩니다. 연간 수백만원 절감됩니다.
+                    </div>
+                </div>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>보너스: 고객문의 AI 자동응대 (RAG)</h4>
+                
+                <div style="background: linear-gradient(135deg, rgba(244, 67, 54, 0.08) 0%, rgba(244, 67, 54, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #c62828;">기존 문제</p>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>고객이 밤 11시에 문의합니다. 담당자 퇴근했습니다.</li>
+                        <li>주말에 문의합니다. 월요일까지 기다립니다.</li>
+                        <li>같은 질문 100번 답합니다. 시간 낭비입니다.</li>
+                    </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">AI 자동응대 시스템</p>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li><strong>24시간 무중단</strong> 응대합니다.</li>
+                        <li><strong>회사 문서 학습</strong>해서 정확하게 답변합니다.</li>
+                        <li>담당자는 중요한 일만 합니다.</li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; font-weight: 600; color: #8b6914; margin: 15px 0;">
+                    ✅ 결과: 고객 만족도 상승, 업무 부담 획기적 감소
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>비교표로 보면 더 명확합니다</h4>
+                
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.95em;">
+                    <tr style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%);">
+                        <th style="padding: 12px; border: 1px solid rgba(212, 175, 55, 0.3); text-align: center;">구분</th>
+                        <th style="padding: 12px; border: 1px solid rgba(212, 175, 55, 0.3); text-align: center;">일반 구독 방식</th>
+                        <th style="padding: 12px; border: 1px solid rgba(212, 175, 55, 0.3); text-align: center;">우리 시스템</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2); font-weight: 600;">과금</td>
+                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2);">월정액 고정<br>(쓰든 안 쓰든 과금)</td>
+                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2);"><span class="easy-highlight">종량제 (쓴 만큼만)</span></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2); font-weight: 600;">AI 선택</td>
+                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2);">1개만 가능<br>(여러 개 쓰면 비용 폭탄)</td>
+                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2);"><span class="easy-highlight">4개 자유선택</span></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2); font-weight: 600;">비용 절감</td>
+                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2);">없음</td>
+                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2);"><span class="easy-highlight">50~90% 절감</span></td>
+                    </tr>
+                </table>
+                
+                <div class="easy-divider"></div>
+                
+                <p class="easy-conclusion">AI는 이제 선택이 아니라 필수입니다.</p>
+                <p style="text-align: center; margin-top: 10px; color: #2d2d2d;">
+                    하지만 비용 때문에 못 쓰셨죠? 우리가 해결했습니다.
+                </p>
+                <p style="text-align: center; margin-top: 15px; color: #2d2d2d;">
+                    50~90% 비용 절감<br>
+                    4대 AI 자유선택<br>
+                    24시간 고객응대 자동화
+                </p>
+                <p style="text-align: center; font-weight: 700; color: #8b6914; margin-top: 15px; font-size: 1.1em;">
+                    "AI를 중소기업도 마음껏 쓸 수 있게 만들었습니다."
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Easy 팝업 모달 - 8번 페이지 Easy1 (혜택 설명) -->
+    <div id="easyPopup8_1" class="easy-popup-overlay" style="display: none;">
+        <div class="easy-popup-container">
+            <div class="easy-popup-header" style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);">
+                <h3>💡 도입 후 실질혜택 Big 4</h3>
+                <button onclick="closeEasyPopup8_1()" class="easy-popup-close">&times;</button>
+            </div>
+            <div class="easy-popup-content">
+                <p class="easy-intro"><strong>월 10만원 투자하면, 연간 최소 수천만원의 효과를 얻을 수 있다면 하시겠습니까?</strong></p>
+                <p style="text-align: center; margin-bottom: 15px; color: #2d2d2d;">
+                    말도 안 되는 소리 같지만, 이건 <strong style="color: #8b6914;">사실입니다.</strong><br>
+                    지금부터 증명해드리겠습니다.
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>1️⃣ 정부지원사업 경쟁력 강화 = 수천만원~수억원 확보</h4>
+                
+                <div style="background: linear-gradient(135deg, rgba(244, 67, 54, 0.08) 0%, rgba(244, 67, 54, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 12px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #c62828;">현실</p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.95em;">
+                        <li>R&D 과제 1건 선정되면? <strong>최소 5천만원 ~ 최대 수억원</strong> 지원받습니다.</li>
+                        <li>중소기업 정책자금? <strong>수억원 저금리</strong> 대출 가능합니다.</li>
+                        <li>문제는 탈락률입니다. 경쟁이 치열합니다.</li>
+                    </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 12px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">우리 시스템이 주는 것</p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.95em;">
+                        <li><strong>ESG 경영 페이지</strong>: 평가 시 가점입니다.</li>
+                        <li><strong>디지털 전환 DX</strong>: "체계적인 회사"로 평가받습니다.</li>
+                        <li><strong>시점인증 시스템</strong>: 연구개발 역량 증명됩니다.</li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; font-weight: 600; color: #8b6914; margin: 15px 0; padding: 12px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-radius: 8px;">
+                    ✅ 결과: 단 1건만 선정되어도 투자금 수십 배 회수됩니다.
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>2️⃣ 금융기관 우대 + 신용평가 개선 = 연간 수백만원 절감</h4>
+                
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 12px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">ESG 금융 우대</p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.95em;">
+                        <li>ESG 경영 공시하면 <strong>대출 금리 우대</strong>받습니다.</li>
+                        <li>보통 0.3~0.5%p 우대됩니다.</li>
+                        <li>대출 5억원 × 0.4%p = 연간 <strong>200만원</strong> 절감</li>
+                    </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 12px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">신용평가 등급 상승</p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.95em;">
+                        <li>등급 1단계 올라가면? <strong>대출 한도 증가</strong> + <strong>금리 추가 인하</strong></li>
+                        <li>기업 신용등급 B+ → A-로 상승하면 금융비용 <strong>연간 수백만원 절감</strong></li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; font-weight: 600; color: #8b6914; margin: 15px 0; padding: 12px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-radius: 8px;">
+                    ✅ 결과: 대출 있는 회사는 바로 효과 봅니다.
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>3️⃣ 법적 리스크 감소 = 과태료 500만원 방지</h4>
+                
+                <div style="background: linear-gradient(135deg, rgba(244, 67, 54, 0.08) 0%, rgba(244, 67, 54, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 12px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #c62828;">과태료 리스크</p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.95em;">
+                        <li>급여명세서 미지급: <strong>과태료 500만원</strong></li>
+                        <li>근로기준법 위반: <strong>최대 3년 이하 징역 또는 3천만원 이하 벌금</strong></li>
+                        <li>한 번만 걸려도 회사 이미지 타격입니다.</li>
+                    </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 12px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">우리 시스템</p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.95em;">
+                        <li><strong>급여명세서 자동발송</strong>: 과태료 리스크 0</li>
+                        <li><strong>출퇴근 기록 자동화</strong>: 근로기준법 완벽 준수</li>
+                        <li><strong>시점인증</strong>: 거래처 분쟁 시 법적 증거 확보</li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; font-weight: 600; color: #8b6914; margin: 15px 0; padding: 12px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-radius: 8px;">
+                    ✅ 결과: 과태료 1번만 막아도 투자금 회수됩니다.
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>4️⃣ 기업 이미지 제고 + 경쟁력 향상 = 매출 증대</h4>
+                
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 12px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">중견기업 수준의 이미지</p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.95em;">
+                        <li>매출 10억 회사도 홈페이지만 보면 <strong>매출 100억처럼</strong> 보입니다.</li>
+                        <li>대기업 협력사 등록? "여기 제대로 하는 회사네" <strong>신뢰도 상승</strong></li>
+                        <li>좋은 인재가 홈페이지 보고 지원합니다.</li>
+                    </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 12px;">
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">고객 응대 자동화</p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.95em;">
+                        <li>AI 자동응대 24시간 작동</li>
+                        <li>직원들은 중요한 일에 집중</li>
+                        <li><strong>업무효율 30% 향상</strong> (실제 사례 기준)</li>
+                    </ul>
+                </div>
+                
+                <p style="text-align: center; font-weight: 600; color: #8b6914; margin: 15px 0; padding: 12px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-radius: 8px;">
+                    ✅ 결과: 금액으로 환산 불가한 무형의 가치
+                </p>
+                
+                <div class="easy-divider"></div>
+                
+                <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, rgba(76, 175, 80, 0.12) 0%, rgba(76, 175, 80, 0.05) 100%); border-radius: 12px; border: 2px solid rgba(76, 175, 80, 0.3);">
+                    <p style="margin: 0 0 10px 0; font-size: 1.1em; color: #2d2d2d;">
+                        4가지 혜택을 모두 확인하셨습니다.
+                    </p>
+                    <p style="margin: 0; font-size: 1.15em; font-weight: 700; color: #2e7d32;">
+                        이제 💰 ROI 버튼을 눌러<br>투자 대비 효과를 확인해보세요!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Easy 팝업 모달 - 8번 페이지 Easy2 (ROI 계산 & 클로징) -->
+    <div id="easyPopup8_2" class="easy-popup-overlay" style="display: none;">
+        <div class="easy-popup-container">
+            <div class="easy-popup-header" style="background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);">
+                <h3>💰 투자 대비 효과 (ROI)</h3>
+                <button onclick="closeEasyPopup8_2()" class="easy-popup-close">&times;</button>
+            </div>
+            <div class="easy-popup-content">
+                <p class="easy-intro"><strong>냉정하게 계산해보겠습니다.</strong></p>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>💵 연간 투자금 vs 연간 효과</h4>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                    <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, rgba(244, 67, 54, 0.08) 0%, rgba(244, 67, 54, 0.03) 100%); border-radius: 8px; border: 2px solid rgba(244, 67, 54, 0.2);">
+                        <div style="font-size: 0.9em; color: #666; margin-bottom: 8px;">연간 투자금</div>
+                        <div style="font-size: 2.2em; font-weight: 700; color: #c62828;">120만원</div>
+                        <div style="font-size: 0.85em; color: #666; margin-top: 5px;">월 10만원 × 12개월</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); border-radius: 8px; border: 2px solid rgba(76, 175, 80, 0.3);">
+                        <div style="font-size: 0.9em; color: #666; margin-bottom: 8px;">연간 효과</div>
+                        <div style="font-size: 2.2em; font-weight: 700; color: #2e7d32;">수천만원</div>
+                        <div style="font-size: 0.85em; color: #666; margin-top: 5px;">최소 추정치</div>
+                    </div>
+                </div>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>📊 시나리오별 ROI 계산</h4>
+                
+                <div style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.08) 0%, rgba(255, 152, 0, 0.03) 100%); padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #ff9800;">
+                    <p style="margin: 0 0 12px 0; font-weight: 700; font-size: 1.1em; color: #e65100;">최악의 시나리오 (정부지원금 탈락해도)</p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.95em;">
+                        <li>대출 금리 절감만으로도 = <strong>연 200만원</strong></li>
+                        <li>투자 120만원 → 회수 200만원</li>
+                        <li style="margin-top: 8px; color: #e65100; font-weight: 700;">ROI: 약 67% 수익</li>
+                    </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.12) 0%, rgba(76, 175, 80, 0.05) 100%); padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #4caf50;">
+                    <p style="margin: 0 0 12px 0; font-weight: 700; font-size: 1.1em; color: #2e7d32;">정상 시나리오 (정부지원금 1건만 선정)</p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.95em;">
+                        <li>정부지원금 = <strong>5천만원</strong></li>
+                        <li>대출 금리 절감 = <strong>연 200만원</strong></li>
+                        <li>투자 120만원 → 회수 5천만원 이상</li>
+                        <li style="margin-top: 8px; color: #2e7d32; font-weight: 700; font-size: 1.1em;">ROI: 400배 이상 ⚡</li>
+                    </ul>
+                </div>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>🎯 결론: 안 할 이유가 없습니다</h4>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                    <div style="padding: 18px; background: linear-gradient(135deg, rgba(244, 67, 54, 0.08) 0%, rgba(244, 67, 54, 0.03) 100%); border-radius: 8px; border: 2px solid rgba(244, 67, 54, 0.2);">
+                        <p style="margin: 0 0 10px 0; font-weight: 700; color: #c62828; font-size: 1.05em;">❌ 안 했을 때 손해</p>
+                        <ul style="margin: 0; padding-left: 18px; font-size: 0.9em; line-height: 1.8;">
+                            <li>정부지원금 탈락 → 수천만원 날림</li>
+                            <li>금리 우대 못 받음 → 연 수백만원 손해</li>
+                            <li>과태료 1번 → 500만원 날림</li>
+                            <li>분쟁 1건 → 수백~수천만원</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="padding: 18px; background: linear-gradient(135deg, rgba(76, 175, 80, 0.12) 0%, rgba(76, 175, 80, 0.05) 100%); border-radius: 8px; border: 2px solid rgba(76, 175, 80, 0.3);">
+                        <p style="margin: 0 0 10px 0; font-weight: 700; color: #2e7d32; font-size: 1.05em;">✅ 했을 때 이익</p>
+                        <ul style="margin: 0; padding-left: 18px; font-size: 0.9em; line-height: 1.8;">
+                            <li>정부지원금 1건 → 투자금 40배</li>
+                            <li>대출 있으면 → 매년 수백만원 절감</li>
+                            <li>과태료 리스크 → 완전 차단</li>
+                            <li>회사 이미지 → 중견기업급</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; padding: 25px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border-radius: 12px; border: 2px solid rgba(212, 175, 55, 0.4); margin: 20px 0;">
+                    <p style="margin: 0 0 5px 0; font-size: 0.95em; color: #666;">투자</p>
+                    <p style="margin: 0 0 15px 0; font-size: 1.8em; font-weight: 700; color: #8b6914;">연 120만원</p>
+                    <div style="font-size: 1.5em; margin: 10px 0;">⬇️</div>
+                    <p style="margin: 0 0 5px 0; font-size: 0.95em; color: #666;">효과</p>
+                    <p style="margin: 0; font-size: 1.8em; font-weight: 700; color: #2e7d32;">최소 수백만원 ~ 최대 수억원</p>
+                </div>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>🔥 지금 결정하셔야 하는 이유</h4>
+                
+                <div style="background: linear-gradient(135deg, rgba(255, 87, 34, 0.1) 0%, rgba(255, 87, 34, 0.05) 100%); padding: 20px; border-radius: 8px; border: 2px solid rgba(255, 87, 34, 0.3); margin-bottom: 15px;">
+                    <p style="margin: 0 0 12px 0; font-weight: 700; font-size: 1.15em; color: #d84315;">⏰ 선착순 100개사 한정</p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 0.95em;">
+                        <li>웹호스팅비 전액면제 (평생)</li>
+                        <li>초기셋팅비 100만원 → <strong>0원</strong></li>
+                        <li>마감: <strong>2025년 12월 31일</strong></li>
+                    </ul>
+                    <p style="margin: 15px 0 0 0; font-weight: 700; color: #d84315; text-align: center; font-size: 1.05em;">
+                        ⚠️ 101번째부터는 추가비용 발생합니다
+                    </p>
+                </div>
+                
+                <div class="easy-divider"></div>
+                
+                <h4>✅ 최종 체크리스트</h4>
+                
+                <div style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                    <p style="margin: 0 0 15px 0; font-size: 1.05em; color: #2d2d2d;">이 3가지만 체크하세요:</p>
+                    <div style="margin: 10px 0; padding: 12px; background: white; border-radius: 6px;">
+                        ☑️ <strong>우리 회사가 정부지원금 받을 일 있나?</strong> → YES면 필수
+                    </div>
+                    <div style="margin: 10px 0; padding: 12px; background: white; border-radius: 6px;">
+                        ☑️ <strong>우리 회사가 대출 있거나 받을 예정인가?</strong> → YES면 필수
+                    </div>
+                    <div style="margin: 10px 0; padding: 12px; background: white; border-radius: 6px;">
+                        ☑️ <strong>우리 회사가 직원 있나?</strong> → YES면 필수 (과태료 리스크)
+                    </div>
+                    <p style="margin: 20px 0 0 0; font-weight: 700; color: #8b6914; text-align: center; font-size: 1.1em;">
+                        3개 중 1개라도 YES면 하셔야 합니다.
+                    </p>
+                </div>
+                
+                <div class="easy-divider"></div>
+                
+                <div style="text-align: center; padding: 30px 20px; background: linear-gradient(135deg, rgba(76, 175, 80, 0.15) 0%, rgba(76, 175, 80, 0.08) 100%); border-radius: 12px; border: 2px solid rgba(76, 175, 80, 0.4);">
+                    <p style="margin: 0 0 15px 0; font-size: 1.4em; font-weight: 700; color: #2e7d32; line-height: 1.5;">
+                        "이건 비용이 아닙니다.<br>투자입니다."
+                    </p>
+                    <p style="margin: 0 0 20px 0; font-size: 1.15em; color: #2d2d2d;">
+                        아니, 정확히는 <strong style="color: #d84315;">"필수입니다."</strong>
+                    </p>
+                    <div style="height: 2px; background: linear-gradient(90deg, transparent 0%, rgba(76, 175, 80, 0.3) 50%, transparent 100%); margin: 20px 0;"></div>
+                    <p style="margin: 0; font-size: 1.6em; font-weight: 700; color: #1a1a1a; line-height: 1.5;">
+                        월 10만원으로<br>연간 수천만원 효과
+                    </p>
+                    <p style="margin: 20px 0 0 0; font-size: 1.25em; font-weight: 700; color: #d84315;">
+                        안 하실 이유가... 있으십니까?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Easy 팝업 열기/닫기 함수 (2번 페이지)
+        function openEasyPopup() {
+            document.getElementById('easyPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+        }
+
+        function closeEasyPopup() {
+            document.getElementById('easyPopup').style.display = 'none';
+            document.body.style.overflow = ''; // 스크롤 복원
+        }
+
+        // Easy 팝업 열기/닫기 함수 (3번 페이지)
+        function openEasyPopup3() {
+            document.getElementById('easyPopup3').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEasyPopup3() {
+            document.getElementById('easyPopup3').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Easy 팝업 열기/닫기 함수 (4번 페이지)
+        function openEasyPopup4() {
+            document.getElementById('easyPopup4').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEasyPopup4() {
+            document.getElementById('easyPopup4').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Easy 팝업 열기/닫기 함수 (5번 페이지)
+        function openEasyPopup5() {
+            document.getElementById('easyPopup5').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEasyPopup5() {
+            document.getElementById('easyPopup5').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Easy 팝업 열기/닫기 함수 (6번 페이지)
+        function openEasyPopup6() {
+            document.getElementById('easyPopup6').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEasyPopup6() {
+            document.getElementById('easyPopup6').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Easy 팝업 열기/닫기 함수 (8번 페이지 - Easy1 혜택)
+        function openEasyPopup8_1() {
+            document.getElementById('easyPopup8_1').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEasyPopup8_1() {
+            document.getElementById('easyPopup8_1').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Easy 팝업 열기/닫기 함수 (8번 페이지 - Easy2 ROI)
+        function openEasyPopup8_2() {
+            document.getElementById('easyPopup8_2').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEasyPopup8_2() {
+            document.getElementById('easyPopup8_2').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // 팝업 외부 클릭 시 닫기
+        document.addEventListener('click', function(event) {
+            const popup = document.getElementById('easyPopup');
+            const popup3 = document.getElementById('easyPopup3');
+            const popup4 = document.getElementById('easyPopup4');
+            const popup5 = document.getElementById('easyPopup5');
+            const popup6 = document.getElementById('easyPopup6');
+            const popup8_1 = document.getElementById('easyPopup8_1');
+            const popup8_2 = document.getElementById('easyPopup8_2');
+            
+            if (event.target === popup) {
+                closeEasyPopup();
+            }
+            if (event.target === popup3) {
+                closeEasyPopup3();
+            }
+            if (event.target === popup4) {
+                closeEasyPopup4();
+            }
+            if (event.target === popup5) {
+                closeEasyPopup5();
+            }
+            if (event.target === popup6) {
+                closeEasyPopup6();
+            }
+            if (event.target === popup8_1) {
+                closeEasyPopup8_1();
+            }
+            if (event.target === popup8_2) {
+                closeEasyPopup8_2();
+            }
+        });
+
+        // ESC 키로 팝업 닫기
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeEasyPopup();
+                closeEasyPopup3();
+                closeEasyPopup4();
+                closeEasyPopup5();
+                closeEasyPopup6();
+                closeEasyPopup8_1();
+                closeEasyPopup8_2();
+            }
+        });
+
         let currentContent = 0;
         let currentStep = 0;
         const menuItems = document.querySelectorAll('.menu-item');
@@ -1876,7 +3241,7 @@
                 steps.forEach(step => step.classList.add('active'));
             }
             
-            // 도입시 얻는 실질혜택 페이지 (index === 7) 초기화
+            // 도입 후 실질혜택 페이지 (index === 7) 초기화
             if (index === 7) {
                 // 모든 상세 내용 숨기기
                 const allDetails = document.querySelectorAll('.benefit-detail');
@@ -1908,7 +3273,7 @@
 
             // 다음 스텝 표시
             if (currentStep < totalSteps) {
-                // 도입시 얻는 실질혜택 페이지 (currentContent === 7)의 경우
+                // 도입 후 실질혜택 페이지 (currentContent === 7)의 경우
                 // step 1, 2, 3, 4일 때 자동으로 버튼 클릭
                 if (currentContent === 7 && currentStep >= 1 && currentStep <= 4) {
                     const buttonIndex = currentStep - 1; // step 1 = button 0, step 2 = button 1, ...
@@ -1948,7 +3313,7 @@
             if (currentStep > 0) {
                 currentStep--;
                 
-                // 도입시 얻는 실질혜택 페이지 (currentContent === 7)의 경우
+                // 도입 후 실질혜택 페이지 (currentContent === 7)의 경우
                 if (currentContent === 7 && currentStep >= 1 && currentStep <= 4) {
                     // 이전 버튼 선택하거나 초기 상태로 복귀
                     if (currentStep === 1) {
