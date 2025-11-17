@@ -968,6 +968,38 @@
             }
         }
 
+        /* 샘플 홈페이지 버튼 스타일 */
+        .sample-buttons-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow-x: auto;
+            padding: 5px;
+        }
+
+        .sample-button {
+            padding: 18px 20px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1em;
+            font-weight: 600;
+            color: #2d2d2d;
+            white-space: nowrap;
+            min-width: 180px;
+        }
+
+        .sample-button:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.15) 100%);
+            border-color: rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
         /* 모바일 가로 화면 (landscape) 최적화 */
         @media (max-height: 600px) and (orientation: landscape) {
             /* Big 4 박스 1행 스크롤 유지 */
@@ -1023,6 +1055,18 @@
                 flex: 0 0 auto !important;
                 width: calc(48% - 4px) !important;
                 min-width: 320px !important;
+            }
+
+            /* 샘플 버튼 모바일 가로모드 2x2 */
+            .sample-buttons-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .sample-button {
+                padding: 12px 10px;
+                font-size: 0.85em;
+                min-width: 0;
             }
         }
 
@@ -1085,6 +1129,18 @@
 
             .easy-popup-header h3 {
                 font-size: 1em !important;
+            }
+
+            /* 샘플 버튼 작은 화면 최적화 */
+            .sample-buttons-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .sample-button {
+                padding: 12px 8px;
+                font-size: 0.8em;
+                min-width: 0;
             }
         }
 
@@ -1403,6 +1459,20 @@
                 height: 28px;
                 font-size: 1em;
             }
+
+            /* 샘플 버튼 모바일 2x2 레이아웃 */
+            .sample-buttons-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                max-width: 100%;
+            }
+
+            .sample-button {
+                padding: 14px 12px;
+                font-size: 0.9em;
+                min-width: 0;
+                white-space: normal;
+            }
         }
     </style>
 </head>
@@ -1536,7 +1606,7 @@
                 <div style="position: relative;">
                     <h2>CEO가 원하는 홈페이지는?</h2>
                     <button onclick="openEasyPopup()" class="easy-button" style="position: absolute; top: 0; right: 0;">
-                        💡 Easy
+                        💡 요약Click
                     </button>
                 </div>
                 
@@ -1617,7 +1687,7 @@
                 <div style="position: relative;">
                     <h2>왜 만들었나?</h2>
                     <button onclick="openEasyPopup3()" class="easy-button" style="position: absolute; top: 0; right: 0;">
-                        💡 Easy
+                        💡 요약Click
                     </button>
                 </div>
                 
@@ -1635,9 +1705,9 @@
                     <h3>회사홈페이지: 성장을 위한 필수 요건</h3>
                     <ul>
                         <li>우수한 홈페이지: 평가기관 및 협력업체들의 첫번째 검토항목</li>
-                        <li>우수인재 확보: 회사의 비전이 잘 드러난 경쟁력 있는 홈페이지</li>
                         <li>경쟁력 있는 홈페이지 시스템=정부 지원사업 평가의 핵심기준</li>
                         <li>파트너사 신뢰도 검증 도구</li>
+                        <li>우수인재 확보: 회사의 비전이 잘 드러난 경쟁력 있는 홈페이지</li>
                         <li><span class="highlight">홈페이지 = 기업의 얼굴 = 기업 신뢰의 증명</span></li>
                     </ul>
                 </div>
@@ -1670,7 +1740,7 @@
                 <div style="position: relative;">
                     <h2>핵심 기능 1. 차별화 P/G</h2>
                     <button onclick="openEasyPopup4()" class="easy-button" style="position: absolute; top: 0; right: 0;">
-                        💡 Easy
+                        💡 요약Click
                     </button>
                 </div>
                 
@@ -1719,7 +1789,7 @@
                 <div style="position: relative;">
                     <h2>핵심 기능 2. 경영시스템 P/G</h2>
                     <button onclick="openEasyPopup5()" class="easy-button" style="position: absolute; top: 0; right: 0;">
-                        💡 Easy
+                        💡 요약Click
                     </button>
                 </div>
                 
@@ -1741,9 +1811,12 @@
                     <div class="feature-item" style="padding: 25px 30px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37; border-radius: 8px;">
                         <div style="font-size: 1.35em; font-weight: 700; color: #8b6914; margin-bottom: 15px;">📋 업무일지 시스템</div>
                         <div style="font-size: 1.05em; color: #4d4d4d; line-height: 1.8;">
-                            • 전사 업무 흐름 파악<br>
-                            • 투명한 관리 체계<br>
-                            • 성과 평가 자료 확보
+                            • 경영자: 직원들의 업무파악 용이<br>
+                            • 원격/재택근무 시 업무기록 편리<br>
+                            • 모든 업무기록(업무효율): 내용 보관 및 빠른 검색<br>
+                            • 업무공백 최소화: 업무 인수인계 및 결원시 대행용이<br>
+                            • 불필요한 보고시간 감소: 진행상황 체크 및 회의시간 단축<br>
+                            • 인사 및 평가시 기초자료 활용
                         </div>
                     </div>
                 </div>
@@ -1767,7 +1840,7 @@
                 <div style="position: relative;">
                     <h2>핵심 기능 3. AI 플랫폼</h2>
                     <button onclick="openEasyPopup6()" class="easy-button" style="position: absolute; top: 0; right: 0;">
-                        💡 Easy
+                        💡 요약Click
                     </button>
                 </div>
                 
@@ -1802,25 +1875,31 @@
                         <th>중소기업 통합경영 시스템</th>
                     </tr>
                     <tr>
-                        <td>과금 방식</td>
-                        <td>월정액 고정</td>
-                        <td><span class="highlight">종량제(사용량에 따라)</span></td>
+                        <td>1. 과금 방식</td>
+                        <td>월정액 고정<br>(쓰든 안 쓰든 매월 청구)</td>
+                        <td><span class="highlight">종량제<br>(사용한 만큼만 결제)</span></td>
                     </tr>
                     <tr>
-                        <td>AI 선택</td>
-                        <td>다중선택 어려움(비용부담)</td>
-                        <td><span class="highlight">자유선택→종량제 이용</span></td>
+                        <td>2. 실제 비용</td>
+                        <td>ChatGPT 1개만: 월 3만원<br>4개 구독 시: 월 12만원</td>
+                        <td><span class="highlight">월 3~5만원<br>(4개 AI 자유 선택 사용)</span></td>
                     </tr>
                     <tr>
-                        <td>업무 유연성</td>
-                        <td>모델 제약(무료이용 한계)</td>
-                        <td><span class="highlight">생성형Ai 및 Ai Agent 선택</span></td>
+                        <td>3. AI 모델 선택</td>
+                        <td>1개만 선택 가능<br>(여러 개 쓰려면 중복 결제)</td>
+                        <td><span class="highlight">GPT, Claude, Gemini, Perplexity<br>4개 모두 자유롭게 선택</span></td>
+                    </tr>
+                    <tr>
+                        <td>4. 사용 제한</td>
+                        <td>무료 버전: 기능 제한<br>유료 버전: 사용량 제한(무제한 아님)</td>
+                        <td><span class="highlight">실사용 기반 종량제<br>(필요한 만큼 투명하게 과금)</span></td>
+                    </tr>
+                    <tr>
+                        <td>5. 비용 절감 효과</td>
+                        <td>기준 비용</td>
+                        <td><span class="highlight">50~90% 절감<br>(실사용량 기준 계산)</span></td>
                     </tr>
                 </table>
-
-                <div class="step" style="text-align: center; margin-top: 30px;">
-                    <a href="http://kfpcorp.pixel5.kr/cn/testcorp/" target="_blank" class="cta-button">기업홈페이지 바로가기</a>
-                </div>
             </div>
 
             <!-- 콘텐츠 6: Total Services -->
@@ -1863,7 +1942,7 @@
                     <div class="step" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px;">
                         <div class="feature-item" style="padding: 15px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37;">
                             <div style="font-size: 1.05em; font-weight: 700; color: #8b6914; margin-bottom: 6px;">🏥 종합건강검진서비스</div>
-                            <div style="font-size: 0.85em; color: #4d4d4d;">KMI 제휴, 대기업 수가(전국)</div>
+                            <div style="font-size: 0.85em; color: #4d4d4d;">KMI 제휴, 대기업 수가(전국 8개 검진센터)</div>
                         </div>
                         <div class="feature-item" style="padding: 15px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37;">
                             <div style="font-size: 1.05em; font-weight: 700; color: #8b6914; margin-bottom: 6px;">⏰ 출퇴근프로그램</div>
@@ -1879,7 +1958,7 @@
                         </div>
                         <div class="feature-item" style="padding: 15px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.05) 100%); border-left: 4px solid #d4af37;">
                             <div style="font-size: 1.05em; font-weight: 700; color: #8b6914; margin-bottom: 6px;">📚 법정의무교육</div>
-                            <div style="font-size: 0.85em; color: #4d4d4d;">시중가격의 50%수준 이용</div>
+                            <div style="font-size: 0.85em; color: #4d4d4d;">시중가격의 50%수준 이용(100% 온라인 진행)</div>
                         </div>
                     </div>
 
@@ -2180,16 +2259,25 @@
                             <td style="font-weight: 600; color: #2d2d2d;">등록비</td>
                             <td><span class="highlight" style="font-size: 1.05em;">10만원</span> <span style="color: #6b5d4f; font-size: 0.88em;">(1회 납부, 최초 서버등록 실비)</span></td>
                         </tr>
-                        <tr>
-                            <td style="font-weight: 600; color: #2d2d2d;">웹호스팅비</td>
-                            <td>
-                                <div style="line-height: 1.5; font-size: 0.95em;">
-                                    등록일로부터 <span class="highlight">2년 경과 후 청구</span><br>
-                                    <span style="color: #6b5d4f; font-size: 0.92em;">사용량에 따라 종량제 과금(시중가 대비 50%수준 책정)</span>
-                                </div>
-                            </td>
-                        </tr>
                     </table>
+                </div>
+
+                <div class="step" style="margin: 20px 0; padding: 25px 30px; background: linear-gradient(135deg, rgba(139, 105, 20, 0.08) 0%, rgba(139, 105, 20, 0.03) 100%); border-radius: 12px; border-left: 4px solid #8b6914;">
+                    <div style="text-align: center; margin-bottom: 12px;">
+                        <div style="font-size: 1.2em; font-weight: 700; color: #8b6914; margin-bottom: 10px;">
+                            구축하려면 부담스럽고, 없으면 경쟁력이 떨어지고
+                        </div>
+                    </div>
+                    <div style="font-size: 0.95em; line-height: 1.8; color: #4d4d4d; text-align: center;">
+                        기업맞춤형 홈페이지, ESG페이지, AI 플랫폼, 경영관리 P/G(출퇴근, 급여대장, 업무일지 등)...<br>
+                        필요하지만 직접 구축하기엔 시간도 비용도 만만찮습니다.
+                    </div>
+                    <div style="text-align: center; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(139, 105, 20, 0.15);">
+                        <div style="font-size: 1.05em; font-weight: 700; color: #2d2d2d;">
+                            이제, <span class="highlight" style="font-size: 1.1em;">'중소기업 통합경영 시스템'</span>은<br>
+                            중견기업 수준의 모든 기능을 월 구독으로 제공합니다.
+                        </div>
+                    </div>
                 </div>
 
                 <div class="content-box step" style="margin: 15px 0; padding: 20px 35px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%); border: 2px solid rgba(212, 175, 55, 0.4);">
@@ -2231,13 +2319,15 @@
                             <li>웹호스팅 비용 전액면제(이용 전기간)</li>
                             <li>등록시=서버등록 '실비'만 납부(10만)</li>
                             <li>'월이용료'는 등록 익월 말일부터 자동결제</li>
+                            <li style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(139, 105, 20, 0.15); font-size: 0.92em; color: #6b5d4f;">웹호스팅비: 등록일로부터 2년경과 후부터 청구(사용량에 따른 과금청구_시중가 대비 50%수준 예상)</li>
                         </ul>
                     </div>
                     <div class="content-box" style="padding: 20px 25px;">
                         <h3 style="font-size: 1.1em; margin-bottom: 12px;">절감 효과</h3>
                         <ul style="margin: 0;">
                             <li>홈페이지 제작비: 수백~수천만원</li>
-                            <li>AI 도입: Ai건별 셋팅비 500만원 이상</li>
+                            <li>4대 생성형 AI셋팅비(종량제 활용)</li>
+                            <li>문서기반 1:1고객응대 AI시스템(RAG) 구축비</li>
                             <li>인사관리(출퇴근/급여대장P/G): 수백만원</li>
                         </ul>
                         <div class="highlight" style="font-size: 1.1em; margin-top: 10px; text-align: center;">
@@ -2248,7 +2338,7 @@
             </div>
 
             <!-- 콘텐츠 10: 결론 -->
-            <div class="content-panel" data-steps="3">
+            <div class="content-panel" data-steps="4">
                 <h2>지금 바로 도입해야 합니다!</h2>
                 
                 <div class="content-box step" style="padding: 25px 35px; margin: 20px 0;">
@@ -2280,6 +2370,32 @@
                     </div>
                     <div style="margin-top: 20px; font-size: 0.95em; color: #6b5d4f;">
                         선착순 100개사(웹호스팅비 면제)_2025/12/31까지
+                    </div>
+                </div>
+
+                <!-- 샘플 홈페이지 버튼 섹션 -->
+                <div class="step" style="margin-top: 40px; padding: 30px 20px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%); border-radius: 12px;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="font-size: 1.2em; font-weight: 700; color: #8b6914; margin-bottom: 8px;">
+                            💼 업종별로 샘플 홈페이지를 둘러보세요~!
+                        </div>
+                        <div style="font-size: 0.9em; color: #6b5d4f;">
+                            실제 구축된 홈페이지를 미리 확인해보세요
+                        </div>
+                    </div>
+                    <div class="sample-buttons-container">
+                        <button onclick="window.open('https://corp.re.kr/cn/testcorp', '_blank')" class="sample-button">
+                            🏭 제조업 홈페이지
+                        </button>
+                        <button onclick="window.open('https://corp.re.kr/cn/testcorp', '_blank')" class="sample-button">
+                            💼 서비스업 홈페이지
+                        </button>
+                        <button onclick="window.open('https://corp.re.kr/cn/testcorp', '_blank')" class="sample-button">
+                            🏢 기업+연구소 겸용홈페이지
+                        </button>
+                        <button onclick="window.open('https://corp.re.kr/cn/testcorp', '_blank')" class="sample-button">
+                            🔬 연구소전용 홈페이지
+                        </button>
                     </div>
                 </div>
             </div>
@@ -2595,7 +2711,7 @@
                 
                 <div class="easy-divider"></div>
                 
-                <h4>1. 출퇴근·급여 프로그램 - 과태료 피하세요</h4>
+                <h4>1. 출퇴근·급여 프로그램 - 과태료 피하세요 (2026년초 제공)</h4>
                 
                 <div style="background: linear-gradient(135deg, rgba(244, 67, 54, 0.08) 0%, rgba(244, 67, 54, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
                     <p style="margin: 0 0 8px 0; font-weight: 600; color: #c62828;">현실 문제</p>
@@ -2607,11 +2723,11 @@
                 </div>
                 
                 <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">우리 시스템</p>
+                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">우리 시스템 (2026년초 제공)</p>
                     <ul style="margin: 0; padding-left: 20px;">
                         <li><strong>출퇴근 프로그램</strong>: 20인 이하 회사는 완전 무료입니다.</li>
-                        <li><strong>급여 프로그램</strong>: 전 회원사 무료입니다.</li>
-                        <li><strong>급여명세서</strong>: 자동으로 직원들에게 발송됩니다.</li>
+                        <li><strong>급여 프로그램</strong>: 자동계산 및 급여명세서 자동발송</li>
+                        <li><strong>법적 리스크 제거</strong>: 근로기준법 준수 자동화</li>
                     </ul>
                 </div>
                 
@@ -2621,27 +2737,53 @@
                 
                 <div class="easy-divider"></div>
                 
-                <h4>2. 업무일지 시스템 - 회사가 보입니다</h4>
+                <h4>2. 업무일지 시스템 - 실질적 경영 도구입니다</h4>
                 
-                <p style="margin-bottom: 12px;"><strong style="color: #8b6914;">이런 경험 있으십니까?</strong></p>
-                <ul style="margin: 0 0 15px 0; padding-left: 20px;">
-                    <li>"이 직원이 오늘 뭐 했지?"</li>
-                    <li>"이 프로젝트 진행 상황이 어떻게 되지?"</li>
-                    <li>"성과 평가 자료가 없네?"</li>
-                </ul>
+                <p style="margin-bottom: 12px;"><strong style="color: #8b6914;">경영자 입장에서 가장 필요한 기능:</strong></p>
                 
-                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.03) 100%); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                    <p style="margin: 0 0 8px 0; font-weight: 600; color: #2e7d32;">업무일지 시스템</p>
-                    <ul style="margin: 0; padding-left: 20px;">
-                        <li>전 직원이 매일 업무일지 작성합니다.</li>
-                        <li>관리자는 실시간으로 전사 업무 흐름 파악합니다.</li>
-                        <li>투명한 관리 체계 구축됩니다.</li>
-                        <li>성과 평가할 때 명확한 자료 확보됩니다.</li>
-                    </ul>
+                <div class="easy-item">
+                    <div class="easy-number">1</div>
+                    <div class="easy-text">
+                        <strong>직원 업무 파악이 쉬워집니다</strong><br>
+                        "이 직원이 오늘 뭐 했지?" → 바로 확인 가능. 프로젝트 진행 상황 실시간 파악.
+                    </div>
                 </div>
                 
-                <p style="text-align: center; font-weight: 600; color: #8b6914; margin: 15px 0;">
-                    ✅ 결과: 직원들 일하는 게 보입니다. 관리가 됩니다.
+                <div class="easy-item">
+                    <div class="easy-number">2</div>
+                    <div class="easy-text">
+                        <strong>인사평가 시 객관적 자료 확보</strong><br>
+                        연말 평가를 "기억"이 아닌 "기록"으로. 승진/보너스 결정 시 명확한 근거 제시 가능.
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">3</div>
+                    <div class="easy-text">
+                        <strong>업무량 불균형 즉시 파악</strong><br>
+                        A직원은 과부하, B직원은 여유 → 데이터로 확인하고 조정 가능.
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">4</div>
+                    <div class="easy-text">
+                        <strong>불필요한 보고 시간 대폭 감소</strong><br>
+                        "진행 어떻게 돼?" 일일이 물어볼 필요 없음. 주간 보고 회의 30~50% 단축.
+                    </div>
+                </div>
+                
+                <div class="easy-item">
+                    <div class="easy-number">5</div>
+                    <div class="easy-text">
+                        <strong>인수인계가 쉽고 정확</strong><br>
+                        직원 퇴사/휴가 시 업무 공백 최소화. 과거 프로젝트 참고 자료로 활용.
+                    </div>
+                </div>
+                
+                <p style="text-align: center; font-weight: 600; color: #8b6914; margin: 15px 0; padding: 12px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%); border-radius: 8px;">
+                    ✅ 결과: 직원들이 실제로 무엇을 하는지 명확히 보입니다.<br>
+                    감으로 평가하지 않고, 데이터로 관리합니다.
                 </p>
                 
                 <div class="easy-divider"></div>
@@ -2770,28 +2912,44 @@
                 
                 <h4>비교표로 보면 더 명확합니다</h4>
                 
-                <table style="width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.95em;">
+                <table style="width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9em;">
                     <tr style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.08) 100%);">
-                        <th style="padding: 12px; border: 1px solid rgba(212, 175, 55, 0.3); text-align: center;">구분</th>
-                        <th style="padding: 12px; border: 1px solid rgba(212, 175, 55, 0.3); text-align: center;">일반 구독 방식</th>
-                        <th style="padding: 12px; border: 1px solid rgba(212, 175, 55, 0.3); text-align: center;">우리 시스템</th>
+                        <th style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.3); text-align: center;">구분</th>
+                        <th style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.3); text-align: center;">일반 구독</th>
+                        <th style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.3); text-align: center;">우리 시스템</th>
                     </tr>
                     <tr>
-                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2); font-weight: 600;">과금</td>
-                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2);">월정액 고정<br>(쓰든 안 쓰든 과금)</td>
-                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2);"><span class="easy-highlight">종량제 (쓴 만큼만)</span></td>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2); font-weight: 600;">과금 방식</td>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">월정액 고정<br><span style="font-size: 0.85em; color: #666;">(쓰든 안 쓰든 과금)</span></td>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2);"><span class="easy-highlight">종량제<br>(쓴 만큼만)</span></td>
                     </tr>
                     <tr>
-                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2); font-weight: 600;">AI 선택</td>
-                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2);">1개만 가능<br>(여러 개 쓰면 비용 폭탄)</td>
-                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2);"><span class="easy-highlight">4개 자유선택</span></td>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2); font-weight: 600;">실제 비용</td>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">1개: 월 3만원<br>4개: 월 12만원</td>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2);"><span class="easy-highlight">월 3~5만원<br>(4개 자유선택)</span></td>
                     </tr>
                     <tr>
-                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2); font-weight: 600;">비용 절감</td>
-                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2);">없음</td>
-                        <td style="padding: 10px; border: 1px solid rgba(212, 175, 55, 0.2);"><span class="easy-highlight">50~90% 절감</span></td>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2); font-weight: 600;">AI 선택</td>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">1개만 가능<br><span style="font-size: 0.85em; color: #666;">(중복결제 필요)</span></td>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2);"><span class="easy-highlight">GPT, Claude,<br>Gemini, Perplexity<br>4개 자유선택</span></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2); font-weight: 600;">사용 제한</td>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">무료: 기능 제한<br>유료: 사용량 제한<br><span style="font-size: 0.85em; color: #666;">(무제한 아님)</span></td>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2);"><span class="easy-highlight">실사용 기반<br>종량제<br>(투명한 과금)</span></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2); font-weight: 600;">비용 절감</td>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2);">기준 비용</td>
+                        <td style="padding: 8px; border: 1px solid rgba(212, 175, 55, 0.2);"><span class="easy-highlight" style="font-size: 1.1em;">50~90% 절감</span></td>
                     </tr>
                 </table>
+                
+                <p style="text-align: center; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%); border-radius: 8px; font-weight: 600; color: #8b6914;">
+                    💡 예시: 5명 팀이 4개 AI 사용 시<br>
+                    일반 구독: 월 12만원 → 우리 시스템: 월 3~5만원<br>
+                    <span style="font-size: 1.1em;">연간 약 84~108만원 절감!</span>
+                </p>
                 
                 <div class="easy-divider"></div>
                 
