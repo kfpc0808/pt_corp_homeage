@@ -156,6 +156,67 @@
             font-weight: 700;
         }
 
+        /* 영상 링크 버튼 스타일 */
+        .video-link-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            z-index: 100;
+            background: linear-gradient(135deg, #d4af37 0%, #8b6914 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            font-weight: 600;
+            font-size: 0.95em;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .video-link-button:hover {
+            background: linear-gradient(135deg, #e5c245 0%, #a67c00 100%);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+            animation: none;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .video-icon {
+            width: 20px;
+            height: 20px;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+        }
+
+        .video-text {
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 모바일 반응형 스타일 */
+        @media (max-width: 768px) {
+            .video-link-button {
+                top: 10px;
+                right: 15px;
+                padding: 10px 16px;
+                font-size: 0.9em;
+            }
+            
+            .video-icon {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
         /* 오른쪽 콘텐츠 영역 */
         .content-area {
             width: 80%;
@@ -2339,6 +2400,14 @@
 
             <!-- 콘텐츠 10: 결론 -->
             <div class="content-panel" data-steps="4">
+                <!-- 영상 링크 버튼 (12페이지에만 표시) -->
+                <div class="video-link-button" onclick="window.open('https://youtu.be/h-SbInXhCys', '_blank')" title="브리핑영상 보기">
+                    <svg class="video-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    </svg>
+                    <span class="video-text">브리핑영상</span>
+                </div>
+                
                 <h2>지금 바로 도입해야 합니다!</h2>
                 
                 <div class="content-box step" style="padding: 25px 35px; margin: 20px 0;">
