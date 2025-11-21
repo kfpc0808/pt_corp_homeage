@@ -891,9 +891,11 @@
             }
         }
 
-        /* Fix: 모든 환경에서 Card 7은 무조건 1열 */
-        .card-7 .benefit-grid {
-            grid-template-columns: 1fr !important;
+        /* Fix: 모바일에서 Card 7은 무조건 1열 */
+        @media screen and (max-width: 767px) {
+            .card-7 .benefit-grid {
+                grid-template-columns: 1fr !important;
+            }
         }
 
         /* Portrait Mobile - Very Small Screens */
@@ -1129,7 +1131,8 @@
                 font-size: 40px;
             }
 
-            .benefit-grid {
+            /* PC에서만 Card 7을 2열로 */
+            .card-7 .benefit-grid {
                 grid-template-columns: 1fr 1fr !important;
                 gap: 18px;
             }
@@ -1408,7 +1411,7 @@
                                 <div class="benefit-title">정부지원사업 경쟁력 강화</div>
                             </div>
                             <div class="benefit-desc">
-                                <span class="benefit-desc-item">• DX 기반 구축</span>
+                                <span class="benefit-desc-item">• 디지털전환(DX) 기반구축</span>
                                 <span class="benefit-desc-item">• ESG경영 인증</span>
                                 <span class="benefit-desc-item">• R&D 요소 충족</span>
                             </div>
