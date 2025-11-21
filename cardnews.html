@@ -60,8 +60,6 @@
             transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
             height: 100%;
             will-change: transform;
-            -webkit-user-select: none;
-            user-select: none;
         }
 
         .card {
@@ -69,22 +67,12 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* 콘텐츠는 위에서부터 시작 */
+            justify-content: center;
             align-items: center;
-            padding: 4vh 6vw;          /* 상단/하단 여백 균형형(②) */
+            padding: 3vh 4vw;
             position: relative;
             background: var(--bg-white);
             color: var(--text-black);
-            overflow: hidden;          /* 세로 모드에서는 스크롤 없이 한 화면 */
-        }
-
-        /* 카드 내부 첫/마지막 요소 여백 제거 → 테두리와 거리 통일 */
-        .card > *:first-child {
-            margin-top: 0 !important;
-        }
-
-        .card > *:last-child {
-            margin-bottom: 0 !important;
         }
 
         /* Card 1 - Hero */
@@ -101,33 +89,33 @@
         }
 
         .card-1 h1 {
-            font-size: 6.2vh;
+            font-size: 6.5vh;
             font-weight: 800;
             line-height: 1.2;
-            margin-bottom: 1.8vh;
+            margin-bottom: 2vh;
         }
 
         .card-1 .highlight {
-            font-size: 4.2vh;
+            font-size: 4.5vh;
             background: rgba(255,255,255,0.1);
-            padding: 2vh 4vw;
+            padding: 2vh 3vw;
             border-radius: 15px;
             display: inline-block;
-            margin: 1.8vh 0;
+            margin: 2vh 0;
             border: 2px solid rgba(255,255,255,0.3);
             line-height: 1.3;
         }
 
         .card-1 .tags {
-            font-size: 2.6vh;
-            margin-top: 1.8vh;
+            font-size: 2.8vh;
+            margin-top: 2vh;
             color: var(--light-purple);
             font-weight: 600;
         }
 
         .card-1 .subtitle {
-            font-size: 2.8vh;
-            margin-top: 2.2vh;
+            font-size: 3vh;
+            margin-top: 2.5vh;
             font-weight: 600;
         }
 
@@ -142,9 +130,9 @@
         }
 
         .card-2 h2 {
-            font-size: 4.2vh;
+            font-size: 4.5vh;
             font-weight: 700;
-            margin-bottom: 1.8vh;
+            margin-bottom: 2vh;
             color: var(--text-navy);
         }
 
@@ -155,24 +143,24 @@
 
         .problem-item {
             background: var(--bg-light);
-            padding: 1.6vh 3vw;
-            margin-bottom: 1.1vh;
+            padding: 1.8vh 3vw;
+            margin-bottom: 1.2vh;
             border-radius: 10px;
-            font-size: 2.1vh;
-            line-height: 1.45;
+            font-size: 2.2vh;
+            line-height: 1.4;
             border-left: 4px solid var(--navy-blue);
             color: var(--text-black);
         }
 
         .card-2 .footer-text {
-            margin-top: 1.8vh;
-            font-size: 2.4vh;
+            margin-top: 2vh;
+            font-size: 2.5vh;
             font-weight: 700;
             color: var(--text-purple);
             padding: 1.5vh 3vw;
             background: var(--light-purple);
             border-radius: 10px;
-            line-height: 1.45;
+            line-height: 1.4;
         }
 
         /* Card 3 - Solution */
@@ -186,24 +174,24 @@
         }
 
         .card-3 h2 {
-            font-size: 3.9vh;
+            font-size: 4vh;
             font-weight: 700;
             margin-bottom: 1vh;
             color: var(--text-navy);
         }
 
         .card-3 .subtitle {
-            font-size: 2.7vh;
-            margin-bottom: 1.8vh;
+            font-size: 2.8vh;
+            margin-bottom: 2vh;
             color: var(--text-black);
-            line-height: 1.35;
+            line-height: 1.3;
         }
 
         .feature-box {
             background: var(--bg-light);
             padding: 1.5vh 3vw;
             border-radius: 10px;
-            margin-bottom: 1.1vh;
+            margin-bottom: 1.2vh;
             text-align: left;
             width: 100%;
             max-width: 92%;
@@ -219,7 +207,7 @@
 
         .feature-box p {
             font-size: 2vh;
-            line-height: 1.45;
+            line-height: 1.4;
             color: var(--text-black);
         }
 
@@ -237,11 +225,10 @@
         }
 
         .feature-card h2 {
-            font-size: 3.9vh;
+            font-size: 4vh;
             font-weight: 700;
-            margin-bottom: 1.8vh;
+            margin-bottom: 2vh;
             color: var(--text-navy);
-            text-align: center;
         }
 
         .feature-card .emoji-header {
@@ -251,9 +238,9 @@
 
         .feature-item {
             background: var(--bg-light);
-            padding: 1.7vh 3vw;
+            padding: 1.8vh 3vw;
             border-radius: 10px;
-            margin-bottom: 1.1vh;
+            margin-bottom: 1.2vh;
             text-align: left;
             width: 100%;
             max-width: 92%;
@@ -278,7 +265,7 @@
 
         .feature-item p {
             font-size: 2vh;
-            line-height: 1.45;
+            line-height: 1.4;
             color: var(--text-black);
         }
 
@@ -294,7 +281,6 @@
             margin-bottom: 0.3vh;
             position: relative;
             color: var(--text-black);
-            line-height: 1.5;
         }
 
         .feature-item ul li:before {
@@ -311,15 +297,15 @@
         }
 
         .card-7 h2 {
-            font-size: 3.9vh;
+            font-size: 4vh;
             font-weight: 700;
-            margin-bottom: 1.4vh;
+            margin-bottom: 1.5vh;
             color: var(--text-navy);
         }
 
         .benefit-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 1vh;
             width: 100%;
             max-width: 92%;
@@ -336,18 +322,18 @@
             display: flex;
             align-items: center;
             gap: 1vw;
-            margin-bottom: 0.7vh;
+            margin-bottom: 0.8vh;
         }
 
         .benefit-number {
-            font-size: 3.8vh;
+            font-size: 4vh;
             font-weight: 700;
             color: var(--text-navy);
             flex-shrink: 0;
         }
 
         .benefit-title {
-            font-size: 2.3vh;
+            font-size: 2.4vh;
             font-weight: 700;
             line-height: 1.2;
             color: var(--text-black);
@@ -356,8 +342,8 @@
         }
 
         .benefit-desc {
-            font-size: 2vh;
-            line-height: 1.45;
+            font-size: 2.1vh;
+            line-height: 1.4;
             color: var(--text-black);
             display: flex;
             flex-wrap: wrap;
@@ -375,9 +361,9 @@
         }
 
         .card-8 h2 {
-            font-size: 3.9vh;
+            font-size: 4vh;
             font-weight: 700;
-            margin-bottom: 1.8vh;
+            margin-bottom: 2vh;
             color: var(--text-navy);
         }
 
@@ -388,16 +374,16 @@
 
         .pricing-box {
             background: var(--bg-light);
-            padding: 1.8vh 3vw;
+            padding: 2vh 3vw;
             border-radius: 12px;
-            margin-bottom: 1.3vh;
+            margin-bottom: 1.5vh;
             border: 2px solid #ddd;
         }
 
         .pricing-box h3 {
-            font-size: 2.4vh;
+            font-size: 2.5vh;
             font-weight: 700;
-            margin-bottom: 0.9vh;
+            margin-bottom: 1vh;
             color: var(--text-black);
         }
 
@@ -415,7 +401,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.9vh 0;
+            padding: 1vh 0;
             font-size: 2vh;
             font-weight: 600;
             color: var(--text-black);
@@ -426,7 +412,7 @@
         }
 
         .price-tag {
-            font-size: 3.3vh;
+            font-size: 3.5vh;
             font-weight: 800;
             color: var(--light-purple);
         }
@@ -442,25 +428,25 @@
         }
 
         .card-9 h2 {
-            font-size: 3.9vh;
+            font-size: 4vh;
             font-weight: 700;
             margin-bottom: 1vh;
             color: var(--text-navy);
         }
 
         .card-9 .promo-subtitle {
-            font-size: 2.4vh;
-            margin-bottom: 1.8vh;
+            font-size: 2.5vh;
+            margin-bottom: 2vh;
             font-weight: 600;
             color: var(--text-black);
         }
 
         .promo-item {
             background: white;
-            padding: 1.7vh 3vw;
+            padding: 1.8vh 3vw;
             border-radius: 10px;
-            margin-bottom: 1.1vh;
-            font-size: 2.1vh;
+            margin-bottom: 1.2vh;
+            font-size: 2.2vh;
             font-weight: 600;
             color: var(--text-black);
             border-left: 4px solid var(--text-purple);
@@ -471,18 +457,18 @@
         .promo-deadline {
             background: var(--navy-blue);
             color: white;
-            padding: 1.7vh 3vw;
+            padding: 1.8vh 3vw;
             border-radius: 10px;
-            font-size: 2.4vh;
+            font-size: 2.5vh;
             font-weight: 700;
-            margin: 1.8vh 0;
+            margin: 2vh 0;
             animation: pulse 2s infinite;
         }
 
         .promo-footer {
-            font-size: 2.4vh;
+            font-size: 2.5vh;
             font-weight: 700;
-            margin-top: 1.8vh;
+            margin-top: 2vh;
             line-height: 1.5;
             color: var(--text-black);
         }
@@ -499,23 +485,22 @@
         }
 
         .card-10 h2 {
-            font-size: 4.2vh;
+            font-size: 4.5vh;
             font-weight: 700;
-            margin-bottom: 2.3vh;
+            margin-bottom: 2.5vh;
         }
 
         .cta-message {
-            font-size: 2.7vh;
+            font-size: 2.8vh;
             line-height: 1.5;
-            margin-bottom: 2.8vh;
+            margin-bottom: 3vh;
             max-width: 92%;
-            text-align: center;
         }
 
         .cta-buttons {
             display: flex;
             flex-direction: column;
-            gap: 1.4vh;
+            gap: 1.5vh;
             width: 100%;
             max-width: 85%;
         }
@@ -523,9 +508,9 @@
         .cta-button {
             background: white;
             color: var(--navy-blue);
-            padding: 2.1vh 4vw;
+            padding: 2.2vh 4vw;
             border-radius: 50px;
-            font-size: 2.4vh;
+            font-size: 2.5vh;
             font-weight: 700;
             text-decoration: none;
             display: flex;
@@ -550,11 +535,10 @@
         }
 
         .hashtags {
-            margin-top: 2.3vh;
-            font-size: 2.1vh;
+            margin-top: 2.5vh;
+            font-size: 2.2vh;
             color: var(--light-purple);
             line-height: 1.5;
-            text-align: center;
         }
 
         /* Navigation */
@@ -632,7 +616,7 @@
             50% { transform: scale(1.05); }
         }
 
-        /* Landscape Mobile Optimization (가로: 스크롤 허용) */
+        /* Landscape Mobile Optimization */
         @media screen and (max-width: 896px) and (orientation: landscape) {
             .card-slider {
                 height: 100vh;
@@ -645,13 +629,29 @@
             }
 
             .card {
-                padding: 4vh 5vw;           /* 여백 유지 */
+                padding: 3vh 4vw;
                 min-height: 100vh;
                 min-height: -webkit-fill-available;
                 height: auto;
-                overflow-y: auto;           /* 가로 모드에서는 세로 스크롤 가능 */
+                overflow-y: auto;
                 overflow-x: hidden;
                 -webkit-overflow-scrolling: touch;
+                justify-content: flex-start;
+            }
+
+            /* 모든 카드의 첫/마지막 요소 여백 제거 */
+            .card > *:first-child {
+                margin-top: 0 !important;
+            }
+
+            .card > *:last-child {
+                margin-bottom: 0 !important;
+            }
+
+            /* 콘텐츠가 짧은 카드는 중앙 정렬 */
+            .card-1,
+            .card-10 {
+                justify-content: center;
             }
 
             .card-1 .main-emoji {
@@ -770,7 +770,7 @@
             }
 
             .benefit-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
                 gap: 2vh 2vw;
             }
 
@@ -891,38 +891,43 @@
             }
         }
 
+        /* Fix: 모든 환경에서 Card 7은 무조건 1열 */
+        .card-7 .benefit-grid {
+            grid-template-columns: 1fr !important;
+        }
+
         /* Portrait Mobile - Very Small Screens */
         @media screen and (max-width: 380px) and (orientation: portrait) {
             .card {
-                padding: 3.2vh 5vw;
+                padding: 2.5vh 3vw;
             }
 
             .problem-item,
             .feature-item,
             .promo-item {
-                font-size: 1.9vh;
+                font-size: 2vh;
             }
 
             .benefit-grid {
                 grid-template-columns: 1fr;
-                gap: 0.8vh;
+                gap: 1vh;
             }
 
             .benefit-item {
-                padding: 1.1vh 2.5vw;
+                padding: 1.2vh 2.5vw;
             }
 
             .benefit-header {
                 gap: 2vw;
-                margin-bottom: 0.5vh;
+                margin-bottom: 0.6vh;
             }
 
             .benefit-number {
-                font-size: 4.2vh;
+                font-size: 4.5vh;
             }
 
             .benefit-title {
-                font-size: 2vh;
+                font-size: 2.1vh;
                 white-space: nowrap;
             }
 
@@ -935,19 +940,73 @@
             .benefit-desc-item {
                 min-width: 45%;
             }
+
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .nav-arrow.left {
+                left: 8px;
+            }
+
+            .nav-arrow.right {
+                right: 8px;
+            }
         }
 
         /* Portrait Mobile - Medium to Large */
         @media screen and (min-width: 381px) and (max-width: 480px) and (orientation: portrait) {
             .card {
-                padding: 4vh 6vw;
+                padding: 3vh 4vw;
+            }
+
+            .nav-arrow {
+                width: 42px;
+                height: 42px;
+                font-size: 21px;
+            }
+
+            .nav-arrow.left {
+                left: 10px;
+            }
+
+            .nav-arrow.right {
+                right: 10px;
             }
         }
 
         /* Large Phones and Small Tablets - Portrait */
         @media screen and (min-width: 481px) and (orientation: portrait) {
             .card {
-                padding: 4vh 6vw;
+                padding: 3.5vh 4.5vw;
+            }
+
+            .card-1 .main-emoji {
+                font-size: 16vh;
+            }
+
+            .card-1 h1 {
+                font-size: 7vh;
+            }
+
+            .card-1 .highlight {
+                font-size: 5vh;
+            }
+
+            .nav-arrow {
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+            }
+
+            .nav-arrow.left {
+                left: 12px;
+            }
+
+            .nav-arrow.right {
+                right: 12px;
             }
         }
 
@@ -959,7 +1018,6 @@
 
             .card {
                 padding: 40px 50px;
-                overflow: visible;
             }
 
             /* Card 1 */
@@ -1072,6 +1130,7 @@
             }
 
             .benefit-grid {
+                grid-template-columns: 1fr 1fr !important;
                 gap: 18px;
             }
 
@@ -1219,12 +1278,19 @@
                 height: -webkit-fill-available;
             }
         }
+
+        /* Prevent text selection during swipe */
+        .card-wrapper {
+            -webkit-user-select: none;
+            user-select: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card-slider">
             <div class="card-wrapper" id="cardWrapper">
+                
                 <!-- Card 1 -->
                 <div class="card card-1">
                     <div class="main-emoji">💥</div>
@@ -1503,7 +1569,7 @@
         function updateCard(index) {
             currentCard = Math.max(0, Math.min(index, totalCards - 1));
             cardWrapper.style.transform = `translateX(-${currentCard * 100}%)`;
-
+            
             // Update dots
             document.querySelectorAll('.dot').forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentCard);
@@ -1544,7 +1610,7 @@
         cardWrapper.addEventListener('touchend', () => {
             if (!isDragging) return;
             isDragging = false;
-
+            
             const swipeThreshold = 50;
             const diff = touchStartX - touchEndX;
 
