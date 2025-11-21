@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>중소기업 통합경영시스템 단체도입 제안서</title>
+    <style>
+        /* CSS Reset for cross-browser compatibility */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Noto Serif KR', 'Batang', 'BatangChe', serif;
+            line-height: 1.8;
+            color: #1a1a1a;
+            background-color: #f8f8f8;
+            padding: 20px;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 60px 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Header Section */
+        .document-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #2c2c2c;
+        }
+
+        .document-number {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .document-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .document-subtitle {
+            font-size: 15px;
+            color: #555;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 45px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #d0d0d0;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+            text-align: center;
+            line-height: 32px;
+            font-size: 16px;
+            margin-right: 12px;
+            font-weight: 700;
+        }
+
+        .section-content {
+            padding: 15px 0;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        /* List Styling */
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 15px 0;
+        }
+
+        .bullet-list li {
+            padding-left: 25px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .bullet-list li:before {
+            content: "•";
+            position: absolute;
+            left: 8px;
+            font-weight: 700;
+            color: #2c2c2c;
+        }
+
+        .check-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 15px 0;
+        }
+
+        .check-list li {
+            padding-left: 30px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .check-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 8px;
+            font-weight: 700;
+            color: #2c2c2c;
+            font-size: 16px;
+        }
+
+        /* Accordion Styling */
+        .accordion {
+            margin: 20px 0;
+        }
+
+        .accordion-item {
+            border: 1px solid #d0d0d0;
+            margin-bottom: 10px;
+        }
+
+        .accordion-header {
+            background-color: #f5f5f5;
+            padding: 18px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .accordion-header:hover {
+            background-color: #ebebeb;
+        }
+
+        .accordion-header.active {
+            background-color: #e5e5e5;
+        }
+
+        .accordion-icon {
+            font-size: 14px;
+            font-weight: 700;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 20px;
+            background-color: #fafafa;
+        }
+
+        .accordion-content.active {
+            max-height: 2000px;
+            padding: 20px;
+        }
+
+        .accordion-content ul {
+            margin-top: 10px;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background-color: #f9f9f9;
+            border-left: 4px solid #2c2c2c;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+
+        .highlight-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        /* Strong emphasis */
+        strong {
+            font-weight: 700;
+            color: #000000;
+        }
+
+        /* Footer Section */
+        .document-footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #2c2c2c;
+            text-align: center;
+        }
+
+        .footer-quote {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .footer-contact {
+            margin-top: 30px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .footer-signature {
+            margin-top: 40px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .footer-slogan {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border: 1px solid #d0d0d0;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        /* Links */
+        a {
+            color: #2c2c2c;
+            text-decoration: underline;
+            word-break: break-all;
+        }
+
+        a:hover {
+            color: #000000;
+        }
+
+        /* Responsive Design for Mobile */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            .document-title {
+                font-size: 22px;
+            }
+
+            .section-title {
+                font-size: 18px;
+                flex-wrap: wrap;
+            }
+
+            .section-content {
+                font-size: 14px;
+            }
+
+            .accordion-header {
+                font-size: 14px;
+                padding: 15px;
+            }
+
+            .accordion-content.active {
+                padding: 15px;
+            }
+
+            .bullet-list li,
+            .check-list li {
+                font-size: 14px;
+            }
+        }
+
+        /* iOS Safari specific fixes */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                -webkit-text-size-adjust: 100%;
+            }
+
+            .accordion-header {
+                -webkit-user-select: none;
+                user-select: none;
+            }
+
+            input, textarea, button {
+                -webkit-appearance: none;
+                appearance: none;
+            }
+        }
+
+        /* Small mobile devices */
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .document-title {
+                font-size: 20px;
+            }
+
+            .section-number {
+                width: 28px;
+                height: 28px;
+                line-height: 28px;
+                font-size: 14px;
+            }
+
+            .footer-quote {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="document-header">
+            <div class="document-number">참고문서 | 단체도입 사전협의용</div>
+            <h1 class="document-title">중소기업 통합경영시스템<br>단체도입 제안서</h1>
+            <p class="document-subtitle">협회, 단체, 공유오피스 대상 특별 제안<br>사전협의: 기업경영연구소 '전문위원'</p>
+        </div>
+
+        <!-- Section 1 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">1</span>
+                제안 배경
+            </h2>
+            <div class="section-content">
+                <p>귀 협회의 무궁한 발전을 기원하며, <strong>회원사들의 경영 혁신과 경쟁력 강화</strong>를 위한 특별한 제안을 드립니다.</p>
+                <p style="margin-top: 15px;">최근 정부지원사업 평가기준 강화, <strong>ESG경영 의무화</strong>, 디지털 전환(DX) 가속화로 인해 많은 중소기업들이 어려움을 겪고 있습니다. 특히 다음과 같은 문제로 회원사들이 불이익을 받고 있는 실정입니다:</p>
+                <ul class="bullet-list">
+                    <li><strong>정부 R&D 및 지원사업 탈락</strong> (홈페이지 평가항목 미충족)</li>
+                    <li><strong>공공기관/대기업 입찰 참여제한</strong> (ESG경영 공시부재)</li>
+                    <li><strong>금융권 대출조건 악화</strong> (신용평가 비재무요소 미흡)</li>
+                    <li><strong>우수인재 채용실패</strong> (기업 이미지 및 신뢰도 부족)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">2</span>
+                솔루션 제안
+            </h2>
+            <div class="section-content">
+                <p>이에 저희는 <strong>월 10만원</strong>이라는 파격적인 가격으로 <strong>중견기업 이상 수준의 경영 인프라</strong>를 구축할 수 있는 <strong>「중소기업 통합경영 시스템」</strong>을 제안드립니다.</p>
+
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>1) 차별화된 기업 홈페이지</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <ul class="bullet-list">
+                                <li><strong>100% 커스터마이징 가능</strong> (코딩지식 불필요)</li>
+                                <li><strong>시점인증 시스템</strong> (법률적 안전장치)</li>
+                                <li><strong>ESG경영 페이지</strong> 기본셋팅 장착</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>2) 통합 경영관리 시스템</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <ul class="bullet-list">
+                                <li><strong>출퇴근/급여관리 프로그램</strong> (20인 이하 무료_2026년초 런칭)</li>
+                                <li><strong>업무일지 시스템</strong> (업무 효율성 향상)</li>
+                                <li><strong>종합건강검진 복지연계</strong> (대기업 수가 적용)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>3) AI기반 스마트 오피스</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <ul class="bullet-list">
+                                <li><strong>24시간 AI고객응대</strong> (문서기반 자동응답_RAG 시스템)</li>
+                                <li><strong>세계 4대 AI 통합허브 구축</strong> (GPT, Gemini 완료)
+                                    <ul style="list-style: none; padding-left: 20px; margin-top: 8px;">
+                                        <li>- 종량제 구입시스템 구축완료</li>
+                                        <li>- Claude, Perplexity 2026년초 구축예정</li>
+                                    </ul>
+                                </li>
+                                <li><strong>AI지출비용 50~90%절감</strong></li>
+                                <li><strong>업무 자동화</strong>로 핵심업무 집중</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>4) 기업고객의 AI활용 시스템 구축</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <ul class="bullet-list">
+                                <li><strong>세계4대 생성형 AI 종량제시스템</strong> 이용가능</li>
+                                <li><strong>고객의 기업홈페이지 유입효과</strong></li>
+                                <li><strong>기업홍보 및 생산성 향상</strong> 기대</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">3</span>
+                회원사 도입 시 실질적 혜택
+            </h2>
+            <div class="section-content">
+                <div class="highlight-box">
+                    <div class="highlight-title">즉시 효과</div>
+                    <ul class="check-list">
+                        <li><strong>정부지원사업 선정률 향상</strong> - R&D 과제평가 가점 확보</li>
+                        <li><strong>금융 혜택</strong> - ESG경영 인증으로 대출금리 우대</li>
+                        <li><strong>입찰 경쟁력</strong> - 공공기관/대기업 협력사 등록 요건 충족</li>
+                        <li><strong>법적 안전</strong> - 시점인증으로 분쟁 시 증거자료 확보</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 25px;">
+                    <div class="highlight-title">비용 절감 효과</div>
+                    <ul class="check-list">
+                        <li><strong>홈페이지 제작비:</strong> 수백~수천만원 → 0원</li>
+                        <li><strong>AI 시스템 구축비:</strong> 수백~수천만원 → 0원</li>
+                        <li><strong>경영관리 솔루션:</strong> 수백만원 → 0원</li>
+                        <li><strong>유지보수 비용:</strong> 연 수백만원 → 0원</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-weight: 600; font-size: 16px;">▶ 월 10만원으로 <strong>연간 수천만원 절감 효과</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">4</span>
+                협회 단체 도입 특별 혜택 제안
+            </h2>
+            <div class="section-content">
+                <div class="highlight-box">
+                    <div class="highlight-title">[협회 회원사 전용 혜택]</div>
+                    <ol style="list-style: decimal; padding-left: 20px; margin-top: 10px;">
+                        <li style="margin-bottom: 15px;"><strong>단체 가입시 별도혜택 적용</strong> (협의진행)</li>
+                        <li><strong>우선 지원 서비스</strong>
+                            <ul class="bullet-list" style="margin-top: 10px;">
+                                <li>전담 매니저 배정</li>
+                                <li>별도 운영/관리 교육제공</li>
+                                <li>우선 기술지원</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">5</span>
+                협회의 기대 효과
+            </h2>
+            <div class="section-content">
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>1. 회원사 만족도 제고</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <ul class="bullet-list">
+                                <li>실질적 경영 지원으로 <strong>회원 유지율 상승</strong></li>
+                                <li><strong>신규 회원 유치 경쟁력</strong> 확보</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>2. 협회 위상 강화</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <ul class="bullet-list">
+                                <li><strong>"디지털 혁신을 선도하는 협회"</strong> 이미지 구축</li>
+                                <li>회원사 경쟁력 강화 실적으로 <strong>정부 지원 확대</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>3. 운영 효율화</span>
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <ul class="bullet-list">
+                                <li><strong>회원사 정보 통합 관리</strong> (회원사 홈페이지 리스트 사이트 별도제공)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">6</span>
+                제안 요청 사항
+            </h2>
+            <div class="section-content">
+                <div class="highlight-box">
+                    <div class="highlight-title">▶ 회원사 대상 설명회 개최</div>
+                    <ul class="bullet-list" style="margin-top: 10px;">
+                        <li><strong>일시:</strong> 협회 일정에 맞춰 조율</li>
+                        <li><strong>방식:</strong> 온라인/오프라인 선택 가능</li>
+                        <li><strong>내용:</strong> 시스템 시연 및 도입 효과 설명</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">7</span>
+                맺음말
+            </h2>
+            <div class="section-content">
+                <p style="font-weight: 600; font-size: 16px; line-height: 1.9;">"<strong>홈페이지는 이제 단순한 사이트가 아니라, 기업의 경쟁력을 좌우하는 핵심 인프라입니다.</strong>"</p>
+                <p style="margin-top: 20px;">본 시스템 도입으로 귀 협회 회원사들이 <strong>최소 비용으로 최대 효과를 창출</strong>하여, 대기업과 어깨를 나란히 하는 경쟁력을 갖추게 될 것입니다.</p>
+                <p style="margin-top: 15px;">특히 현재 시스템 런칭에 따라 진행 중인 프로모션은 회원사들에게 매우 '<strong>파격적</strong>'이오니 좋은 기회를 놓치지 않도록 <strong>신속한 검토를 통해 진행</strong>하여 주시기 바랍니다.</p>
+                
+                <div style="margin-top: 25px; padding: 15px; background-color: #fafafa; border: 1px solid #e0e0e0;">
+                    <p style="margin-bottom: 8px;"><strong>브리핑 영상 (8분):</strong><br><a href="https://youtu.be/h-SbInXhCys" target="_blank">https://youtu.be/h-SbInXhCys</a></p>
+                    <p><strong>상세 제안서:</strong><br><a href="https://pt-corp-homepage.netlify.app/" target="_blank">https://pt-corp-homepage.netlify.app/</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="document-footer">
+            <p class="footer-quote">"회신 및 문의사항은<br>당 연구소 '전문위원'과 협의하여 주시기 바랍니다."</p>
+            <p class="footer-signature">중소기업경영연구소 드림</p>
+            <div class="footer-slogan">
+                "Best System, Best Price<br>월10만원 구독형 기업통합경영시스템"
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAccordion(header) {
+            // Get the content element
+            const content = header.nextElementSibling;
+            const isActive = header.classList.contains('active');
+            
+            // Close all accordion items
+            const allHeaders = document.querySelectorAll('.accordion-header');
+            const allContents = document.querySelectorAll('.accordion-content');
+            
+            allHeaders.forEach(h => h.classList.remove('active'));
+            allContents.forEach(c => c.classList.remove('active'));
+            
+            // If this wasn't active, open it
+            if (!isActive) {
+                header.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+
+        // Ensure proper rendering on iOS
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fix for iOS Safari viewport height issues
+            const setVh = () => {
+                let vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            };
+            
+            setVh();
+            window.addEventListener('resize', setVh);
+            window.addEventListener('orientationchange', setVh);
+        });
+    </script>
+</body>
+</html>
