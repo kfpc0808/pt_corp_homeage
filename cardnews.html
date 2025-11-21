@@ -60,6 +60,8 @@
             transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
             height: 100%;
             will-change: transform;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         .card {
@@ -67,12 +69,22 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* 콘텐츠는 위에서부터 시작 */
             align-items: center;
-            padding: 5vh 5vw;
+            padding: 4vh 6vw;          /* 상단/하단 여백 균형형(②) */
             position: relative;
             background: var(--bg-white);
             color: var(--text-black);
+            overflow: hidden;          /* 세로 모드에서는 스크롤 없이 한 화면 */
+        }
+
+        /* 카드 내부 첫/마지막 요소 여백 제거 → 테두리와 거리 통일 */
+        .card > *:first-child {
+            margin-top: 0 !important;
+        }
+
+        .card > *:last-child {
+            margin-bottom: 0 !important;
         }
 
         /* Card 1 - Hero */
@@ -83,39 +95,39 @@
         }
 
         .card-1 .main-emoji {
-            font-size: 120px;
-            margin-bottom: 20px;
+            font-size: 15vh;
+            margin-bottom: 1.5vh;
             animation: bounce 2s infinite;
         }
 
         .card-1 h1 {
-            font-size: 56px;
+            font-size: 6.2vh;
             font-weight: 800;
-            line-height: 1.3;
-            margin-bottom: 25px;
+            line-height: 1.2;
+            margin-bottom: 1.8vh;
         }
 
         .card-1 .highlight {
-            font-size: 40px;
+            font-size: 4.2vh;
             background: rgba(255,255,255,0.1);
-            padding: 25px 35px;
+            padding: 2vh 4vw;
             border-radius: 15px;
             display: inline-block;
-            margin: 25px 0;
+            margin: 1.8vh 0;
             border: 2px solid rgba(255,255,255,0.3);
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         .card-1 .tags {
-            font-size: 24px;
-            margin-top: 25px;
+            font-size: 2.6vh;
+            margin-top: 1.8vh;
             color: var(--light-purple);
             font-weight: 600;
         }
 
         .card-1 .subtitle {
-            font-size: 26px;
-            margin-top: 35px;
+            font-size: 2.8vh;
+            margin-top: 2.2vh;
             font-weight: 600;
         }
 
@@ -125,42 +137,42 @@
         }
 
         .card-2 .emoji-header {
-            font-size: 80px;
-            margin-bottom: 25px;
+            font-size: 10vh;
+            margin-bottom: 1.5vh;
         }
 
         .card-2 h2 {
-            font-size: 40px;
+            font-size: 4.2vh;
             font-weight: 700;
-            margin-bottom: 35px;
+            margin-bottom: 1.8vh;
             color: var(--text-navy);
         }
 
         .problem-list {
             width: 100%;
-            max-width: 90%;
+            max-width: 92%;
         }
 
         .problem-item {
             background: var(--bg-light);
-            padding: 22px 25px;
-            margin-bottom: 18px;
-            border-radius: 12px;
-            font-size: 20px;
-            line-height: 1.6;
-            border-left: 5px solid var(--navy-blue);
+            padding: 1.6vh 3vw;
+            margin-bottom: 1.1vh;
+            border-radius: 10px;
+            font-size: 2.1vh;
+            line-height: 1.45;
+            border-left: 4px solid var(--navy-blue);
             color: var(--text-black);
         }
 
         .card-2 .footer-text {
-            margin-top: 35px;
-            font-size: 24px;
+            margin-top: 1.8vh;
+            font-size: 2.4vh;
             font-weight: 700;
             color: var(--text-purple);
-            padding: 20px 30px;
+            padding: 1.5vh 3vw;
             background: var(--light-purple);
-            border-radius: 12px;
-            line-height: 1.5;
+            border-radius: 10px;
+            line-height: 1.45;
         }
 
         /* Card 3 - Solution */
@@ -169,45 +181,45 @@
         }
 
         .card-3 .emoji-header {
-            font-size: 80px;
-            margin-bottom: 20px;
+            font-size: 9vh;
+            margin-bottom: 1vh;
         }
 
         .card-3 h2 {
-            font-size: 36px;
+            font-size: 3.9vh;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 1vh;
             color: var(--text-navy);
         }
 
         .card-3 .subtitle {
-            font-size: 26px;
-            margin-bottom: 35px;
+            font-size: 2.7vh;
+            margin-bottom: 1.8vh;
             color: var(--text-black);
-            line-height: 1.4;
+            line-height: 1.35;
         }
 
         .feature-box {
             background: var(--bg-light);
-            padding: 22px 25px;
-            border-radius: 12px;
-            margin-bottom: 18px;
+            padding: 1.5vh 3vw;
+            border-radius: 10px;
+            margin-bottom: 1.1vh;
             text-align: left;
             width: 100%;
-            max-width: 90%;
-            border-left: 5px solid var(--navy-blue);
+            max-width: 92%;
+            border-left: 4px solid var(--navy-blue);
         }
 
         .feature-box h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
+            font-size: 2.3vh;
+            margin-bottom: 0.5vh;
             font-weight: 700;
             color: var(--text-navy);
         }
 
         .feature-box p {
-            font-size: 18px;
-            line-height: 1.6;
+            font-size: 2vh;
+            line-height: 1.45;
             color: var(--text-black);
         }
 
@@ -225,37 +237,38 @@
         }
 
         .feature-card h2 {
-            font-size: 36px;
+            font-size: 3.9vh;
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 1.8vh;
             color: var(--text-navy);
+            text-align: center;
         }
 
         .feature-card .emoji-header {
-            font-size: 70px;
-            margin-bottom: 20px;
+            font-size: 8vh;
+            margin-bottom: 1.5vh;
         }
 
         .feature-item {
             background: var(--bg-light);
-            padding: 22px 25px;
-            border-radius: 12px;
-            margin-bottom: 15px;
+            padding: 1.7vh 3vw;
+            border-radius: 10px;
+            margin-bottom: 1.1vh;
             text-align: left;
             width: 100%;
-            max-width: 90%;
-            border-left: 5px solid var(--navy-blue);
+            max-width: 92%;
+            border-left: 4px solid var(--navy-blue);
         }
 
         .card-5 .feature-item {
             background: white;
-            border-left: 5px solid var(--text-purple);
+            border-left: 4px solid var(--text-purple);
         }
 
         .feature-item h3 {
-            font-size: 22px;
+            font-size: 2.3vh;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 0.7vh;
             color: var(--text-navy);
         }
 
@@ -264,23 +277,24 @@
         }
 
         .feature-item p {
-            font-size: 18px;
-            line-height: 1.6;
+            font-size: 2vh;
+            line-height: 1.45;
             color: var(--text-black);
         }
 
         .feature-item ul {
             list-style: none;
             padding-left: 0;
-            margin-top: 10px;
+            margin-top: 0.5vh;
         }
 
         .feature-item ul li {
-            font-size: 17px;
-            padding-left: 18px;
-            margin-bottom: 6px;
+            font-size: 1.8vh;
+            padding-left: 3vw;
+            margin-bottom: 0.3vh;
             position: relative;
             color: var(--text-black);
+            line-height: 1.5;
         }
 
         .feature-item ul li:before {
@@ -297,46 +311,62 @@
         }
 
         .card-7 h2 {
-            font-size: 36px;
+            font-size: 3.9vh;
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 1.4vh;
             color: var(--text-navy);
         }
 
         .benefit-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 1vh;
             width: 100%;
-            max-width: 90%;
+            max-width: 92%;
         }
 
         .benefit-item {
             background: var(--bg-light);
-            padding: 25px 20px;
-            border-radius: 12px;
+            padding: 1.5vh 2.5vw;
+            border-radius: 10px;
             border: 2px solid var(--navy-blue);
         }
 
+        .benefit-header {
+            display: flex;
+            align-items: center;
+            gap: 1vw;
+            margin-bottom: 0.7vh;
+        }
+
         .benefit-number {
-            font-size: 32px;
+            font-size: 3.8vh;
             font-weight: 700;
-            margin-bottom: 10px;
             color: var(--text-navy);
+            flex-shrink: 0;
         }
 
         .benefit-title {
-            font-size: 19px;
+            font-size: 2.3vh;
             font-weight: 700;
-            margin-bottom: 10px;
-            line-height: 1.3;
+            line-height: 1.2;
             color: var(--text-black);
+            white-space: nowrap;
+            flex: 1;
         }
 
         .benefit-desc {
-            font-size: 16px;
-            line-height: 1.5;
+            font-size: 2vh;
+            line-height: 1.45;
             color: var(--text-black);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3vh 1.5vw;
+        }
+
+        .benefit-desc-item {
+            flex: 0 0 auto;
+            min-width: 45%;
         }
 
         /* Card 8 - Pricing */
@@ -345,29 +375,29 @@
         }
 
         .card-8 h2 {
-            font-size: 36px;
+            font-size: 3.9vh;
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 1.8vh;
             color: var(--text-navy);
         }
 
         .pricing-compare {
             width: 100%;
-            max-width: 90%;
+            max-width: 92%;
         }
 
         .pricing-box {
             background: var(--bg-light);
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 18px;
+            padding: 1.8vh 3vw;
+            border-radius: 12px;
+            margin-bottom: 1.3vh;
             border: 2px solid #ddd;
         }
 
         .pricing-box h3 {
-            font-size: 24px;
+            font-size: 2.4vh;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 0.9vh;
             color: var(--text-black);
         }
 
@@ -385,8 +415,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
-            font-size: 19px;
+            padding: 0.9vh 0;
+            font-size: 2vh;
             font-weight: 600;
             color: var(--text-black);
         }
@@ -396,7 +426,7 @@
         }
 
         .price-tag {
-            font-size: 32px;
+            font-size: 3.3vh;
             font-weight: 800;
             color: var(--light-purple);
         }
@@ -407,53 +437,53 @@
         }
 
         .card-9 .emoji-header {
-            font-size: 80px;
-            margin-bottom: 20px;
+            font-size: 9vh;
+            margin-bottom: 1.5vh;
         }
 
         .card-9 h2 {
-            font-size: 36px;
+            font-size: 3.9vh;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 1vh;
             color: var(--text-navy);
         }
 
         .card-9 .promo-subtitle {
-            font-size: 24px;
-            margin-bottom: 30px;
+            font-size: 2.4vh;
+            margin-bottom: 1.8vh;
             font-weight: 600;
             color: var(--text-black);
         }
 
         .promo-item {
             background: white;
-            padding: 22px 25px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            font-size: 20px;
+            padding: 1.7vh 3vw;
+            border-radius: 10px;
+            margin-bottom: 1.1vh;
+            font-size: 2.1vh;
             font-weight: 600;
             color: var(--text-black);
-            border-left: 5px solid var(--text-purple);
+            border-left: 4px solid var(--text-purple);
             width: 100%;
-            max-width: 90%;
+            max-width: 92%;
         }
 
         .promo-deadline {
             background: var(--navy-blue);
             color: white;
-            padding: 20px 25px;
-            border-radius: 12px;
-            font-size: 24px;
+            padding: 1.7vh 3vw;
+            border-radius: 10px;
+            font-size: 2.4vh;
             font-weight: 700;
-            margin: 25px 0;
+            margin: 1.8vh 0;
             animation: pulse 2s infinite;
         }
 
         .promo-footer {
-            font-size: 24px;
+            font-size: 2.4vh;
             font-weight: 700;
-            margin-top: 25px;
-            line-height: 1.6;
+            margin-top: 1.8vh;
+            line-height: 1.5;
             color: var(--text-black);
         }
 
@@ -464,43 +494,44 @@
         }
 
         .card-10 .emoji-header {
-            font-size: 80px;
-            margin-bottom: 25px;
+            font-size: 10vh;
+            margin-bottom: 2vh;
         }
 
         .card-10 h2 {
-            font-size: 42px;
+            font-size: 4.2vh;
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 2.3vh;
         }
 
         .cta-message {
-            font-size: 26px;
-            line-height: 1.7;
-            margin-bottom: 35px;
-            max-width: 90%;
+            font-size: 2.7vh;
+            line-height: 1.5;
+            margin-bottom: 2.8vh;
+            max-width: 92%;
+            text-align: center;
         }
 
         .cta-buttons {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 1.4vh;
             width: 100%;
-            max-width: 80%;
+            max-width: 85%;
         }
 
         .cta-button {
             background: white;
             color: var(--navy-blue);
-            padding: 22px 35px;
+            padding: 2.1vh 4vw;
             border-radius: 50px;
-            font-size: 22px;
+            font-size: 2.4vh;
             font-weight: 700;
             text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 2vw;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
@@ -519,10 +550,11 @@
         }
 
         .hashtags {
-            margin-top: 30px;
-            font-size: 20px;
+            margin-top: 2.3vh;
+            font-size: 2.1vh;
             color: var(--light-purple);
-            line-height: 1.6;
+            line-height: 1.5;
+            text-align: center;
         }
 
         /* Navigation */
@@ -531,7 +563,7 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
+            display: none;
             gap: 10px;
             z-index: 100;
             background: rgba(26, 35, 126, 0.9);
@@ -600,117 +632,254 @@
             50% { transform: scale(1.05); }
         }
 
-        /* Landscape Mobile Optimization */
+        /* Landscape Mobile Optimization (가로: 스크롤 허용) */
         @media screen and (max-width: 896px) and (orientation: landscape) {
+            .card-slider {
+                height: 100vh;
+                height: -webkit-fill-available;
+            }
+
+            .card-wrapper {
+                height: 100vh;
+                height: -webkit-fill-available;
+            }
+
             .card {
-                padding: 3vh 5vw;
-                overflow-y: auto;
+                padding: 4vh 5vw;           /* 여백 유지 */
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+                height: auto;
+                overflow-y: auto;           /* 가로 모드에서는 세로 스크롤 가능 */
+                overflow-x: hidden;
                 -webkit-overflow-scrolling: touch;
             }
 
+            .card-1 .main-emoji {
+                font-size: 18vw;
+                margin-bottom: 2vh;
+            }
+
             .card-1 h1 {
-                font-size: 38px;
+                font-size: 6vw;
+                margin-bottom: 2vh;
             }
 
             .card-1 .highlight {
-                font-size: 28px;
-                padding: 15px 25px;
+                font-size: 4.5vw;
+                padding: 2vh 4vw;
+                margin: 2vh 0;
             }
 
-            .card-1 .main-emoji {
-                font-size: 70px;
+            .card-1 .tags {
+                font-size: 3vw;
+                margin-top: 2vh;
             }
 
-            .emoji-header {
-                font-size: 55px !important;
+            .card-1 .subtitle {
+                font-size: 3.5vw;
+                margin-top: 2vh;
+            }
+
+            .emoji-header, .card-2 .emoji-header, .card-9 .emoji-header, .card-10 .emoji-header {
+                font-size: 15vw !important;
+                margin-bottom: 2vh !important;
+            }
+
+            .feature-card .emoji-header {
+                font-size: 12vw !important;
             }
 
             h2 {
-                font-size: 30px !important;
+                font-size: 5vw !important;
+                margin-bottom: 2vh !important;
             }
 
-            .feature-item,
+            .card-3 h2 {
+                margin-bottom: 1.5vh !important;
+            }
+
+            .card-3 .subtitle {
+                font-size: 3.5vw;
+                margin-bottom: 2vh;
+            }
+
             .problem-item {
-                padding: 16px 20px;
-                margin-bottom: 10px;
-                font-size: 18px;
+                padding: 2vh 3vw;
+                margin-bottom: 1.5vh;
+                font-size: 2.8vw;
+                line-height: 1.5;
+            }
+
+            .card-2 .footer-text {
+                font-size: 3.2vw;
+                padding: 2vh 3vw;
+                margin-top: 2vh;
+                margin-bottom: 0;
+                line-height: 1.5;
+            }
+
+            .feature-box {
+                padding: 2vh 3vw;
+                margin-bottom: 1.5vh;
+            }
+
+            .feature-box h3 {
+                font-size: 3vw;
+                margin-bottom: 1vh;
+            }
+
+            .feature-box p {
+                font-size: 2.6vw;
+                line-height: 1.5;
+            }
+
+            .feature-item {
+                padding: 2vh 3vw;
+                margin-bottom: 1.5vh;
+            }
+
+            .feature-item h3 {
+                font-size: 3vw;
+                margin-bottom: 1vh;
+            }
+
+            .feature-item p {
+                font-size: 2.6vw;
+                line-height: 1.5;
+            }
+
+            .feature-item ul li {
+                font-size: 2.4vw;
+                padding-left: 4vw;
+                line-height: 1.6;
+            }
+
+            .card-6 h3 {
+                font-size: 3.5vw !important;
+                margin-bottom: 2vh !important;
+            }
+
+            .card-6 > div:last-child {
+                font-size: 3.2vw !important;
+                margin-top: 2vh !important;
+            }
+
+            /* Card 7 - Benefits 가로 모드 */
+            .card-7 > div:first-child {
+                font-size: 14vw !important;
             }
 
             .benefit-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 12px;
+                gap: 2vh 2vw;
             }
 
-            .nav-dots {
-                bottom: 15px;
-            }
-        }
-
-        /* Portrait Mobile Optimization */
-        @media screen and (max-width: 480px) {
-            .card {
-                padding: 4vh 4vw;
+            .benefit-item {
+                padding: 2vh 2.5vw;
             }
 
-            .card-1 h1 {
-                font-size: 44px;
+            .benefit-header {
+                gap: 1.5vw;
+                margin-bottom: 1vh;
             }
 
-            .card-1 .highlight {
-                font-size: 32px;
-                padding: 18px 25px;
-            }
-
-            .card-1 .main-emoji {
-                font-size: 100px;
-            }
-
-            .emoji-header {
-                font-size: 65px !important;
-            }
-
-            h2 {
-                font-size: 32px !important;
-            }
-
-            .problem-item {
-                font-size: 18px;
-                padding: 20px 22px;
-            }
-
-            .feature-item {
-                font-size: 18px;
-                padding: 20px 22px;
-            }
-
-            .feature-item h3 {
-                font-size: 20px;
-            }
-
-            .feature-item p {
-                font-size: 17px;
-            }
-
-            .benefit-grid {
-                grid-template-columns: 1fr;
+            .benefit-number {
+                font-size: 6vw;
             }
 
             .benefit-title {
-                font-size: 18px;
+                font-size: 3.1vw;
+                white-space: nowrap;
             }
 
             .benefit-desc {
-                font-size: 15px;
+                font-size: 2.8vw;
+                gap: 0 2vw;
+            }
+
+            .benefit-desc-item {
+                min-width: 48%;
+                line-height: 1.6;
+            }
+
+            /* Card 8 - Pricing 가로 모드 */
+            .card-8 > div:first-child {
+                font-size: 12vw !important;
+            }
+
+            .pricing-box {
+                padding: 2vh 3vw;
+                margin-bottom: 1.5vh;
+            }
+
+            .pricing-box h3 {
+                font-size: 3.2vw;
+                margin-bottom: 1vh;
             }
 
             .pricing-item {
-                font-size: 17px;
+                font-size: 2.6vw;
+                padding: 1vh 0;
+            }
+
+            .price-tag {
+                font-size: 4vw;
+            }
+
+            .card-8 .pricing-compare > div:last-child {
+                font-size: 2.8vw !important;
+                margin-top: 2vh !important;
+            }
+
+            /* Card 9 - Promo 가로 모드 */
+            .card-9 h2 {
+                margin-bottom: 1.5vh !important;
+            }
+
+            .card-9 .promo-subtitle {
+                font-size: 3.2vw;
+                margin-bottom: 2vh;
+            }
+
+            .promo-item {
+                font-size: 2.8vw;
+                padding: 2vh 3vw;
+                margin-bottom: 1.5vh;
+            }
+
+            .promo-deadline {
+                font-size: 3.5vw;
+                padding: 2vh 3vw;
+                margin: 2vh 0;
+            }
+
+            .promo-footer {
+                font-size: 3.2vw;
+                margin-top: 2vh;
+            }
+
+            /* Card 10 - CTA 가로 모드 */
+            .cta-message {
+                font-size: 3.5vw;
+                margin-bottom: 3vh;
+                line-height: 1.6;
+            }
+
+            .cta-button {
+                padding: 2.5vh 4vw;
+                font-size: 3.2vw;
+                gap: 2vw;
+            }
+
+            .hashtags {
+                margin-top: 2vh;
+                font-size: 2.8vw;
             }
 
             .nav-arrow {
                 width: 45px;
                 height: 45px;
-                font-size: 22px;
+                font-size: 24px;
             }
 
             .nav-arrow.left {
@@ -722,6 +891,66 @@
             }
         }
 
+        /* Portrait Mobile - Very Small Screens */
+        @media screen and (max-width: 380px) and (orientation: portrait) {
+            .card {
+                padding: 3.2vh 5vw;
+            }
+
+            .problem-item,
+            .feature-item,
+            .promo-item {
+                font-size: 1.9vh;
+            }
+
+            .benefit-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8vh;
+            }
+
+            .benefit-item {
+                padding: 1.1vh 2.5vw;
+            }
+
+            .benefit-header {
+                gap: 2vw;
+                margin-bottom: 0.5vh;
+            }
+
+            .benefit-number {
+                font-size: 4.2vh;
+            }
+
+            .benefit-title {
+                font-size: 2vh;
+                white-space: nowrap;
+            }
+
+            .benefit-desc {
+                font-size: 1.8vh;
+                gap: 0.2vh 2vw;
+                line-height: 1.3;
+            }
+
+            .benefit-desc-item {
+                min-width: 45%;
+            }
+        }
+
+        /* Portrait Mobile - Medium to Large */
+        @media screen and (min-width: 381px) and (max-width: 480px) and (orientation: portrait) {
+            .card {
+                padding: 4vh 6vw;
+            }
+        }
+
+        /* Large Phones and Small Tablets - Portrait */
+        @media screen and (min-width: 481px) and (orientation: portrait) {
+            .card {
+                padding: 4vh 6vw;
+            }
+        }
+
         /* Tablet and Desktop */
         @media screen and (min-width: 768px) {
             .nav-arrow {
@@ -729,7 +958,245 @@
             }
 
             .card {
-                padding: 60px 40px;
+                padding: 40px 50px;
+                overflow: visible;
+            }
+
+            /* Card 1 */
+            .card-1 .main-emoji {
+                font-size: 100px;
+            }
+
+            .card-1 h1 {
+                font-size: 48px;
+            }
+
+            .card-1 .highlight {
+                font-size: 36px;
+                padding: 20px 35px;
+            }
+
+            .card-1 .tags {
+                font-size: 22px;
+            }
+
+            .card-1 .subtitle {
+                font-size: 24px;
+            }
+
+            /* Card 2 */
+            .card-2 .emoji-header {
+                font-size: 75px;
+            }
+
+            .card-2 h2 {
+                font-size: 38px;
+            }
+
+            .problem-item {
+                font-size: 19px;
+                padding: 18px 22px;
+            }
+
+            .card-2 .footer-text {
+                font-size: 21px;
+                padding: 16px 28px;
+            }
+
+            /* Card 3 */
+            .card-3 .emoji-header {
+                font-size: 70px;
+            }
+
+            .card-3 h2 {
+                font-size: 34px;
+            }
+
+            .card-3 .subtitle {
+                font-size: 22px;
+            }
+
+            .feature-box {
+                padding: 18px 22px;
+            }
+
+            .feature-box h3 {
+                font-size: 20px;
+            }
+
+            .feature-box p {
+                font-size: 17px;
+            }
+
+            /* Cards 4-6 */
+            .feature-card .emoji-header {
+                font-size: 65px;
+            }
+
+            .feature-card h2 {
+                font-size: 34px;
+            }
+
+            .feature-item {
+                padding: 18px 22px;
+            }
+
+            .feature-item h3 {
+                font-size: 20px;
+            }
+
+            .feature-item p {
+                font-size: 17px;
+            }
+
+            .feature-item ul li {
+                font-size: 16px;
+            }
+
+            /* Card 6 specific */
+            .card-6 h3 {
+                font-size: 24px !important;
+            }
+
+            .card-6 > div:last-child {
+                font-size: 22px !important;
+            }
+
+            /* Card 7 */
+            .card-7 > div:first-child {
+                font-size: 78px !important;
+            }
+
+            .card-7 h2 {
+                font-size: 40px;
+            }
+
+            .benefit-grid {
+                gap: 18px;
+            }
+
+            .benefit-item {
+                padding: 26px 22px;
+            }
+
+            .benefit-header {
+                gap: 12px;
+            }
+
+            .benefit-number {
+                font-size: 34px;
+            }
+
+            .benefit-title {
+                font-size: 22px;
+                white-space: nowrap;
+            }
+
+            .benefit-desc {
+                font-size: 18px;
+                gap: 0 18px;
+            }
+
+            .benefit-desc-item {
+                min-width: 45%;
+            }
+
+            /* Card 8 */
+            .card-8 > div:first-child {
+                font-size: 65px !important;
+            }
+
+            .card-8 h2 {
+                font-size: 34px;
+            }
+
+            .pricing-box {
+                padding: 20px 25px;
+            }
+
+            .pricing-box h3 {
+                font-size: 22px;
+            }
+
+            .pricing-item {
+                font-size: 18px;
+                padding: 10px 0;
+            }
+
+            .price-tag {
+                font-size: 30px;
+            }
+
+            .card-8 .pricing-compare > div:last-child {
+                font-size: 18px !important;
+            }
+
+            /* Card 9 */
+            .card-9 .emoji-header {
+                font-size: 70px;
+            }
+
+            .card-9 h2 {
+                font-size: 34px;
+            }
+
+            .card-9 .promo-subtitle {
+                font-size: 22px;
+            }
+
+            .promo-item {
+                font-size: 19px;
+                padding: 18px 22px;
+            }
+
+            .promo-deadline {
+                font-size: 22px;
+                padding: 18px 25px;
+            }
+
+            .promo-footer {
+                font-size: 22px;
+            }
+
+            /* Card 10 */
+            .card-10 .emoji-header {
+                font-size: 75px;
+            }
+
+            .card-10 h2 {
+                font-size: 38px;
+            }
+
+            .cta-message {
+                font-size: 24px;
+            }
+
+            .cta-button {
+                font-size: 21px;
+                padding: 20px 35px;
+            }
+
+            .hashtags {
+                font-size: 19px;
+            }
+        }
+
+        /* Large Desktop */
+        @media screen and (min-width: 1200px) {
+            .card {
+                padding: 50px 60px;
+            }
+
+            .card-1 .main-emoji {
+                font-size: 120px;
+            }
+
+            .card-1 h1 {
+                font-size: 54px;
+            }
+
+            .card-1 .highlight {
+                font-size: 40px;
             }
         }
 
@@ -752,19 +1219,12 @@
                 height: -webkit-fill-available;
             }
         }
-
-        /* Prevent text selection during swipe */
-        .card-wrapper {
-            -webkit-user-select: none;
-            user-select: none;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card-slider">
             <div class="card-wrapper" id="cardWrapper">
-                
                 <!-- Card 1 -->
                 <div class="card card-1">
                     <div class="main-emoji">💥</div>
@@ -857,7 +1317,7 @@
                 <div class="card card-6 feature-card">
                     <div class="emoji-header">🤖</div>
                     <h2>핵심 기능 3. AI 플랫폼</h2>
-                    <h3 style="margin-bottom: 25px; font-size: 26px; color: var(--text-purple);">세계 4대 AI 통합 허브</h3>
+                    <h3 style="margin-bottom: 2vh; font-size: 2.8vh; color: var(--text-purple);">세계 4대 AI 통합 허브</h3>
                     <div class="feature-item">
                         <h3>✅ 고객문의 → AI 자동응대(RAG)</h3>
                         <p>• 24시간 무중단 대응<br>• 회사 문서기반 자동 답변</p>
@@ -866,42 +1326,63 @@
                         <h3>✅ 생성형 4대 AI 구축</h3>
                         <p>• GPT, Gemini 종량제 시스템 이용<br>• Claude, Perplexit(2026년초)<br>• AI비용 혁신적 절감</p>
                     </div>
-                    <div style="margin-top: 25px; font-size: 24px; font-weight: 700; color: var(--text-navy); line-height: 1.5;">
+                    <div style="margin-top: 2vh; font-size: 2.6vh; font-weight: 700; color: var(--text-navy); line-height: 1.4;">
                         AI가 24시간 일하는<br>진짜 스마트 오피스 구현
                     </div>
                 </div>
 
                 <!-- Card 7 -->
                 <div class="card card-7">
-                    <div style="font-size: 70px; margin-bottom: 20px;">💰</div>
+                    <div style="font-size: 8vh; margin-bottom: 1vh;">💰</div>
                     <h2>도입 후 실질혜택 Big 4</h2>
                     <div class="benefit-grid">
                         <div class="benefit-item">
-                            <div class="benefit-number">1️⃣</div>
-                            <div class="benefit-title">정부지원사업 경쟁력 강화</div>
-                            <div class="benefit-desc">• DX 기반 구축<br>• ESG경영 인증<br>• R&D 요소 충족</div>
+                            <div class="benefit-header">
+                                <div class="benefit-number">1️⃣</div>
+                                <div class="benefit-title">정부지원사업 경쟁력 강화</div>
+                            </div>
+                            <div class="benefit-desc">
+                                <span class="benefit-desc-item">• DX 기반 구축</span>
+                                <span class="benefit-desc-item">• ESG경영 인증</span>
+                                <span class="benefit-desc-item">• R&D 요소 충족</span>
+                            </div>
                         </div>
                         <div class="benefit-item">
-                            <div class="benefit-number">2️⃣</div>
-                            <div class="benefit-title">금융기관 우대+신용평가 개선</div>
-                            <div class="benefit-desc">• 비재무요소 개선<br>• ESG 금융우대</div>
+                            <div class="benefit-header">
+                                <div class="benefit-number">2️⃣</div>
+                                <div class="benefit-title">금융기관우대 신용평가개선</div>
+                            </div>
+                            <div class="benefit-desc">
+                                <span class="benefit-desc-item">• 비재무요소 개선</span>
+                                <span class="benefit-desc-item">• ESG 금융우대</span>
+                            </div>
                         </div>
                         <div class="benefit-item">
-                            <div class="benefit-number">3️⃣</div>
-                            <div class="benefit-title">법적 리스크 감소</div>
-                            <div class="benefit-desc">• 시점인증 효력<br>• 근로기준법 준수</div>
+                            <div class="benefit-header">
+                                <div class="benefit-number">3️⃣</div>
+                                <div class="benefit-title">법적 리스크 감소</div>
+                            </div>
+                            <div class="benefit-desc">
+                                <span class="benefit-desc-item">• 시점인증 효력</span>
+                                <span class="benefit-desc-item">• 근로기준법 준수</span>
+                            </div>
                         </div>
                         <div class="benefit-item">
-                            <div class="benefit-number">4️⃣</div>
-                            <div class="benefit-title">기업이미지제고+경쟁력향상</div>
-                            <div class="benefit-desc">• 체계성 확보<br>• 우수인재 채용 경쟁력</div>
+                            <div class="benefit-header">
+                                <div class="benefit-number">4️⃣</div>
+                                <div class="benefit-title">기업이미지제고 경쟁력향상</div>
+                            </div>
+                            <div class="benefit-desc">
+                                <span class="benefit-desc-item">• 체계성 확보</span>
+                                <span class="benefit-desc-item">• 우수인재 채용력</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 8 -->
                 <div class="card card-8">
-                    <div style="font-size: 70px; margin-bottom: 20px;">💸</div>
+                    <div style="font-size: 8vh; margin-bottom: 1.5vh;">💸</div>
                     <h2>도입 비용이 궁금하시죠?</h2>
                     <div class="pricing-compare">
                         <div class="pricing-box">
@@ -942,7 +1423,7 @@
                                 <span class="price-tag">10만원!</span>
                             </div>
                         </div>
-                        <div style="margin-top: 25px; font-weight: 600; text-align: center; color: var(--text-black); font-size: 20px;">
+                        <div style="margin-top: 2vh; font-weight: 600; text-align: center; color: var(--text-black); font-size: 2.2vh;">
                             투명한 요금체계<br>예상치 못한 비용 발생없음
                         </div>
                     </div>
@@ -1022,7 +1503,7 @@
         function updateCard(index) {
             currentCard = Math.max(0, Math.min(index, totalCards - 1));
             cardWrapper.style.transform = `translateX(-${currentCard * 100}%)`;
-            
+
             // Update dots
             document.querySelectorAll('.dot').forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentCard);
@@ -1063,7 +1544,7 @@
         cardWrapper.addEventListener('touchend', () => {
             if (!isDragging) return;
             isDragging = false;
-            
+
             const swipeThreshold = 50;
             const diff = touchStartX - touchEndX;
 
@@ -1081,17 +1562,6 @@
             if (e.key === 'ArrowLeft') previousCard();
             if (e.key === 'ArrowRight') nextCard();
         });
-
-        // Prevent overscroll on iOS
-        document.body.addEventListener('touchmove', (e) => {
-            if (e.target.closest('.card')) {
-                const card = e.target.closest('.card');
-                if (card.scrollHeight > card.clientHeight) {
-                    return; // Allow scrolling within card
-                }
-            }
-            e.preventDefault();
-        }, { passive: false });
 
         // Fix iOS Safari height issue
         function setVh() {

@@ -889,10 +889,14 @@
             }
 
             /* Hero 모바일 반응형 */
+            .hero-panel {
+                padding-bottom: 120px !important;
+            }
+            
             .hero-content {
                 padding: 40px 20px;
-                align-items: center;
-                text-align: center;
+                align-items: flex-start;
+                text-align: left;
             }
 
             .hero-title {
@@ -903,6 +907,7 @@
             .hero-subtitle {
                 font-size: 1em;
                 padding: 15px 20px;
+                text-align: left !important;
             }
 
             /* CTA 버튼 컨테이너 세로 배치 */
@@ -925,6 +930,34 @@
                 bottom: 10px;
                 left: 10px;
             }
+            
+            /* 하단 단체가입 안내 - 세로 모드 */
+            .hero-panel > div:last-child {
+                left: 15px !important;
+                right: 15px !important;
+                bottom: 20px !important;
+                position: absolute !important;
+                z-index: 20 !important;
+            }
+            
+            .hero-panel > div:last-child > div {
+                font-size: 0.55em !important;
+                gap: 8px !important;
+                flex-wrap: wrap;
+                line-height: 1.5;
+                word-break: keep-all;
+                white-space: normal;
+            }
+            
+            .hero-panel > div:last-child span {
+                word-spacing: 0.1em;
+            }
+            
+            .hero-panel > div:last-child button {
+                font-size: 0.9em !important;
+                padding: 4px 8px !important;
+                flex-shrink: 0;
+            }
         }
 
         /* 모바일 가로 모드 */
@@ -937,11 +970,19 @@
 
             .container {
                 flex-direction: row;
+                height: 100vh !important;
+                max-height: 100vh !important;
             }
 
             .sidebar {
                 width: 30%;
                 font-size: 0.85em;
+                height: auto !important;
+                max-height: 100vh !important;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                display: flex !important;
+                flex-direction: column !important;
             }
 
             /* 모바일 가로 모드에서는 사이드바 글자 크기를 원래대로 */
@@ -965,6 +1006,14 @@
             .logo-section {
                 display: none;
             }
+            
+            /* 메뉴 리스트 스크롤 활성화 */
+            .menu-list {
+                flex: 1 !important;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                height: auto !important;
+            }
 
             /* 메뉴 아이템 패딩 최적화 */
             .menu-item {
@@ -973,6 +1022,8 @@
 
             .content-area {
                 width: 70%;
+                height: 100vh !important;
+                overflow-y: auto !important;
             }
 
             .content-panel {
@@ -987,6 +1038,10 @@
                 font-size: 1.3em;
             }
             
+            .hero-panel {
+                padding-bottom: 85px !important;
+            }
+            
             .hero-content {
                 padding: 30px 25px;
             }
@@ -997,6 +1052,7 @@
             
             .hero-subtitle {
                 font-size: 1em;
+                text-align: left !important;
             }
 
             /* 홈페이지 버튼 위치 조정 */
@@ -1026,6 +1082,44 @@
 
             .easy-popup-header h3 {
                 font-size: 1.1em !important;
+            }
+            
+            /* 하단 단체가입 안내 - 가로 모드 */
+            .hero-panel > div:last-child {
+                left: 25px !important;
+                right: 25px !important;
+                bottom: 60px !important;
+                position: absolute !important;
+                z-index: 20 !important;
+            }
+            
+            .hero-panel > div:last-child > div {
+                font-size: 0.7em !important;
+                gap: 8px !important;
+                line-height: 1.4;
+                word-break: keep-all;
+                white-space: normal;
+                display: flex !important;
+                flex-wrap: wrap !important;
+                align-items: center !important;
+            }
+            
+            .hero-panel > div:last-child .group-text-line1 {
+                flex: 1 1 100%;
+                word-spacing: 0.05em;
+            }
+            
+            .hero-panel > div:last-child .group-text-line2 {
+                word-spacing: 0.05em;
+                flex: 0 1 auto;
+            }
+            
+            .hero-panel > div:last-child button {
+                font-size: 0.9em !important;
+                padding: 4px 10px !important;
+                flex-shrink: 0 !important;
+                display: inline-block !important;
+                visibility: visible !important;
             }
         }
 
@@ -1523,7 +1617,7 @@
 
             /* 샘플 버튼 모바일 2x2 레이아웃 */
             .sample-buttons-container {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr) !important;
                 gap: 12px;
                 max-width: 100%;
             }
@@ -1663,7 +1757,7 @@
                 <!-- 하단 단체가입 안내 -->
                 <div style="position: absolute; bottom: 30px; left: 55px; right: 55px; z-index: 10;">
                     <div style="display: flex; align-items: center; gap: 15px; font-size: 1.12em; font-weight: 500; color: #f8f5f0; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);">
-                        <span>*협회, 단체, 협력사, 공유오피스 등 단체가입은 당사 '전문위원'과 별도로 협의하여 진행 바랍니다.</span>
+                        <span class="group-text-line1">*협회, 단체, 협력사, 공유오피스 등 단체가입은 당사 '전문위원'과 별도로 </span><span class="group-text-line2">협의하여 진행 바랍니다.</span>
                         <button onclick="window.open('groupproposal.html', '_blank')" style="background: linear-gradient(135deg, #8b6914 0%, #6b5200 100%); color: white; padding: 5px 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.56em; transition: all 0.3s; box-shadow: 0 2px 8px rgba(139, 105, 20, 0.5); white-space: nowrap;">
                             📄 공문참조
                         </button>
@@ -2474,9 +2568,9 @@
                     </div>
                 </div>
                 
-                <!-- 추가 자료 버튼들 - 아래 4개 (별도 step) -->
+                <!-- 추가 자료 버튼들 - 아래 6개 (별도 step) -->
                 <div class="step" style="margin-top: 20px; padding: 30px 20px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 100%); border-radius: 12px; border-top: 2px solid rgba(212, 175, 55, 0.3);">
-                    <div class="sample-buttons-container">
+                    <div class="sample-buttons-container" style="grid-template-columns: repeat(6, 1fr); gap: 10px;">
                         <button onclick="window.open('https://fmcalculators.netlify.app/?bypass=true', '_blank')" class="sample-button" style="background: linear-gradient(135deg, #6b5d4f 0%, #8b7355 100%); border-color: #6b5d4f; color: #ffffff;">
                             💰 재무계산기
                         </button>
@@ -2488,6 +2582,12 @@
                         </button>
                         <button onclick="window.open('https://youtu.be/68T6O7FByxc', '_blank')" class="sample-button" style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%); border-color: #d4af37; color: #ffffff;">
                             🎬 홍보영상
+                        </button>
+                        <button onclick="window.open('cardnews.html', '_blank')" class="sample-button" style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%); border-color: #d4af37; color: #ffffff;">
+                            📰 Card News
+                        </button>
+                        <button onclick="window.open('groupproposal.html', '_blank')" class="sample-button" style="background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%); border-color: #d4af37; color: #ffffff;">
+                            📋 단체가입제안서
                         </button>
                     </div>
                 </div>
