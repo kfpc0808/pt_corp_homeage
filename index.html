@@ -3709,6 +3709,9 @@
             // 모바일에서는 비활성화
             if (window.innerWidth <= 768) return;
             
+            // 12번 화면(마지막 화면)에서는 네비게이션 비활성화
+            if (currentContent === 11) return;
+            
             if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 showNextStep();
@@ -3722,6 +3725,9 @@
         document.querySelector('.content-area').addEventListener('click', (e) => {
             // 모바일에서는 비활성화
             if (window.innerWidth <= 768) return;
+            
+            // 12번 화면(마지막 화면)에서는 네비게이션 비활성화
+            if (currentContent === 11) return;
             
             // 버튼이나 링크를 클릭한 경우는 제외
             if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('a') || e.target.closest('button')) {
@@ -3739,6 +3745,9 @@
         document.addEventListener('wheel', (e) => {
             // 모바일에서는 비활성화
             if (window.innerWidth <= 768) return;
+            
+            // 12번 화면(마지막 화면)에서는 네비게이션 비활성화
+            if (currentContent === 11) return;
             
             // 스크롤 이벤트가 너무 자주 발생하지 않도록 throttle 적용
             if (wheelTimeout) return;
