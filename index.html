@@ -67,6 +67,42 @@
             font-weight: 400;
         }
 
+        .share-button-fixed {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #8b6914 0%, #6b5200 100%);
+            color: #ffd700;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(139, 105, 20, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 1000;
+        }
+
+        .share-button-fixed:hover {
+            background: linear-gradient(135deg, #6b5200 0%, #8b6914 100%);
+            box-shadow: 0 5px 15px rgba(139, 105, 20, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .share-button-fixed:active {
+            transform: translateY(0);
+        }
+
+        .share-button-fixed svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
         .menu-list {
             flex: 1;
             padding: 15px 0;
@@ -750,6 +786,30 @@
             margin-right: 4px;
         }
 
+        .mobile-share-button {
+            display: none;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #8b6914 0%, #6b5200 100%);
+            color: #ffd700;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 101;
+            box-shadow: 0 2px 8px rgba(139, 105, 20, 0.4);
+            transition: all 0.3s;
+        }
+
+        .mobile-share-button svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
         /* 모바일 세로 모드 (768px 이하) */
         @media (max-width: 768px) and (orientation: portrait) {
             body {
@@ -777,6 +837,16 @@
 
             .mobile-tab-nav {
                 display: block;
+            }
+
+            .share-button-fixed {
+                display: none;
+            }
+
+            .mobile-share-button {
+                display: flex;
+                align-items: center;
+                gap: 4px;
             }
 
             .content-area {
@@ -1004,6 +1074,19 @@
 
             /* 가로 모드에서 로고 섹션 숨기기 */
             .logo-section {
+                display: none;
+            }
+            
+            /* 가로 모드에서 공유 버튼 크기 조정 */
+            .share-button-fixed {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 0.75em;
+            }
+            
+            /* 가로 모드에서 모바일 공유 버튼 표시 */
+            .mobile-share-button {
                 display: none;
             }
             
@@ -1674,6 +1757,14 @@
         </div>
     </div>
 
+    <!-- 모바일 공유 버튼 -->
+    <button class="mobile-share-button" onclick="copyShareLink()" title="링크 복사">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+        </svg>
+        공유
+    </button>
+
     <div class="container">
         <!-- 왼쪽 사이드바 메뉴 -->
         <div class="sidebar">
@@ -1747,6 +1838,14 @@
 
         <!-- 오른쪽 콘텐츠 영역 -->
         <div class="content-area">
+            <!-- 공유 버튼 (우측 상단 고정) -->
+            <button class="share-button-fixed" onclick="copyShareLink()" title="링크 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                </svg>
+                공유
+            </button>
+            
             <!-- 콘텐츠 1: 표지 -->
             <div class="content-panel active hero-panel" data-steps="0">
                 <div class="hero-background"></div>
@@ -3868,6 +3967,72 @@
         if (window.innerWidth <= 768) {
             const firstPanelSteps = contentPanels[0].querySelectorAll('.step');
             firstPanelSteps.forEach(step => step.classList.add('active'));
+        }
+
+        // 링크 복사 함수
+        function copyShareLink() {
+            const url = 'https://pt-corp-homepage.netlify.app';
+            
+            // 버튼 찾기
+            const button = document.querySelector('.share-button-fixed') || document.querySelector('.mobile-share-button');
+            if (!button) return;
+            
+            const originalHTML = button.innerHTML;
+            const originalBackground = button.style.background;
+            
+            // 클립보드 복사 함수 (fallback 포함)
+            function copyToClipboard(text) {
+                // 방법 1: navigator.clipboard API (HTTPS 필요)
+                if (navigator.clipboard && window.isSecureContext) {
+                    return navigator.clipboard.writeText(text);
+                } else {
+                    // 방법 2: execCommand (fallback)
+                    return new Promise((resolve, reject) => {
+                        const textArea = document.createElement('textarea');
+                        textArea.value = text;
+                        textArea.style.position = 'fixed';
+                        textArea.style.left = '-999999px';
+                        document.body.appendChild(textArea);
+                        textArea.focus();
+                        textArea.select();
+                        
+                        try {
+                            const successful = document.execCommand('copy');
+                            document.body.removeChild(textArea);
+                            if (successful) {
+                                resolve();
+                            } else {
+                                reject(new Error('복사 실패'));
+                            }
+                        } catch (err) {
+                            document.body.removeChild(textArea);
+                            reject(err);
+                        }
+                    });
+                }
+            }
+            
+            // 클립보드에 복사
+            copyToClipboard(url).then(() => {
+                // 버튼 텍스트 변경하여 피드백
+                button.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                    </svg>
+                    복사됨!
+                `;
+                button.style.background = 'linear-gradient(135deg, #28a745 0%, #1e7e34 100%)';
+                
+                // 2초 후 원래 상태로 복원
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.style.background = originalBackground || 'linear-gradient(135deg, #8b6914 0%, #6b5200 100%)';
+                }, 2000);
+            }).catch(err => {
+                console.error('링크 복사 실패:', err);
+                // 복사 실패 시 프롬프트로 URL 표시
+                prompt('아래 링크를 복사하세요 (Ctrl+C):', url);
+            });
         }
     </script>
 </body>
