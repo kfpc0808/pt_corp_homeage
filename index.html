@@ -68,39 +68,142 @@
         }
 
         .share-button-fixed {
-            position: fixed;
+            position: absolute;
             top: 30px;
             right: 30px;
             background: linear-gradient(135deg, #8b6914 0%, #6b5200 100%);
             color: #ffd700;
             border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 0.85em;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.5em;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 3px 10px rgba(139, 105, 20, 0.4);
+            box-shadow: 0 2px 6px rgba(139, 105, 20, 0.4);
             display: flex;
             align-items: center;
-            gap: 6px;
-            z-index: 1000;
+            gap: 4px;
+            z-index: 100;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+            line-height: 1;
         }
 
         .share-button-fixed:hover {
             background: linear-gradient(135deg, #6b5200 0%, #8b6914 100%);
-            box-shadow: 0 5px 15px rgba(139, 105, 20, 0.6);
-            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(139, 105, 20, 0.6);
+            transform: translateY(-1px);
         }
 
         .share-button-fixed:active {
             transform: translateY(0);
+            background: linear-gradient(135deg, #5a4300 0%, #7a5a10 100%);
         }
 
         .share-button-fixed svg {
-            width: 16px;
-            height: 16px;
+            width: 10px;
+            height: 10px;
             fill: currentColor;
+        }
+
+        /* 공유 모달 */
+        .share-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-modal.active {
+            display: flex;
+        }
+
+        .share-modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            max-width: 320px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: modalSlideUp 0.3s ease;
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .share-modal-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #2d2d2d;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .share-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .share-option-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1em;
+            font-weight: 600;
+            color: #2d2d2d;
+        }
+
+        .share-option-btn:hover {
+            border-color: #d4af37;
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .share-option-btn svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .share-modal-close {
+            margin-top: 15px;
+            padding: 12px;
+            background: #f5f5f5;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            color: #666;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .share-modal-close:hover {
+            background: #e0e0e0;
         }
 
         .menu-list {
@@ -786,30 +889,6 @@
             margin-right: 4px;
         }
 
-        .mobile-share-button {
-            display: none;
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(135deg, #8b6914 0%, #6b5200 100%);
-            color: #ffd700;
-            border: none;
-            padding: 10px 14px;
-            border-radius: 6px;
-            font-size: 0.85em;
-            font-weight: 600;
-            cursor: pointer;
-            z-index: 101;
-            box-shadow: 0 2px 8px rgba(139, 105, 20, 0.4);
-            transition: all 0.3s;
-        }
-
-        .mobile-share-button svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-        }
-
         /* 모바일 세로 모드 (768px 이하) */
         @media (max-width: 768px) and (orientation: portrait) {
             body {
@@ -840,13 +919,25 @@
             }
 
             .share-button-fixed {
-                display: none;
+                display: inline-flex !important;
+                position: relative !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                padding: 2px 4px !important;
+                font-size: 0.3em !important;
+                z-index: 200;
+                gap: 2px !important;
+                margin-left: 6px !important;
+                margin-top: 0 !important;
+                vertical-align: middle;
+                line-height: 1 !important;
+                height: auto;
             }
 
-            .mobile-share-button {
-                display: flex;
-                align-items: center;
-                gap: 4px;
+            .share-button-fixed svg {
+                width: 8px !important;
+                height: 8px !important;
             }
 
             .content-area {
@@ -972,6 +1063,7 @@
             .hero-title {
                 font-size: 2em;
                 margin-bottom: 20px;
+                display: block;
             }
 
             .hero-subtitle {
@@ -1077,19 +1169,6 @@
                 display: none;
             }
             
-            /* 가로 모드에서 공유 버튼 크기 조정 */
-            .share-button-fixed {
-                top: 10px;
-                right: 10px;
-                padding: 6px 12px;
-                font-size: 0.75em;
-            }
-            
-            /* 가로 모드에서 모바일 공유 버튼 표시 */
-            .mobile-share-button {
-                display: none;
-            }
-            
             /* 메뉴 리스트 스크롤 활성화 */
             .menu-list {
                 flex: 1 !important;
@@ -1111,6 +1190,13 @@
 
             .content-panel {
                 padding: 20px 25px 90px 25px;
+            }
+
+            .share-button-fixed {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 0.75em;
             }
 
             h1 {
@@ -1757,14 +1843,6 @@
         </div>
     </div>
 
-    <!-- 모바일 공유 버튼 -->
-    <button class="mobile-share-button" onclick="copyShareLink()" title="링크 복사">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
-        </svg>
-        공유
-    </button>
-
     <div class="container">
         <!-- 왼쪽 사이드바 메뉴 -->
         <div class="sidebar">
@@ -1838,19 +1916,19 @@
 
         <!-- 오른쪽 콘텐츠 영역 -->
         <div class="content-area">
-            <!-- 공유 버튼 (우측 상단 고정) -->
-            <button class="share-button-fixed" onclick="copyShareLink()" title="링크 복사">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
-                </svg>
-                공유
-            </button>
-            
             <!-- 콘텐츠 1: 표지 -->
             <div class="content-panel active hero-panel" data-steps="0">
                 <div class="hero-background"></div>
+                
                 <div class="hero-content">
-                    <h1 class="hero-title">중소기업<br>통합경영 시스템</h1>
+                    <h1 class="hero-title" style="margin-bottom: 20px;">
+                        중소기업<button class="share-button-fixed" onclick="copyShareLink()" title="링크 복사" style="position: relative; top: 0; right: 0; display: inline-flex; margin-left: 6px; vertical-align: middle;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                            </svg>
+                            공유
+                        </button><br>통합경영 시스템
+                    </h1>
                     <div class="hero-subtitle" style="text-align: left;">'400만 중소기업의 경영혁신' 을 위한<br>차세대 All-in-One 경영플랫폼</div>
                 </div>
                 <!-- 하단 단체가입 안내 -->
@@ -3969,16 +4047,64 @@
             firstPanelSteps.forEach(step => step.classList.add('active'));
         }
 
-        // 링크 복사 함수
+        // 공유 모달 열기
         function copyShareLink() {
+            const modal = document.getElementById('shareModal');
+            modal.classList.add('active');
+        }
+
+        // 공유 모달 닫기
+        function closeShareModal() {
+            const modal = document.getElementById('shareModal');
+            modal.classList.remove('active');
+        }
+
+        // 모달 배경 클릭 시 닫기
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('shareModal');
+            if (e.target === modal) {
+                closeShareModal();
+            }
+        });
+
+        // 카카오톡 공유
+        function shareToKakao() {
             const url = 'https://pt-corp-homepage.netlify.app';
+            const title = '중소기업 통합경영 시스템';
+            const description = '400만 중소기업의 경영혁신을 위한 차세대 All-in-One 경영플랫폼';
             
-            // 버튼 찾기
-            const button = document.querySelector('.share-button-fixed') || document.querySelector('.mobile-share-button');
-            if (!button) return;
-            
-            const originalHTML = button.innerHTML;
-            const originalBackground = button.style.background;
+            // 모바일에서 카카오톡 앱으로 공유
+            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                // 카카오톡 URL 스킴 사용
+                const kakaoUrl = `https://sharer.kakao.com/talk/friends/picker/link?app_key=&validation_action=default&validation_params=%7B%7D&ka=sdk%2F1.43.0%20os%2Fjavascript%20sdk_type%2Fjavascript%20lang%2Fko-KR%20device%2FWin32%20origin%2F${encodeURIComponent(window.location.origin)}&link_ver=4.0&custom_button=&default_text=${encodeURIComponent(title + '\n' + description + '\n' + url)}`;
+                
+                // Web Share API 사용 (지원하는 브라우저)
+                if (navigator.share) {
+                    navigator.share({
+                        title: title,
+                        text: description,
+                        url: url
+                    }).then(() => {
+                        closeShareModal();
+                    }).catch((error) => {
+                        console.log('공유 취소:', error);
+                    });
+                } else {
+                    // Web Share API 미지원 시 카카오톡 직접 링크
+                    const message = encodeURIComponent(`${title}\n${description}\n${url}`);
+                    window.open(`https://shareapi.kakao.com/share/url?url=${encodeURIComponent(url)}`, '_blank');
+                    closeShareModal();
+                }
+            } else {
+                // PC에서는 카카오톡 웹 공유
+                window.open(`https://shareapi.kakao.com/share/url?url=${encodeURIComponent(url)}`, '_blank', 'width=500,height=500');
+                closeShareModal();
+            }
+        }
+
+        // 모달에서 링크 복사
+        function copyLinkFromModal() {
+            const url = 'https://pt-corp-homepage.netlify.app';
             
             // 클립보드 복사 함수 (fallback 포함)
             function copyToClipboard(text) {
@@ -4014,26 +4140,48 @@
             
             // 클립보드에 복사
             copyToClipboard(url).then(() => {
-                // 버튼 텍스트 변경하여 피드백
-                button.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-                    </svg>
-                    복사됨!
-                `;
-                button.style.background = 'linear-gradient(135deg, #28a745 0%, #1e7e34 100%)';
-                
-                // 2초 후 원래 상태로 복원
-                setTimeout(() => {
-                    button.innerHTML = originalHTML;
-                    button.style.background = originalBackground || 'linear-gradient(135deg, #8b6914 0%, #6b5200 100%)';
-                }, 2000);
+                alert('링크가 복사되었습니다!');
+                closeShareModal();
             }).catch(err => {
                 console.error('링크 복사 실패:', err);
                 // 복사 실패 시 프롬프트로 URL 표시
                 prompt('아래 링크를 복사하세요 (Ctrl+C):', url);
             });
         }
+
+        // 아이폰 터치 이벤트 지원
+        document.addEventListener('DOMContentLoaded', function() {
+            const shareButton = document.querySelector('.share-button-fixed');
+            if (shareButton) {
+                // 터치 이벤트 추가 (모바일 지원)
+                shareButton.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    copyShareLink();
+                }, { passive: false });
+            }
+        });
     </script>
+    <!-- 공유 모달 -->
+    <div class="share-modal" id="shareModal">
+        <div class="share-modal-content">
+            <div class="share-modal-title">🔗 공유하기</div>
+            <div class="share-options">
+                <button class="share-option-btn" onclick="shareToKakao()">
+                    <svg viewBox="0 0 24 24" fill="#FEE500">
+                        <path d="M12 3c5.799 0 10.5 3.664 10.5 8.185 0 4.52-4.701 8.184-10.5 8.184a13.5 13.5 0 0 1-1.727-.11l-4.408 2.883c-.501.265-.678.236-.472-.413l.892-3.678c-2.88-1.46-4.785-3.99-4.785-6.866C1.5 6.665 6.201 3 12 3zm5.907 8.06l1.47-1.424a.472.472 0 0 0-.656-.678l-1.928 1.866V9.282a.472.472 0 0 0-.944 0v2.557a.471.471 0 0 0 0 .222V13.5a.472.472 0 0 0 .944 0v-1.363l.427-.413 1.428 2.033a.472.472 0 1 0 .773-.543l-1.514-2.155zm-2.958 1.924h-1.46V9.297a.472.472 0 0 0-.943 0v4.159c0 .26.21.472.471.472h1.932a.472.472 0 1 0 0-.944zm-5.857-1.092l.696-1.707.638 1.707H9.092zm2.523.488l.002-.016a.469.469 0 0 0-.127-.32l-1.046-2.8a.69.69 0 0 0-.627-.474.696.696 0 0 0-.653.447l-1.661 4.075a.472.472 0 0 0 .874.357l.33-.813h2.07l.299.8a.472.472 0 1 0 .884-.33l-.345-.926zM8.293 9.302a.472.472 0 0 0-.471-.472H4.577a.472.472 0 1 0 0 .944h1.16v3.736a.472.472 0 0 0 .944 0V9.774h1.14c.261 0 .472-.212.472-.472z"/>
+                    </svg>
+                    카카오톡 공유
+                </button>
+                <button class="share-option-btn" onclick="copyLinkFromModal()">
+                    <svg viewBox="0 0 24 24" fill="#8b6914">
+                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                    </svg>
+                    링크 복사
+                </button>
+            </div>
+            <button class="share-modal-close" onclick="closeShareModal()">닫기</button>
+        </div>
+    </div>
+
 </body>
 </html>
